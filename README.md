@@ -1,1 +1,2 @@
-# Bubbles-Dive-Planner-Console-Rust
+# Bubbles Dive Planner Console Rust
+A dive planner
