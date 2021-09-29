@@ -5,7 +5,7 @@ pub mod cylinder {
 
     pub fn enter_gas_mixture() -> GasMixture {
         let oxygen = presenter::read_numeric_i32("Enter oxygen (%):", 5, 100);
-        let helium = presenter::read_numeric_i32("Enter helium (%):", 0, gas_mixture_controller::calculate_helium_percentage(oxygen));
+        let helium = presenter::read_numeric_i32("Enter helium (%):", 0, gas_mixture_controller::calculate_helium_percentage_maximum_limit(oxygen));
         let nitrogen = gas_mixture_controller::calculate_nitrogen_percentage(oxygen, helium);
 
         return GasMixture { oxygen, helium, nitrogen };

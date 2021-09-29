@@ -1,7 +1,7 @@
 use std::string::String;
 use std::io;
 
-pub fn write(message: String) {
+pub fn write_message(message: String) {
     println!("{}", message);
 }
 
