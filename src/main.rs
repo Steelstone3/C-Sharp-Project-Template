@@ -10,6 +10,7 @@ mod presenters;
 mod models;
 mod controllers;
 mod commands;
+mod tests;
 
 fn main() {
     write_message(String::from("Welcome to Bubbles Dive Planner Console Rust"));

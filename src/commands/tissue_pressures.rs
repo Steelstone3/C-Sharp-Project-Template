@@ -16,17 +16,3 @@ pub mod tissue_pressure {
     }
 }
 
-#[cfg(test)]
-mod tissue_pressure_should {
-    #[test]
-    #[ignore]
-    fn calculate_tissue_pressure_nitrogen() {}
-
-    #[test]
-    #[ignore]
-    fn calculate_tissue_pressure_helium() {}
-
-    #[test]
-    #[ignore]
-    fn calculate_tissue_pressure_total() {}
-}

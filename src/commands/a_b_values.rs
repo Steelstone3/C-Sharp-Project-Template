@@ -10,10 +10,3 @@ pub mod a_b_values {
         return (dive_model.b_values_nitrogen[compartment] * dive_profile_model.tissue_pressures_nitrogen[compartment] + dive_model.b_values_helium[compartment] * dive_profile_model.tissue_pressures_helium[compartment]) / dive_profile_model.tissue_pressures_total[compartment];
     }
 }
-
-#[cfg(test)]
-mod a_b_values_should {
-    #[test]
-    #[ignore]
-    fn calculate_a_value() {}
-}

@@ -9,7 +9,7 @@ pub mod dive_profile_model {
         pub tolerated_ambient_pressures: [f32; 16],
         pub a_values: [f32; 16],
         pub b_values: [f32; 16],
-        pub pressure_oxygen: f32,
+        pub oxygen_at_pressure: f32,
         pub helium_at_pressure: f32,
         pub nitrogen_at_pressure: f32,
     }
