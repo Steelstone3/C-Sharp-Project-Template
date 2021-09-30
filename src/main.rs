@@ -11,6 +11,9 @@ mod models;
 mod controllers;
 mod commands;
 
+#[test]
+mod tests;
+
 fn main() {
     write_message(String::from("Welcome to Bubbles Dive Planner Console Rust"));
     let dive_model = select_dive_model();
