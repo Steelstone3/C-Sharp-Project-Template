@@ -3,6 +3,7 @@ pub mod test_fixtures {
     use crate::models::dive_step::dive_step::DiveStep;
     use crate::models::gas_mixture::gas_mixture::GasMixture;
 
+    #[test]
     pub fn expected_dive_profile_model() -> DiveProfileModel {
         return DiveProfileModel {
             max_surface_pressures: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
@@ -19,6 +20,7 @@ pub mod test_fixtures {
         };
     }
 
+    #[test]
     pub fn test_fixture_dive_step() -> DiveStep {
         return DiveStep {
             depth: 50,
@@ -26,6 +28,7 @@ pub mod test_fixtures {
         };
     }
 
+    #[test]
     pub fn test_fixture_gas_mixture() -> GasMixture {
         return GasMixture {
             oxygen: 21,
