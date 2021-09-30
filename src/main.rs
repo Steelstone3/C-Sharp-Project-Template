@@ -11,7 +11,7 @@ mod models;
 mod controllers;
 mod commands;
 
-#[test]
+#[cfg(debug_assertions)]
 mod tests;
 
 fn main() {
