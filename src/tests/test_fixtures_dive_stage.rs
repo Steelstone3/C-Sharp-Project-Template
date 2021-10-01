@@ -1,6 +1,8 @@
 pub mod test_fixtures_dive_stage {
+    use crate::models::cylinder::cylinder::Cylinder;
     use crate::models::dive_profile::dive_profile_model::DiveProfileModel;
     use crate::models::dive_step::dive_step::DiveStep;
+    use crate::models::gas_management::gas_management::GasManagement;
     use crate::models::gas_mixture::gas_mixture::GasMixture;
 
     #[allow(unused)]
@@ -32,11 +34,22 @@ pub mod test_fixtures_dive_stage {
 
     #[allow(unused)]
     #[cfg(debug_assertions)]
-    pub fn test_fixture_gas_mixture() -> GasMixture {
-        return GasMixture {
-            oxygen: 21,
-            helium: 10,
-            nitrogen: 69,
+    pub fn test_fixture_cylinder() -> Cylinder {
+        return Cylinder {
+            name: "Air".to_string(),
+            cylinder_volume: 12,
+            cylinder_pressure: 200,
+            gas_mixture: GasMixture {
+                oxygen: 21,
+                helium: 10,
+                nitrogen: 69,
+            },
+            gas_management: GasManagement {
+                initial_pressurised_cylinder_volume: 2400,
+                gas_used: 720,
+                gas_remaining: 1680,
+                surface_air_consumption_rate: 12,
+            }
         };
     }
 
