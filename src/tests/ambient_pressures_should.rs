@@ -10,8 +10,8 @@ mod ambient_pressures_should {
         let gas_mixture = test_fixture_gas_mixture();
 
         let actual_dive_profile_model = ambient_pressures::calculate_ambient_pressure(expected_dive_profile_model, dive_step, gas_mixture);
-        assert_eq!(expected_dive_profile_model.oxygen_at_pressure, actual_dive_profile_model.oxygen_at_pressure);
-        assert_eq!(expected_dive_profile_model.nitrogen_at_pressure, actual_dive_profile_model.nitrogen_at_pressure);
-        assert_eq!(expected_dive_profile_model.helium_at_pressure, actual_dive_profile_model.helium_at_pressure.round());
+        assert_eq!(format!("{:.3}", expected_dive_profile_model.oxygen_at_pressure), format!("{:.3}", actual_dive_profile_model.oxygen_at_pressure));
+        assert_eq!(format!("{:.3}", expected_dive_profile_model.nitrogen_at_pressure), format!("{:.3}", actual_dive_profile_model.nitrogen_at_pressure));
+        assert_eq!(format!("{:.3}", expected_dive_profile_model.helium_at_pressure), format!("{:.3}", actual_dive_profile_model.helium_at_pressure));
     }
 }

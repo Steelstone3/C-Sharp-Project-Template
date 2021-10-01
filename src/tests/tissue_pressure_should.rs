@@ -2,25 +2,51 @@
 mod tissue_pressure_should {
     use crate::commands::tissue_pressures::tissue_pressure;
     use crate::models::dive_model::dive_model::create_zhl16_dive_model;
-    use crate::tests::test_fixtures::test_fixtures::{expected_dive_profile_model, test_fixture_dive_step};
+    use crate::models::dive_profile::dive_profile_model::DiveProfileModel;
+    use crate::tests::test_fixtures::test_fixtures::{expected_dive_profile_model, test_fixture_dive_step, test_fixture_tissue_pressure_total_dive_profile_model, test_fixture_tissue_pressures_dive_profile_model};
 
     #[test]
-    #[ignore]
     fn calculate_tissue_pressure_nitrogen() {
+        //Arrange
         let zhl16 = create_zhl16_dive_model();
-        let expected_dive_profile_model = expected_dive_profile_model();
         let dive_step = test_fixture_dive_step();
+        let expected_dive_profile_model = expected_dive_profile_model();
+        let actual_dive_profile_model = test_fixture_tissue_pressures_dive_profile_model();
 
         for compartment in 0..16 {
-            assert_eq!(expected_dive_profile_model.tissue_pressures_nitrogen[compartment].to_string(), format!("{:.3}", tissue_pressure::calculate_tissue_pressure_nitrogen(compartment, zhl16, expected_dive_profile_model, dive_step)));
+            //Act
+            //Assert
+            assert_eq!(format!("{:.3}", expected_dive_profile_model.tissue_pressures_nitrogen[compartment]), format!("{:.3}", tissue_pressure::calculate_tissue_pressure_nitrogen(compartment, zhl16, actual_dive_profile_model, dive_step)));
         }
     }
 
     #[test]
-    #[ignore]
-    fn calculate_tissue_pressure_helium() {}
+    fn calculate_tissue_pressure_helium() {
+        //Arrange
+        let zhl16 = create_zhl16_dive_model();
+        let dive_step = test_fixture_dive_step();
+        let expected_dive_profile_model = expected_dive_profile_model();
+        let actual_dive_profile_model = test_fixture_tissue_pressures_dive_profile_model();
+
+        for compartment in 0..16 {
+            //Act
+            //Assert
+            assert_eq!(format!("{:.3}", expected_dive_profile_model.tissue_pressures_helium[compartment]), format!("{:.3}", tissue_pressure::calculate_tissue_pressure_helium(compartment, zhl16, actual_dive_profile_model, dive_step)));
+        }
+    }
 
     #[test]
-    #[ignore]
-    fn calculate_tissue_pressure_total() {}
+    fn calculate_tissue_pressure_total() {
+        //Arrange
+        let zhl16 = create_zhl16_dive_model();
+        let dive_step = test_fixture_dive_step();
+        let expected_dive_profile_model = expected_dive_profile_model();
+        let actual_dive_profile_model = test_fixture_tissue_pressure_total_dive_profile_model();
+
+        for compartment in 0..16 {
+            //Act
+            //Assert
+            assert_eq!(format!("{:.3}", expected_dive_profile_model.tissue_pressures_total[compartment]), format!("{:.3}", tissue_pressure::calculate_tissue_pressure_total(compartment, actual_dive_profile_model)));
+        }
+    }
 }

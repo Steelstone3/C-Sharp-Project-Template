@@ -17,13 +17,13 @@ mod tests;
 fn main() {
     write_message(String::from("Welcome to Bubbles Dive Planner Console Rust"));
     let dive_model = select_dive_model();
-    let dive_profile = create_dive_profile();
+    let mut dive_profile = create_dive_profile();
 
     loop {
         let dive_step = enter_dive_step();
         let gas_mixture = enter_gas_mixture();
-        let results = run_dive_profile(dive_model, dive_profile, dive_step, gas_mixture);
-        display_results(results);
+        dive_profile = run_dive_profile(dive_model, dive_profile, dive_step, gas_mixture);
+        display_results(dive_profile);
     }
 }
 

@@ -2,7 +2,9 @@
 mod a_b_values_should {
     #[test]
     #[ignore]
-    fn calculate_a_value() {}
+    fn calculate_a_value() {
+
+    }
 
     #[test]
     #[ignore]
