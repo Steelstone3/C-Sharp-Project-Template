@@ -2,7 +2,7 @@
 mod tissue_pressure_should {
     use crate::commands::tissue_pressures::tissue_pressure;
     use crate::models::dive_model::dive_model::create_zhl16_dive_model;
-    use crate::tests::test_fixtures::test_fixtures::{expected_dive_profile_model, test_fixture_dive_step, test_fixture_tissue_pressure_total_dive_profile_model, test_fixture_tissue_pressures_dive_profile_model};
+    use crate::tests::test_fixtures::test_fixtures::{expected_dive_profile_model, test_fixture_dive_step, test_fixture_tissue_pressures_total_dive_profile_model, test_fixture_tissue_pressures_dive_profile_model};
 
     #[test]
     fn calculate_tissue_pressure_nitrogen() {
@@ -38,7 +38,7 @@ mod tissue_pressure_should {
     fn calculate_tissue_pressure_total() {
         //Arrange
         let expected_dive_profile_model = expected_dive_profile_model();
-        let actual_dive_profile_model = test_fixture_tissue_pressure_total_dive_profile_model();
+        let actual_dive_profile_model = test_fixture_tissue_pressures_total_dive_profile_model();
 
         for compartment in 0..16 {
             //Act

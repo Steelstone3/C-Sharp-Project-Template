@@ -5,4 +5,3 @@ pub mod tolerated_ambient_pressures {
         return (dive_profile_model.tissue_pressures_total[compartment] - dive_profile_model.a_values[compartment]) * dive_profile_model.b_values[compartment];
     }
 }
-
