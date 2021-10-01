@@ -27,7 +27,7 @@ pub mod dive_stage {
         dive_profile_model.a_values[compartment] = calculate_a_value(compartment, dive_model, dive_profile_model);
         dive_profile_model.b_values[compartment] = calculate_b_value(compartment, dive_model, dive_profile_model);
         dive_profile_model.tolerated_ambient_pressures[compartment] = calculate_tolerated_ambient_pressure(compartment, dive_profile_model);
-        dive_profile_model.max_surface_pressures[compartment] = calculate_max_surface_pressure(compartment, dive_profile_model);
+        dive_profile_model.maximum_surface_pressures[compartment] = calculate_max_surface_pressure(compartment, dive_profile_model);
         dive_profile_model.compartment_load[compartment] = calculate_compartment_load(compartment, dive_profile_model);
 
         return dive_profile_model;
