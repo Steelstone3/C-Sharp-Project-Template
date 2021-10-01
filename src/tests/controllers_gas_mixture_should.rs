@@ -1,5 +1,5 @@
 #[cfg(test)]
-mod gas_mixture_controller_should {
+mod controllers_gas_mixture_should {
     use crate::controllers::gas_mixture::gas_mixture_controller;
 
     #[test]

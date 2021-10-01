@@ -1,4 +1,4 @@
-pub mod test_fixtures {
+pub mod test_fixtures_dive_stage {
     use crate::models::dive_profile::dive_profile_model::DiveProfileModel;
     use crate::models::dive_step::dive_step::DiveStep;
     use crate::models::gas_mixture::gas_mixture::GasMixture;

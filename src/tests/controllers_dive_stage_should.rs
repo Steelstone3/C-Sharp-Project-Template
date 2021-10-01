@@ -1,8 +1,8 @@
 #[cfg(test)]
-mod dive_stage_should {
+mod controllers_dive_stage_should {
     use crate::controllers::dive_stage::dive_stage;
     use crate::models::dive_model::dive_model::create_zhl16_dive_model;
-    use crate::tests::test_fixtures::test_fixtures::{expected_dive_profile_model, test_fixture_dive_stage_dive_profile_model, test_fixture_dive_step, test_fixture_gas_mixture};
+    use crate::tests::test_fixtures_dive_stage::test_fixtures_dive_stage::{expected_dive_profile_model, test_fixture_dive_stage_dive_profile_model, test_fixture_dive_step, test_fixture_gas_mixture};
 
     #[test]
     fn run_dive_profile() {

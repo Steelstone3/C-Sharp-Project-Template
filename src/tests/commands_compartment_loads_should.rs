@@ -1,7 +1,7 @@
 #[cfg(test)]
-mod compartment_loads_should {
+mod commands_compartment_loads_should {
     use crate::commands::compartment_loads::compartment_loads;
-    use crate::tests::test_fixtures::test_fixtures::{expected_dive_profile_model, test_fixture_compartment_load_dive_profile_model};
+    use crate::tests::test_fixtures_dive_stage::test_fixtures_dive_stage::{expected_dive_profile_model, test_fixture_compartment_load_dive_profile_model};
 
     #[test]
     fn calculate_compartment_load() {
