@@ -1,5 +1,5 @@
-Bubbles Dive Planner
-====================
+Bubbles Dive Planner Console
+============================
 
 The idea behind Bubbles Dive Planner is to aim for scuba divers to be able to perform the safe planning of scuba diving activities. Currently supports the Bulhmann dive model with more planned and gas management for a single cylinder with multiple cylinders planned.
 
