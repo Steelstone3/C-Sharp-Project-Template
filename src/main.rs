@@ -11,6 +11,7 @@ mod presenters;
 mod models;
 mod controllers;
 mod commands;
+mod factories;
 
 #[cfg(debug_assertions)]
 mod tests;

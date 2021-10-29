@@ -1,0 +1,167 @@
+main() -> std::io::Result<()>
+
+let mut dive_steps: Vec<DiveStep> = Vec::new();
+let mut dive_profiles: Vec<DiveProfileModel> = Vec::new();
+
+//TODO new, load functionality should be displayed here
+//TODO load functionality should display each dive step
+
+// let mut file = File::open("foo.txt")?;
+// let mut contents = String::new();
+// file.read_to_string(&mut contents)?;
+// assert_eq!(contents, "Hello, world!");
+
+        //TODO needs a serious refactor
+        //TODO start by moving this to a save command
+        //TODO then split each part up and sub parts for dive profile
+        //TODO make a combine thing that pieces them back together
+        //Save result to file
+        let mut file = File::create("dive_profile.json")?;
+
+        dive_steps.push(dive_step);
+        dive_profiles.push(dive_profile);
+
+        let mut file_json_values: Vec<JsonValue> = Vec::new();
+
+        for count in 0..dive_steps.len() {
+            file_json_values.push(json::object! {
+            dive_model_name: "zhl16",
+            depth: dive_steps[count].depth,
+            time: dive_steps[count].time,
+            //TODO see if you can put this into a for loop
+            maximum_surface_pressures: [dive_profiles[count].maximum_surface_pressures[0],
+                    dive_profiles[count].maximum_surface_pressures[1],
+                    dive_profiles[count].maximum_surface_pressures[2],
+                    dive_profiles[count].maximum_surface_pressures[3],
+                    dive_profiles[count].maximum_surface_pressures[4],
+                    dive_profiles[count].maximum_surface_pressures[5],
+                    dive_profiles[count].maximum_surface_pressures[6],
+                    dive_profiles[count].maximum_surface_pressures[7],
+                    dive_profiles[count].maximum_surface_pressures[8],
+                    dive_profiles[count].maximum_surface_pressures[9],
+                    dive_profiles[count].maximum_surface_pressures[10],
+                    dive_profiles[count].maximum_surface_pressures[11],
+                    dive_profiles[count].maximum_surface_pressures[12],
+                    dive_profiles[count].maximum_surface_pressures[13],
+                    dive_profiles[count].maximum_surface_pressures[14],
+                    dive_profiles[count].maximum_surface_pressures[15]],
+                compartment_load: [dive_profiles[count].compartment_load[0],
+                    dive_profiles[count].compartment_load[1],
+                    dive_profiles[count].compartment_load[2],
+                    dive_profiles[count].compartment_load[3],
+                    dive_profiles[count].compartment_load[4],
+                    dive_profiles[count].compartment_load[5],
+                    dive_profiles[count].compartment_load[6],
+                    dive_profiles[count].compartment_load[7],
+                    dive_profiles[count].compartment_load[8],
+                    dive_profiles[count].compartment_load[9],
+                    dive_profiles[count].compartment_load[10],
+                    dive_profiles[count].compartment_load[11],
+                    dive_profiles[count].compartment_load[12],
+                    dive_profiles[count].compartment_load[13],
+                    dive_profiles[count].compartment_load[14],
+                    dive_profiles[count].compartment_load[15]],
+                tissue_pressures_nitrogen: [dive_profiles[count].tissue_pressures_nitrogen[0],
+                    dive_profiles[count].tissue_pressures_nitrogen[1],
+                    dive_profiles[count].tissue_pressures_nitrogen[2],
+                    dive_profiles[count].tissue_pressures_nitrogen[3],
+                    dive_profiles[count].tissue_pressures_nitrogen[4],
+                    dive_profiles[count].tissue_pressures_nitrogen[5],
+                    dive_profiles[count].tissue_pressures_nitrogen[6],
+                    dive_profiles[count].tissue_pressures_nitrogen[7],
+                    dive_profiles[count].tissue_pressures_nitrogen[8],
+                    dive_profiles[count].tissue_pressures_nitrogen[9],
+                    dive_profiles[count].tissue_pressures_nitrogen[10],
+                    dive_profiles[count].tissue_pressures_nitrogen[11],
+                    dive_profiles[count].tissue_pressures_nitrogen[12],
+                    dive_profiles[count].tissue_pressures_nitrogen[13],
+                    dive_profiles[count].tissue_pressures_nitrogen[14],
+                    dive_profiles[count].tissue_pressures_nitrogen[15]],
+                tissue_pressures_helium: [dive_profiles[count].tissue_pressures_helium[0],
+                    dive_profiles[count].tissue_pressures_helium[1],
+                    dive_profiles[count].tissue_pressures_helium[2],
+                    dive_profiles[count].tissue_pressures_helium[3],
+                    dive_profiles[count].tissue_pressures_helium[4],
+                    dive_profiles[count].tissue_pressures_helium[5],
+                    dive_profiles[count].tissue_pressures_helium[6],
+                    dive_profiles[count].tissue_pressures_helium[7],
+                    dive_profiles[count].tissue_pressures_helium[8],
+                    dive_profiles[count].tissue_pressures_helium[9],
+                    dive_profiles[count].tissue_pressures_helium[10],
+                    dive_profiles[count].tissue_pressures_helium[11],
+                    dive_profiles[count].tissue_pressures_helium[12],
+                    dive_profiles[count].tissue_pressures_helium[13],
+                    dive_profiles[count].tissue_pressures_helium[14],
+                    dive_profiles[count].tissue_pressures_helium[15]],
+                tissue_pressures_total: [dive_profiles[count].tissue_pressures_total[0],
+                    dive_profiles[count].tissue_pressures_total[1],
+                    dive_profiles[count].tissue_pressures_total[2],
+                    dive_profiles[count].tissue_pressures_total[3],
+                    dive_profiles[count].tissue_pressures_total[4],
+                    dive_profiles[count].tissue_pressures_total[5],
+                    dive_profiles[count].tissue_pressures_total[6],
+                    dive_profiles[count].tissue_pressures_total[7],
+                    dive_profiles[count].tissue_pressures_total[8],
+                    dive_profiles[count].tissue_pressures_total[9],
+                    dive_profiles[count].tissue_pressures_total[10],
+                    dive_profiles[count].tissue_pressures_total[11],
+                    dive_profiles[count].tissue_pressures_total[12],
+                    dive_profiles[count].tissue_pressures_total[13],
+                    dive_profiles[count].tissue_pressures_total[14],
+                    dive_profiles[count].tissue_pressures_total[15]],
+                tolerated_ambient_pressures: [dive_profiles[count].tolerated_ambient_pressures[0],
+                    dive_profiles[count].tolerated_ambient_pressures[1],
+                    dive_profiles[count].tolerated_ambient_pressures[2],
+                    dive_profiles[count].tolerated_ambient_pressures[3],
+                    dive_profiles[count].tolerated_ambient_pressures[4],
+                    dive_profiles[count].tolerated_ambient_pressures[5],
+                    dive_profiles[count].tolerated_ambient_pressures[6],
+                    dive_profiles[count].tolerated_ambient_pressures[7],
+                    dive_profiles[count].tolerated_ambient_pressures[8],
+                    dive_profiles[count].tolerated_ambient_pressures[9],
+                    dive_profiles[count].tolerated_ambient_pressures[10],
+                    dive_profiles[count].tolerated_ambient_pressures[11],
+                    dive_profiles[count].tolerated_ambient_pressures[12],
+                    dive_profiles[count].tolerated_ambient_pressures[13],
+                    dive_profiles[count].tolerated_ambient_pressures[14],
+                    dive_profiles[count].tolerated_ambient_pressures[15]],
+                a_values: [dive_profiles[count].a_values[0],
+                    dive_profiles[count].a_values[1],
+                    dive_profiles[count].a_values[2],
+                    dive_profiles[count].a_values[3],
+                    dive_profiles[count].a_values[4],
+                    dive_profiles[count].a_values[5],
+                    dive_profiles[count].a_values[6],
+                    dive_profiles[count].a_values[7],
+                    dive_profiles[count].a_values[8],
+                    dive_profiles[count].a_values[9],
+                    dive_profiles[count].a_values[10],
+                    dive_profiles[count].a_values[11],
+                    dive_profiles[count].a_values[12],
+                    dive_profiles[count].a_values[13],
+                    dive_profiles[count].a_values[14],
+                    dive_profiles[count].a_values[15]],
+                b_values: [dive_profiles[count].b_values[0],
+                    dive_profiles[count].b_values[1],
+                    dive_profiles[count].b_values[2],
+                    dive_profiles[count].b_values[3],
+                    dive_profiles[count].b_values[4],
+                    dive_profiles[count].b_values[5],
+                    dive_profiles[count].b_values[6],
+                    dive_profiles[count].b_values[7],
+                    dive_profiles[count].b_values[8],
+                    dive_profiles[count].b_values[9],
+                    dive_profiles[count].b_values[10],
+                    dive_profiles[count].b_values[11],
+                    dive_profiles[count].b_values[12],
+                    dive_profiles[count].b_values[13],
+                    dive_profiles[count].b_values[14],
+                    dive_profiles[count].b_values[15]],
+                oxygen_at_pressure: dive_profiles[count].oxygen_at_pressure,
+                helium_at_pressure: dive_profiles[count].helium_at_pressure,
+                nitrogen_at_pressure: dive_profiles[count].nitrogen_at_pressure,
+            });
+        }
+
+        let file_result = json::from(file_json_values).pretty(1);
+        write!(file, "{}", file_result)?;

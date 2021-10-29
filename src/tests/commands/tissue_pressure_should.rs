@@ -1,7 +1,7 @@
 #[cfg(test)]
 mod commands_tissue_pressure_should {
     use crate::commands::tissue_pressures::tissue_pressure;
-    use crate::models::dive_model::dive_model::create_zhl16_dive_model;
+    use crate::factories::zhl16_dive_model::zhl16_dive_model::create_zhl16_dive_model;
     use crate::tests::test_fixtures_dive_stage::test_fixtures_dive_stage::{expected_dive_profile_model, test_fixture_dive_step, test_fixture_tissue_pressures_dive_profile_model, test_fixture_tissue_pressures_total_dive_profile_model};
 
     #[test]

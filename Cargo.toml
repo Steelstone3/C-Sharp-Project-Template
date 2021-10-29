@@ -14,3 +14,5 @@ include = [
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+mockall = "0.10.2"
+json = "0.12.4"
