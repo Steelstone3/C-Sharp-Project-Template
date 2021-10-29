@@ -36,7 +36,6 @@ pub mod test_fixtures_dive_stage {
     #[cfg(debug_assertions)]
     pub fn test_fixture_cylinder() -> Cylinder {
         return Cylinder {
-            name: "Air".to_string(),
             cylinder_volume: 12,
             cylinder_pressure: 200,
             gas_mixture: GasMixture {
