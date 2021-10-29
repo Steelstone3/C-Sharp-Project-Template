@@ -6,9 +6,7 @@ pub mod cylinder {
     use crate::models::gas_mixture::gas_mixture::GasMixture;
     use crate::presenters::presenter::presenters::{read_numeric_i32, read_string};
 
-    pub fn create_cylinders() -> Vec<Cylinder> {
-        let mut cylinders: Vec<Cylinder> = Vec::new();
-
+    pub fn create_cylinder() -> Cylinder {
         let name = read_string("Enter cylinder name:");
         let cylinder_volume = read_numeric_i32("Enter cylinder volume (L):", 3, 30);
         let cylinder_pressure = read_numeric_i32("Enter cylinder starting pressure (Bar):", 50, 300);
@@ -18,9 +16,7 @@ pub mod cylinder {
         let gas_mixture = enter_gas_mixture();
         let gas_management = initialise_gas_management(initial_pressurised_cylinder_volume, surface_air_consumption_rate);
 
-        cylinders.push(Cylinder { name, cylinder_volume, cylinder_pressure, gas_mixture, gas_management });
-
-        return cylinders;
+        return Cylinder { name, cylinder_volume, cylinder_pressure, gas_mixture, gas_management };
     }
 
     pub fn display_cylinder(gas_management: GasManagement) {
