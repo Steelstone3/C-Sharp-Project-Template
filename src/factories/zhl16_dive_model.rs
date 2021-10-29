@@ -1,4 +1,5 @@
 pub mod zhl16_dive_model {
+    use crate::models::dive_profile::dive_profile_model::DiveProfileModel;
     use crate::models::dive_model::dive_model::DiveModel;
 
     pub fn create_zhl16_dive_model() -> DiveModel {
@@ -14,6 +15,24 @@ pub mod zhl16_dive_model {
 
         return zhl16_model;
     }
+
+    pub fn create_zhl16_dive_profile() -> DiveProfileModel {
+        return DiveProfileModel {
+            maximum_surface_pressures: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+            compartment_load: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+            tissue_pressures_nitrogen: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+            tissue_pressures_helium: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+            tissue_pressures_total: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+            tolerated_ambient_pressures: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+            a_values: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+            b_values: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+            oxygen_at_pressure: 0.0,
+            helium_at_pressure: 0.0,
+            nitrogen_at_pressure: 0.0,
+        };
+    }
 }
+
+
 
 
