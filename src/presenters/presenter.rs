@@ -23,6 +23,16 @@ pub mod presenters {
         return result;
     }
 
+    pub fn read_boolean(message: &str) -> bool {
+        let input = read_string(message);
+
+        return if input.eq_ignore_ascii_case("yes") || input.eq_ignore_ascii_case("y") {
+            true
+        } else {
+            false
+        }
+    }
+
     pub fn read_string(message: &str) -> String {
         let mut input = String::new();
 

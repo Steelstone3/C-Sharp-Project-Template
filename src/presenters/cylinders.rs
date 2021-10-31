@@ -1,15 +1,17 @@
 pub mod cylinder {
     use crate::models::cylinder::cylinder::Cylinder;
     use crate::presenters::cylinder::cylinder::create_cylinder;
-    use crate::presenters::presenter::presenters::read_numeric_i32;
+    use crate::presenters::presenter::presenters::{read_boolean, read_numeric_i32};
 
     pub fn create_cylinders() -> Vec<Cylinder> {
         let mut cylinders: Vec<Cylinder> = Vec::new();
-        let cylinder = create_cylinder();
-        cylinders.push(cylinder);
+        cylinders.push(create_cylinder());
 
-        //TODO while user wants to create more cylinders let them loop REQUIRES: new read_boolean presenter logic
-
+        //TODO This is skipping to false when "y" "yes" (etc) is entered by the user
+        while read_boolean("\nCreate another cylinder [y/N]:") {
+            cylinders.push(create_cylinder());
+        }
+        
         return cylinders;
     }
 
