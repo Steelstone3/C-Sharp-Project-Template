@@ -24,8 +24,8 @@ pub mod dive_stage {
         dive_model.dive_profile.tissue_pressures_nitrogen[compartment] = calculate_tissue_pressure_nitrogen(compartment, dive_model, dive_step);
         dive_model.dive_profile.tissue_pressures_helium[compartment] = calculate_tissue_pressure_helium(compartment, dive_model, dive_step);
         dive_model.dive_profile.tissue_pressures_total[compartment] = calculate_tissue_pressure_total(compartment, dive_model.dive_profile);
-        dive_model.dive_profile.a_values[compartment] = calculate_a_value(compartment, dive_model, dive_model.dive_profile);
-        dive_model.dive_profile.b_values[compartment] = calculate_b_value(compartment, dive_model, dive_model.dive_profile);
+        dive_model.dive_profile.a_values[compartment] = calculate_a_value(compartment, dive_model);
+        dive_model.dive_profile.b_values[compartment] = calculate_b_value(compartment, dive_model);
         dive_model.dive_profile.tolerated_ambient_pressures[compartment] = calculate_tolerated_ambient_pressure(compartment, dive_model.dive_profile);
         dive_model.dive_profile.maximum_surface_pressures[compartment] = calculate_max_surface_pressure(compartment, dive_model.dive_profile);
         dive_model.dive_profile.compartment_load[compartment] = calculate_compartment_load(compartment, dive_model.dive_profile);
