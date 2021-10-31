@@ -1,4 +1,4 @@
-use crate::commands::files::dive_plan::dive_plan::update_dive_plan;
+use crate::commands::states::dive_plan::dive_plan::update_dive_plan;
 use crate::commands::files::dive_profile::dive_profile::upsert_dive_profile_file;
 use crate::commands::files::dive_step::dive_step::upsert_dive_step_file;
 use crate::controllers::dive_stage::dive_stage::run_dive_profile;
