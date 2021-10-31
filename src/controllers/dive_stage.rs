@@ -21,8 +21,8 @@ pub mod dive_stage {
     }
 
     fn update_dive_profile_model(compartment: usize, mut dive_model: DiveModel, dive_step: DiveStep) -> DiveProfile {
-        dive_model.dive_profile.tissue_pressures_nitrogen[compartment] = calculate_tissue_pressure_nitrogen(compartment, dive_model, dive_model.dive_profile, dive_step);
-        dive_model.dive_profile.tissue_pressures_helium[compartment] = calculate_tissue_pressure_helium(compartment, dive_model, dive_model.dive_profile, dive_step);
+        dive_model.dive_profile.tissue_pressures_nitrogen[compartment] = calculate_tissue_pressure_nitrogen(compartment, dive_model, dive_step);
+        dive_model.dive_profile.tissue_pressures_helium[compartment] = calculate_tissue_pressure_helium(compartment, dive_model, dive_step);
         dive_model.dive_profile.tissue_pressures_total[compartment] = calculate_tissue_pressure_total(compartment, dive_model.dive_profile);
         dive_model.dive_profile.a_values[compartment] = calculate_a_value(compartment, dive_model, dive_model.dive_profile);
         dive_model.dive_profile.b_values[compartment] = calculate_b_value(compartment, dive_model, dive_model.dive_profile);
