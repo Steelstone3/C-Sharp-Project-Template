@@ -1,6 +1,8 @@
-use presenters::dive_model::dive_model::select_dive_model;
-use presenters::dive_step::dive_step::enter_dive_step;
-
+use std::fs::File;
+use std::io::Write;
+use serde_json::Result;
+use crate::presenters::dive_model::dive_model::select_dive_model;
+use crate::presenters::dive_step::dive_step::enter_dive_step;
 use crate::controllers::dive_stage::dive_stage::run_dive_profile;
 use crate::controllers::gas_management::gas_management::update_gas_management;
 use crate::factories::zhl16_dive_model::zhl16_dive_model::create_zhl16_dive_profile;
@@ -18,7 +20,7 @@ mod factories;
 #[cfg(debug_assertions)]
 mod tests;
 
-fn main() {
+fn main() -> std::io::Result<()> {
     write_message(String::from("Welcome to Bubbles Dive Planner Console Rust"));
     let dive_model = select_dive_model();
     let mut dive_profile = create_zhl16_dive_profile();
@@ -30,5 +32,10 @@ fn main() {
         dive_profile = run_dive_profile(dive_model, dive_profile, dive_step, cylinders[cylinder_selection].gas_mixture);
         display_results(dive_profile);
         display_gas_management(update_gas_management(cylinders[cylinder_selection].gas_management, dive_step));
+
+        let mut file = File::create("dive_profile.json")?;
+
+        let file_content = serde_json::ser::to_string(&dive_step)?;
+        write!(file, "{}", file_content)?;
     }
 }

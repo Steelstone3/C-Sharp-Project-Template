@@ -15,4 +15,5 @@ include = [
 
 [dependencies]
 mockall = "0.10.2"
-json = "0.12.4"
+serde_json = { version = "1.0.68" }
+serde = { version = "1.0", features = ["derive"] }
