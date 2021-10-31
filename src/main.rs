@@ -1,11 +1,12 @@
 use std::fs::File;
 use std::io::Write;
-use serde_json::Result;
 use crate::presenters::dive_model::dive_model::select_dive_model;
 use crate::presenters::dive_step::dive_step::enter_dive_step;
 use crate::controllers::dive_stage::dive_stage::run_dive_profile;
 use crate::controllers::gas_management::gas_management::update_gas_management;
 use crate::factories::zhl16_dive_model::zhl16_dive_model::create_zhl16_dive_profile;
+use crate::models::dive_profile::dive_profile_model::DiveProfileModel;
+use crate::models::dive_step::dive_step::DiveStep;
 use crate::presenters::cylinder::cylinder::display_gas_management;
 use crate::presenters::cylinders::cylinder::{create_cylinders, select_cylinder};
 use crate::presenters::dive_results::dive_results::display_results;
@@ -33,9 +34,21 @@ fn main() -> std::io::Result<()> {
         display_results(dive_profile);
         display_gas_management(update_gas_management(cylinders[cylinder_selection].gas_management, dive_step));
 
-        let mut file = File::create("dive_profile.json")?;
-
-        let file_content = serde_json::ser::to_string(&dive_step)?;
-        write!(file, "{}", file_content)?;
+        create_dive_step_file(&dive_step);
+        create_dive_profile_file(&mut dive_profile);
     }
+}
+
+fn create_dive_profile_file(dive_profile: &mut DiveProfileModel) -> std::io::Result<()> {
+    let mut json_dive_profile_file = File::create("dive_profile.json")?;
+    let json_dive_profile = serde_json::ser::to_string_pretty(&dive_profile)?;
+    write!(json_dive_profile_file, "{}", json_dive_profile)?;
+    Ok(())
+}
+
+fn create_dive_step_file(dive_step: &DiveStep) -> std::io::Result<()> {
+    let mut json_dive_step_file = File::create("dive_step.json")?;
+    let json_dive_step = serde_json::ser::to_string_pretty(&dive_step)?;
+    write!(json_dive_step_file, "{}", json_dive_step)?;
+    Ok(())
 }

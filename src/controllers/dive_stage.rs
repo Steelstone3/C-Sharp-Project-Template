@@ -1,10 +1,10 @@
 pub mod dive_stage {
-    use crate::commands::a_b_values::a_b_values::{calculate_a_value, calculate_b_value};
-    use crate::commands::ambient_pressures::ambient_pressures::calculate_ambient_pressure;
-    use crate::commands::compartment_loads::compartment_loads::calculate_compartment_load;
-    use crate::commands::max_surface_pressures::max_surface_pressures::calculate_max_surface_pressure;
-    use crate::commands::tissue_pressures::tissue_pressure::{calculate_tissue_pressure_helium, calculate_tissue_pressure_nitrogen, calculate_tissue_pressure_total};
-    use crate::commands::tolerated_ambient_pressures::tolerated_ambient_pressures::calculate_tolerated_ambient_pressure;
+    use crate::commands::dive_stages::a_b_values::a_b_values::{calculate_a_value, calculate_b_value};
+    use crate::commands::dive_stages::ambient_pressures::ambient_pressures::calculate_ambient_pressure;
+    use crate::commands::dive_stages::compartment_loads::compartment_loads::calculate_compartment_load;
+    use crate::commands::dive_stages::max_surface_pressures::max_surface_pressures::calculate_max_surface_pressure;
+    use crate::commands::dive_stages::tissue_pressures::tissue_pressure::{calculate_tissue_pressure_helium, calculate_tissue_pressure_nitrogen, calculate_tissue_pressure_total};
+    use crate::commands::dive_stages::tolerated_ambient_pressures::tolerated_ambient_pressures::calculate_tolerated_ambient_pressure;
     use crate::models::dive_model::dive_model::DiveModel;
     use crate::models::dive_profile::dive_profile_model::DiveProfileModel;
     use crate::models::dive_step::dive_step::DiveStep;

@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod commands_ambient_pressures_should {
-    use crate::commands::ambient_pressures::ambient_pressures;
+    use crate::commands::dive_stages::ambient_pressures::ambient_pressures;
     use crate::tests::test_fixtures_dive_stage::test_fixtures_dive_stage::{expected_dive_profile_model, test_fixture_cylinder, test_fixture_dive_step};
 
     #[test]
