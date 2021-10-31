@@ -2,7 +2,7 @@ pub mod dive_profile_model {
     use serde::{Serialize, Deserialize};
 
     #[derive(Copy, Clone, Serialize, Deserialize)]
-    pub struct DiveProfileModel {
+    pub struct DiveProfile {
         pub maximum_surface_pressures: [f32; 16],
         pub compartment_load: [f32; 16],
         pub tissue_pressures_nitrogen: [f32; 16],

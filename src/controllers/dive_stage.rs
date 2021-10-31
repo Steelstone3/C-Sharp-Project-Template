@@ -6,30 +6,30 @@ pub mod dive_stage {
     use crate::commands::dive_stages::tissue_pressures::tissue_pressure::{calculate_tissue_pressure_helium, calculate_tissue_pressure_nitrogen, calculate_tissue_pressure_total};
     use crate::commands::dive_stages::tolerated_ambient_pressures::tolerated_ambient_pressures::calculate_tolerated_ambient_pressure;
     use crate::models::dive_model::dive_model::DiveModel;
-    use crate::models::dive_profile::dive_profile_model::DiveProfileModel;
+    use crate::models::dive_profile::dive_profile_model::DiveProfile;
     use crate::models::dive_step::dive_step::DiveStep;
     use crate::models::gas_mixture::gas_mixture::GasMixture;
 
-    pub fn run_dive_profile(dive_model: DiveModel, mut dive_profile_model: DiveProfileModel, dive_step: DiveStep, gas_mixture: GasMixture) -> DiveProfileModel {
-        dive_profile_model = calculate_ambient_pressure(dive_profile_model, dive_step, gas_mixture);
+    pub fn run_dive_profile(mut dive_model: DiveModel, dive_step: DiveStep, gas_mixture: GasMixture) -> DiveProfile {
+        dive_model.dive_profile = calculate_ambient_pressure(dive_model.dive_profile, dive_step, gas_mixture);
 
         for compartment in 0..dive_model.compartment_count {
-            dive_profile_model = update_dive_profile_model(compartment, dive_model, dive_profile_model, dive_step);
+            dive_model.dive_profile = update_dive_profile_model(compartment, dive_model, dive_step);
         }
 
-        return dive_profile_model;
+        return dive_model.dive_profile;
     }
 
-    fn update_dive_profile_model(compartment: usize, dive_model: DiveModel, mut dive_profile_model: DiveProfileModel, dive_step: DiveStep) -> DiveProfileModel {
-        dive_profile_model.tissue_pressures_nitrogen[compartment] = calculate_tissue_pressure_nitrogen(compartment, dive_model, dive_profile_model, dive_step);
-        dive_profile_model.tissue_pressures_helium[compartment] = calculate_tissue_pressure_helium(compartment, dive_model, dive_profile_model, dive_step);
-        dive_profile_model.tissue_pressures_total[compartment] = calculate_tissue_pressure_total(compartment, dive_profile_model);
-        dive_profile_model.a_values[compartment] = calculate_a_value(compartment, dive_model, dive_profile_model);
-        dive_profile_model.b_values[compartment] = calculate_b_value(compartment, dive_model, dive_profile_model);
-        dive_profile_model.tolerated_ambient_pressures[compartment] = calculate_tolerated_ambient_pressure(compartment, dive_profile_model);
-        dive_profile_model.maximum_surface_pressures[compartment] = calculate_max_surface_pressure(compartment, dive_profile_model);
-        dive_profile_model.compartment_load[compartment] = calculate_compartment_load(compartment, dive_profile_model);
+    fn update_dive_profile_model(compartment: usize, mut dive_model: DiveModel, dive_step: DiveStep) -> DiveProfile {
+        dive_model.dive_profile.tissue_pressures_nitrogen[compartment] = calculate_tissue_pressure_nitrogen(compartment, dive_model, dive_model.dive_profile, dive_step);
+        dive_model.dive_profile.tissue_pressures_helium[compartment] = calculate_tissue_pressure_helium(compartment, dive_model, dive_model.dive_profile, dive_step);
+        dive_model.dive_profile.tissue_pressures_total[compartment] = calculate_tissue_pressure_total(compartment, dive_model.dive_profile);
+        dive_model.dive_profile.a_values[compartment] = calculate_a_value(compartment, dive_model, dive_model.dive_profile);
+        dive_model.dive_profile.b_values[compartment] = calculate_b_value(compartment, dive_model, dive_model.dive_profile);
+        dive_model.dive_profile.tolerated_ambient_pressures[compartment] = calculate_tolerated_ambient_pressure(compartment, dive_model.dive_profile);
+        dive_model.dive_profile.maximum_surface_pressures[compartment] = calculate_max_surface_pressure(compartment, dive_model.dive_profile);
+        dive_model.dive_profile.compartment_load[compartment] = calculate_compartment_load(compartment, dive_model.dive_profile);
 
-        return dive_profile_model;
+        return dive_model.dive_profile;
     }
 }

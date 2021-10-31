@@ -1,14 +1,14 @@
 pub mod test_fixtures_dive_stage {
     use crate::models::cylinder::cylinder::Cylinder;
-    use crate::models::dive_profile::dive_profile_model::DiveProfileModel;
+    use crate::models::dive_profile::dive_profile_model::DiveProfile;
     use crate::models::dive_step::dive_step::DiveStep;
     use crate::models::gas_management::gas_management::GasManagement;
     use crate::models::gas_mixture::gas_mixture::GasMixture;
 
     #[allow(unused)]
     #[cfg(debug_assertions)]
-    pub fn expected_dive_profile_model() -> DiveProfileModel {
-        return DiveProfileModel {
+    pub fn expected_dive_profile_model() -> DiveProfile {
+        return DiveProfile {
             maximum_surface_pressures: [3.356, 2.640, 2.342, 2.122, 1.978, 1.828, 1.719, 1.637, 1.577, 1.521, 1.482, 1.450, 1.415, 1.400, 1.380, 1.356],
             compartment_load: [119.249, 111.326, 94.962, 78.746, 62.336, 49.945, 38.860, 29.505, 22.067, 17.291, 13.968, 11.172, 9.046, 7.214, 5.725, 4.572],
             tissue_pressures_nitrogen: [3.408, 2.399, 1.762, 1.294, 0.937, 0.685, 0.496, 0.356, 0.255, 0.192, 0.151, 0.118, 0.093, 0.073, 0.057, 0.045],
@@ -54,8 +54,8 @@ pub mod test_fixtures_dive_stage {
 
     #[allow(unused)]
     #[cfg(debug_assertions)]
-    pub fn test_fixture_dive_stage_dive_profile_model() -> DiveProfileModel {
-        return DiveProfileModel {
+    pub fn test_fixture_dive_stage_dive_profile_model() -> DiveProfile {
+        return DiveProfile {
             maximum_surface_pressures: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
             compartment_load: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
             tissue_pressures_nitrogen: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
@@ -72,8 +72,8 @@ pub mod test_fixtures_dive_stage {
 
     #[allow(unused)]
     #[cfg(debug_assertions)]
-    pub fn test_fixture_tissue_pressures_dive_profile_model() -> DiveProfileModel {
-        return DiveProfileModel {
+    pub fn test_fixture_tissue_pressures_dive_profile_model() -> DiveProfile {
+        return DiveProfile {
             maximum_surface_pressures: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
             compartment_load: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
             tissue_pressures_nitrogen: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
@@ -90,8 +90,8 @@ pub mod test_fixtures_dive_stage {
 
     #[allow(unused)]
     #[cfg(debug_assertions)]
-    pub fn test_fixture_tissue_pressures_total_dive_profile_model() -> DiveProfileModel {
-        return DiveProfileModel {
+    pub fn test_fixture_tissue_pressures_total_dive_profile_model() -> DiveProfile {
+        return DiveProfile {
             maximum_surface_pressures: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
             compartment_load: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
             tissue_pressures_nitrogen: [3.408, 2.399, 1.762, 1.294, 0.937, 0.685, 0.496, 0.356, 0.255, 0.192, 0.151, 0.118, 0.093, 0.073, 0.057, 0.045],
@@ -108,8 +108,8 @@ pub mod test_fixtures_dive_stage {
 
     #[allow(unused)]
     #[cfg(debug_assertions)]
-    pub fn test_fixture_a_b_values_dive_profile_model() -> DiveProfileModel {
-        return DiveProfileModel {
+    pub fn test_fixture_a_b_values_dive_profile_model() -> DiveProfile {
+        return DiveProfile {
             maximum_surface_pressures: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
             compartment_load: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
             tissue_pressures_nitrogen: [3.408, 2.399, 1.762, 1.294, 0.937, 0.685, 0.496, 0.356, 0.255, 0.192, 0.151, 0.118, 0.093, 0.073, 0.057, 0.045],
@@ -126,8 +126,8 @@ pub mod test_fixtures_dive_stage {
 
     #[allow(unused)]
     #[cfg(debug_assertions)]
-    pub fn test_fixture_tolerated_ambient_pressures_dive_profile_model() -> DiveProfileModel {
-        return DiveProfileModel {
+    pub fn test_fixture_tolerated_ambient_pressures_dive_profile_model() -> DiveProfile {
+        return DiveProfile {
             maximum_surface_pressures: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
             compartment_load: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
             tissue_pressures_nitrogen: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
@@ -144,8 +144,8 @@ pub mod test_fixtures_dive_stage {
 
     #[allow(unused)]
     #[cfg(debug_assertions)]
-    pub fn test_fixture_max_surface_pressure_dive_profile_model() -> DiveProfileModel {
-        return DiveProfileModel {
+    pub fn test_fixture_max_surface_pressure_dive_profile_model() -> DiveProfile {
+        return DiveProfile {
             maximum_surface_pressures: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
             compartment_load: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
             tissue_pressures_nitrogen: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
@@ -162,8 +162,8 @@ pub mod test_fixtures_dive_stage {
 
     #[allow(unused)]
     #[cfg(debug_assertions)]
-    pub fn test_fixture_compartment_load_dive_profile_model() -> DiveProfileModel {
-        return DiveProfileModel {
+    pub fn test_fixture_compartment_load_dive_profile_model() -> DiveProfile {
+        return DiveProfile {
             maximum_surface_pressures: [3.356, 2.640, 2.342, 2.122, 1.978, 1.828, 1.719, 1.637, 1.577, 1.521, 1.482, 1.450, 1.415, 1.400, 1.380, 1.356],
             compartment_load: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
             tissue_pressures_nitrogen: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],

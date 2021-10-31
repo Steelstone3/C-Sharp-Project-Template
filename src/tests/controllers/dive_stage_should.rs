@@ -2,7 +2,7 @@
 mod controllers_dive_stage_should {
     use crate::controllers::dive_stage::dive_stage;
     use crate::factories::zhl16_dive_model::zhl16_dive_model::create_zhl16_dive_model;
-    use crate::tests::test_fixtures_dive_stage::test_fixtures_dive_stage::{expected_dive_profile_model, test_fixture_cylinder, test_fixture_dive_stage_dive_profile_model, test_fixture_dive_step};
+    use crate::tests::test_fixtures_dive_stage::test_fixtures_dive_stage::{expected_dive_profile_model, test_fixture_cylinder, test_fixture_dive_step};
 
     #[test]
     fn run_dive_profile() {
@@ -11,9 +11,8 @@ mod controllers_dive_stage_should {
         let dive_step = test_fixture_dive_step();
         let gas_mixture = test_fixture_cylinder().gas_mixture;
         let expected_dive_profile = expected_dive_profile_model();
-        let actual_profile_model = test_fixture_dive_stage_dive_profile_model();
 
-        let result = dive_stage::run_dive_profile(zhl16, actual_profile_model, dive_step, gas_mixture);
+        let result = dive_stage::run_dive_profile(zhl16, dive_step, gas_mixture);
 
         assert_eq!(format!("{:.2}", expected_dive_profile.oxygen_at_pressure), format!("{:.2}", result.oxygen_at_pressure));
         assert_eq!(format!("{:.2}", expected_dive_profile.helium_at_pressure), format!("{:.2}", result.helium_at_pressure));

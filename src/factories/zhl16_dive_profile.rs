@@ -1,9 +1,9 @@
 
 pub mod zhl16_dive_profile {
-    use crate::models::dive_profile::dive_profile_model::DiveProfileModel;
+    use crate::models::dive_profile::dive_profile_model::DiveProfile;
 
-    pub fn create_zhl16_dive_profile() -> DiveProfileModel {
-        return DiveProfileModel {
+    pub fn create_zhl16_dive_profile() -> DiveProfile {
+        return DiveProfile {
             maximum_surface_pressures: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
             compartment_load: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
             tissue_pressures_nitrogen: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],

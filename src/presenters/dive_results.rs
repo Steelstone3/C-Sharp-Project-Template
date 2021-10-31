@@ -1,7 +1,7 @@
 pub mod dive_results {
-    use crate::models::dive_profile::dive_profile_model::DiveProfileModel;
+    use crate::models::dive_profile::dive_profile_model::DiveProfile;
 
-    pub fn display_results(results: DiveProfileModel) {
+    pub fn display_results(results: DiveProfile) {
         println!();
         let mut _compartments = 0;
 
