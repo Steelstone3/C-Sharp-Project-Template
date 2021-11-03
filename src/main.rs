@@ -1,6 +1,6 @@
+use crate::commands::files::dive_profile::dive_profile::{read_dive_profile_file, upsert_dive_profile_file};
+use crate::commands::files::dive_step::dive_step::{read_dive_step_file, upsert_dive_step_file};
 use crate::commands::states::dive_plan::dive_plan::update_dive_plan;
-use crate::commands::files::dive_profile::dive_profile::upsert_dive_profile_file;
-use crate::commands::files::dive_step::dive_step::upsert_dive_step_file;
 use crate::controllers::dive_stage::dive_stage::run_dive_profile;
 use crate::controllers::gas_management::gas_management::update_gas_management;
 use crate::models::dive_profile::dive_profile_model::DiveProfile;
@@ -25,6 +25,11 @@ fn main() -> std::io::Result<()> {
     let mut dive_steps: Vec<DiveStep> = Vec::new();
     let mut dive_profiles: Vec<DiveProfile> = Vec::new();
 
+    //load dive plan
+    dive_steps = read_dive_step_file();
+    dive_profiles = read_dive_profile_file();
+
+    //new dive plan
     write_message(String::from("Welcome to Bubbles Dive Planner Console Rust"));
     let mut dive_model = select_dive_model();
     let mut cylinders = create_cylinders();
