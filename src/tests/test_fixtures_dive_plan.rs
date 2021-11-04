@@ -25,10 +25,19 @@ pub mod test_fixtures_dive_stage {
 
     #[allow(unused)]
     #[cfg(debug_assertions)]
-    pub fn test_fixture_dive_step() -> DiveStep {
+    pub fn test_fixture_dive_step_default() -> DiveStep {
         return DiveStep {
             depth: 50,
             time: 10,
+        };
+    }
+
+    #[allow(unused)]
+    #[cfg(debug_assertions)]
+    pub fn test_fixture_dive_step_alternative() -> DiveStep {
+        return DiveStep {
+            depth: 25,
+            time: 20,
         };
     }
 

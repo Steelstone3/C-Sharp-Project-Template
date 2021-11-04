@@ -2,13 +2,13 @@
 mod commands_tissue_pressure_should {
     use crate::commands::dive_stages::tissue_pressures::tissue_pressure;
     use crate::factories::zhl16_dive_model::zhl16_dive_model::create_zhl16_dive_model;
-    use crate::tests::test_fixtures_dive_stage::test_fixtures_dive_stage::{expected_dive_profile_model, test_fixture_dive_step, test_fixture_tissue_pressures_dive_profile_model, test_fixture_tissue_pressures_total_dive_profile_model};
+    use crate::tests::test_fixtures_dive_plan::test_fixtures_dive_stage::{expected_dive_profile_model, test_fixture_dive_step_default, test_fixture_tissue_pressures_dive_profile_model, test_fixture_tissue_pressures_total_dive_profile_model};
 
     #[test]
     fn calculate_tissue_pressure_nitrogen() {
         //Arrange
         let mut zhl16 = create_zhl16_dive_model();
-        let dive_step = test_fixture_dive_step();
+        let dive_step = test_fixture_dive_step_default();
         let expected_dive_profile_model = expected_dive_profile_model();
         zhl16.dive_profile = test_fixture_tissue_pressures_dive_profile_model();
 
@@ -23,7 +23,7 @@ mod commands_tissue_pressure_should {
     fn calculate_tissue_pressure_helium() {
         //Arrange
         let mut zhl16 = create_zhl16_dive_model();
-        let dive_step = test_fixture_dive_step();
+        let dive_step = test_fixture_dive_step_default();
         let expected_dive_profile_model = expected_dive_profile_model();
         zhl16.dive_profile = test_fixture_tissue_pressures_dive_profile_model();
 

@@ -2,7 +2,7 @@
 mod controllers_gas_management_should {
     use crate::controllers::gas_management::gas_management;
     use crate::models::gas_management::gas_management::GasManagement;
-    use crate::tests::test_fixtures_dive_stage::test_fixtures_dive_stage::test_fixture_dive_step;
+    use crate::tests::test_fixtures_dive_plan::test_fixtures_dive_stage::test_fixture_dive_step_default;
 
     #[test]
     fn calculate_initial_pressurised_cylinder_volume() {
@@ -21,7 +21,7 @@ mod controllers_gas_management_should {
     #[test]
     fn update_gas_management() {
         //Arrange
-        let dive_step = test_fixture_dive_step();
+        let dive_step = test_fixture_dive_step_default();
         let gas_management = GasManagement {
             surface_air_consumption_rate: 12,
             gas_used: 0,

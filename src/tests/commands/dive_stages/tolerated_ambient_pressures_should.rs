@@ -1,7 +1,7 @@
 #[cfg(test)]
 mod commands_tolerated_ambient_pressures_should {
     use crate::commands::dive_stages::tolerated_ambient_pressures::tolerated_ambient_pressures;
-    use crate::tests::test_fixtures_dive_stage::test_fixtures_dive_stage::{expected_dive_profile_model, test_fixture_tolerated_ambient_pressures_dive_profile_model};
+    use crate::tests::test_fixtures_dive_plan::test_fixtures_dive_stage::{expected_dive_profile_model, test_fixture_tolerated_ambient_pressures_dive_profile_model};
 
     #[test]
     fn calculate_tolerated_ambient_pressure() {

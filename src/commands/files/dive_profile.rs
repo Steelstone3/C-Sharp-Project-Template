@@ -3,7 +3,7 @@ pub mod dive_profile {
     use std::io::{Read, Write};
     use crate::models::dive_profile::dive_profile_model::DiveProfile;
 
-    pub fn upsert_dive_profile_file(dive_profiles: &mut Vec<DiveProfile>) -> std::io::Result<()> {
+    pub fn upsert_dive_profile_file(dive_profiles: &Vec<DiveProfile>) -> std::io::Result<()> {
         let mut json_dive_profile_file = File::create("dive_profile.json").expect("Can't create dive_profile.json file");
         let json_dive_profile = serde_json::ser::to_string_pretty(&dive_profiles).expect("Can't convert dive_profiles to string");
         write!(json_dive_profile_file, "{}", json_dive_profile).expect("Can't update dive_profile.json file");

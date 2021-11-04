@@ -2,7 +2,7 @@
 mod commands_a_b_values_should {
     use crate::commands::dive_stages::a_b_values::a_b_values;
     use crate::factories::zhl16_dive_model::zhl16_dive_model::create_zhl16_dive_model;
-    use crate::tests::test_fixtures_dive_stage::test_fixtures_dive_stage::{expected_dive_profile_model, test_fixture_a_b_values_dive_profile_model};
+    use crate::tests::test_fixtures_dive_plan::test_fixtures_dive_stage::{expected_dive_profile_model, test_fixture_a_b_values_dive_profile_model};
 
     #[test]
     fn calculate_a_value() {
