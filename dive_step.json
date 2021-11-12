@@ -4,7 +4,15 @@
     "time": 10
   },
   {
-    "depth": 25,
-    "time": 20
+    "depth": 50,
+    "time": 10
+  },
+  {
+    "depth": 50,
+    "time": 10
+  },
+  {
+    "depth": 20,
+    "time": 59
   }
 ]
