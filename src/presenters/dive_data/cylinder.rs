@@ -2,9 +2,9 @@ pub mod cylinder {
     use crate::controllers::gas_management::gas_management::calculate_initial_pressurised_cylinder_volume;
     use crate::controllers::gas_mixture::gas_mixture_controller;
     use crate::models::cylinder::cylinder::Cylinder;
+    use crate::models::gas_management::gas_management::GasManagement;
     use crate::models::gas_mixture::gas_mixture::GasMixture;
     use crate::presenters::presenter::presenters::read_numeric_i32;
-    use crate::models::gas_management::gas_management::GasManagement;
 
     pub fn create_cylinder() -> Cylinder {
         let cylinder_volume = read_numeric_i32("\nEnter cylinder volume (L):", 3, 30);

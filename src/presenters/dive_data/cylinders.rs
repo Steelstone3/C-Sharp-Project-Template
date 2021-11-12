@@ -1,6 +1,6 @@
 pub mod cylinder {
     use crate::models::cylinder::cylinder::Cylinder;
-    use crate::presenters::cylinder::cylinder::create_cylinder;
+    use crate::presenters::dive_data::cylinder::cylinder::create_cylinder;
     use crate::presenters::presenter::presenters::{read_boolean, read_numeric_i32};
 
     pub fn create_cylinders() -> Vec<Cylinder> {

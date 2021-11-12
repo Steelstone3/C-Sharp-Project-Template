@@ -4,7 +4,9 @@ use crate::models::dive_profile::dive_profile_model::DiveProfile;
 use crate::models::dive_step::dive_step::DiveStep;
 
 pub mod load_file {
-    use crate::{DiveProfile, DiveStep, read_dive_profile_file, read_dive_step_file};
+    use crate::{DiveProfile, DiveStep};
+    use crate::commands::files::dive_profile::dive_profile::read_dive_profile_file;
+    use crate::commands::files::dive_step::dive_step::read_dive_step_file;
     use crate::presenters::presenter::presenters::read_boolean;
 
     pub fn load_from_default_file() -> (Vec<DiveStep>, Vec<DiveProfile>) {
