@@ -1,6 +1,0 @@
-            pub fn read_dive_profile_file() -> Vec<DiveProfile> {
-                let mut file = File::open("dive_profile.json").expect("Can't open file.");
-                let mut contents = String::new();
-                file.read_to_string(&mut contents).expect("Can't read the file.");
-                return serde_json::from_str(&contents).expect("Can't parse to application data");
-            }

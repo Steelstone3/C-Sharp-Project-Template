@@ -1,9 +1,8 @@
 pub mod dive_profile {
-    use std::fs::File;
-    use std::io::{Read, Write};
+    use std::io::{Write};
     use crate::commands::files::error_messages::error_messages::{CAN_NOT_PARSE_FILE_TO_APP_DATA_ERROR, CAN_NOT_UPDATE_FILE_ERROR, PARSE_APP_DATA_ERROR};
     use crate::commands::files::file_names::file_names::DIVE_PROFILE_FILE_NAME;
-    use crate::controllers::file_controller::file_factory::{create_dive_profile_file, get_file_contents, open_the_file};
+    use crate::controllers::file_controller::file_controller::{create_dive_profile_file, get_file_contents, open_the_file};
     use crate::models::dive_profile::dive_profile_model::DiveProfile;
 
     pub fn upsert_dive_profile_file(dive_profiles: &Vec<DiveProfile>) -> std::io::Result<()> {

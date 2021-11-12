@@ -1,4 +1,4 @@
-pub mod file_factory {
+pub mod file_controller {
     use std::fs::File;
     use std::io::Read;
     use crate::commands::files::error_messages::error_messages::{CAN_NOT_CREATE_FILE_ERROR, CAN_NOT_READ_FILE_ERROR};
@@ -17,7 +17,7 @@ pub mod file_factory {
 
         let file = match f {
             Ok(f) => f,
-            Err(_) => create_dive_profile_file() //need check what path was used and create the appropriate file
+            Err(_) => {create_dive_profile_file(); create_dive_step_file()}
         };
         file
     }
@@ -28,5 +28,3 @@ pub mod file_factory {
         contents
     }
 }
-
-
