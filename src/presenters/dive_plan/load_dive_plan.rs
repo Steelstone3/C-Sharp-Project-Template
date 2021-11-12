@@ -9,7 +9,7 @@ pub mod load_file {
     use crate::commands::files::dive_step::dive_step::read_dive_step_file;
     use crate::presenters::presenter::presenters::read_boolean;
 
-    pub fn load_from_default_file() -> (Vec<DiveStep>, Vec<DiveProfile>) {
+    pub fn load_from_default_file() -> (Vec<DiveProfile>, Vec<DiveStep>) {
         let mut dive_steps: Vec<DiveStep> = Vec::new();
         let mut dive_profiles: Vec<DiveProfile> = Vec::new();
 
@@ -18,7 +18,7 @@ pub mod load_file {
             dive_profiles = read_dive_profile_file();
         }
 
-        return (dive_steps, dive_profiles)
+        return (dive_profiles, dive_steps )
     }
 }
 

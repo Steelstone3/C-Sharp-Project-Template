@@ -14,12 +14,12 @@ mod factories;
 #[cfg(debug_assertions)]
 mod tests;
 
-fn main() -> std::io::Result<()> {
-    let (mut dive_steps, mut dive_profiles) = load_from_default_file();
+fn main() {
+    let (mut dive_profiles, mut dive_steps) = load_from_default_file();
     let (dive_model, mut cylinders, dive_step) = new_dive_plan();
 
     loop {
-        let dive_plan_data:(DiveProfile, DiveStep) = execute_dive_plan(dive_model, &mut cylinders, dive_step);
-        update_files(&mut dive_steps, &mut dive_profiles, dive_plan_data);
+        let dive_plan_data: (DiveProfile, DiveStep) = execute_dive_plan(dive_model, &mut cylinders, dive_step);
+        update_files(&mut dive_profiles, &mut dive_steps, dive_plan_data);
     }
 }
