@@ -1,10 +1,12 @@
 pub mod dive_step {
     use std::fs::File;
     use std::io::{Read, Write};
+
+    use crate::factories::file_factory::file_factory::create_dive_step_file;
     use crate::models::dive_step::dive_step::DiveStep;
 
     pub fn upsert_dive_step_file(dive_steps: &Vec<DiveStep>) -> std::io::Result<()> {
-        let mut json_dive_step_file = File::create("dive_step.json").expect("Can't create dive_step.json file");
+        let mut json_dive_step_file = create_dive_step_file();
         let json_dive_step = serde_json::ser::to_string_pretty(&dive_steps).expect("Can't convert dive_steps to string");
         write!(json_dive_step_file, "{}", json_dive_step).expect("Can't update dive_step.json file");
         Ok(())
@@ -21,7 +23,7 @@ pub mod dive_step {
 
         let file = match f {
             Ok(f) => f,
-            Err(_) => File::create("dive_step.json").expect("Can't create dive_step.json file")
+            Err(_) => create_dive_step_file()
         };
         file
     }

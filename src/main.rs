@@ -31,6 +31,7 @@ fn main() -> std::io::Result<()> {
 
     //new dive plan
     write_message(String::from("Welcome to Bubbles Dive Planner Console Rust"));
+
     let mut dive_model = select_dive_model();
     let mut cylinders = create_cylinders();
 
