@@ -1,11 +1,14 @@
 ---
-name: Investigation
+name: Spike
 about: Investigate an improvement to the codebase or application
-title: 'Investigation: '
+title: 'Spike: '
 labels: documentation
 assignees: ''
 
 ---
+
+**Timebox**
+How long is this going to take
 
 **Describe the nature of the investigation**
 A clear and concise description of what the area of investigation concerns and is about.
