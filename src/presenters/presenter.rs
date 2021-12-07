@@ -43,6 +43,6 @@ pub mod presenters {
             Err(_e) => println!("{}", _e),
         };
 
-        return input;
+        return String::from(input.trim());
     }
 }
