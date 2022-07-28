@@ -1,3 +1,1 @@
-mod test_fixtures_dive_plan;
-mod commands;
-mod controllers;
+pub mod test_fixtures_dive_plan;
