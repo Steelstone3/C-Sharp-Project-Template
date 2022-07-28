@@ -14,14 +14,13 @@ pub fn create_dive_profile_file() -> File {
 pub fn open_the_file(path: &str) -> File {
     let f = File::open(path);
 
-    let file = match f {
+    match f {
         Ok(f) => f,
         Err(_) => {
             create_dive_profile_file();
             create_dive_step_file()
         }
-    };
-    file
+    }
 }
 
 pub fn get_file_contents(file: &mut File) -> String {

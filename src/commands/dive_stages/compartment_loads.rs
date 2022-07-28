@@ -1,7 +1,7 @@
 use crate::DiveProfile;
 
 pub fn calculate_compartment_load(compartment: usize, dive_profile_model: DiveProfile) -> f32 {
-    return dive_profile_model.tissue_pressures_total[compartment] / dive_profile_model.maximum_surface_pressures[compartment] * 100.0;
+    dive_profile_model.tissue_pressures_total[compartment] / dive_profile_model.maximum_surface_pressures[compartment] * 100.0
 }
 
 #[cfg(test)]

@@ -15,7 +15,7 @@ pub fn run_dive_profile(mut dive_model: DiveModel, dive_step: DiveStep, gas_mixt
         dive_model.dive_profile = update_dive_profile_model(compartment, dive_model, dive_step);
     }
 
-    return dive_model.dive_profile;
+    dive_model.dive_profile
 }
 
 fn update_dive_profile_model(compartment: usize, mut dive_model: DiveModel, dive_step: DiveStep) -> DiveProfile {
@@ -28,7 +28,7 @@ fn update_dive_profile_model(compartment: usize, mut dive_model: DiveModel, dive
     dive_model.dive_profile.maximum_surface_pressures[compartment] = calculate_max_surface_pressure(compartment, dive_model.dive_profile);
     dive_model.dive_profile.compartment_load[compartment] = calculate_compartment_load(compartment, dive_model.dive_profile);
 
-    return dive_model.dive_profile;
+    dive_model.dive_profile
 }
 
 #[cfg(test)]
@@ -44,8 +44,10 @@ mod controllers_dive_stage_should {
         let gas_mixture = test_fixture_cylinder().gas_mixture;
         let expected_dive_profile = expected_dive_profile_model();
 
+        //Act
         let result = super::run_dive_profile(zhl16, dive_step, gas_mixture);
 
+        //Assert
         assert_eq!(format!("{:.2}", expected_dive_profile.oxygen_at_pressure), format!("{:.2}", result.oxygen_at_pressure));
         assert_eq!(format!("{:.2}", expected_dive_profile.helium_at_pressure), format!("{:.2}", result.helium_at_pressure));
         assert_eq!(format!("{:.2}", expected_dive_profile.nitrogen_at_pressure), format!("{:.2}", result.nitrogen_at_pressure));

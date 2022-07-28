@@ -19,17 +19,13 @@ pub fn read_numeric_i32(message: &str, lower_bound: i32, upper_bound: i32) -> i3
         };
     }
 
-    return result;
+    result
 }
 
 pub fn read_boolean(message: &str) -> bool {
     let input = read_string(message);
 
-    return if input.eq_ignore_ascii_case("yes") || input.eq_ignore_ascii_case("y") {
-        true
-    } else {
-        false
-    };
+    input.eq_ignore_ascii_case("yes") || input.eq_ignore_ascii_case("y")
 }
 
 pub fn read_string(message: &str) -> String {
@@ -42,5 +38,5 @@ pub fn read_string(message: &str) -> String {
         Err(_e) => println!("{}", _e),
     };
 
-    return String::from(input.trim());
+    String::from(input.trim())
 }

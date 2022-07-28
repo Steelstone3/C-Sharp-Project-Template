@@ -15,7 +15,7 @@ pub fn upsert_dive_profile_file(dive_profiles: &Vec<DiveProfile>) -> std::io::Re
 pub fn read_dive_profile_file() -> Vec<DiveProfile> {
     let mut file = open_the_file(DIVE_PROFILE_FILE_NAME);
     let contents = get_file_contents(&mut file);
-    return parse_to_application_data(&contents);
+    parse_to_application_data(&contents)
 }
 
 fn parse_to_application_data(contents: &String) -> Vec<DiveProfile> {
@@ -25,7 +25,7 @@ fn parse_to_application_data(contents: &String) -> Vec<DiveProfile> {
         return empty_dive_profiles;
     }
 
-    return serde_json::from_str(&contents).expect(CAN_NOT_PARSE_FILE_TO_APP_DATA_ERROR);
+    serde_json::from_str(contents).expect(CAN_NOT_PARSE_FILE_TO_APP_DATA_ERROR)
 }
 
 #[cfg(test)]

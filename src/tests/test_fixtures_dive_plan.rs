@@ -6,7 +6,7 @@ use crate::models::gas_mixture::GasMixture;
 #[allow(unused)]
 #[cfg(debug_assertions)]
 pub fn expected_dive_profile_model() -> DiveProfile {
-    return DiveProfile {
+    DiveProfile {
         maximum_surface_pressures: [3.356, 2.640, 2.342, 2.122, 1.978, 1.828, 1.719, 1.637, 1.577, 1.521, 1.482, 1.450, 1.415, 1.400, 1.380, 1.356],
         compartment_load: [119.249, 111.326, 94.962, 78.746, 62.336, 49.945, 38.860, 29.505, 22.067, 17.291, 13.968, 11.172, 9.046, 7.214, 5.725, 4.572],
         tissue_pressures_nitrogen: [3.408, 2.399, 1.762, 1.294, 0.937, 0.685, 0.496, 0.356, 0.255, 0.192, 0.151, 0.118, 0.093, 0.073, 0.057, 0.045],
@@ -18,31 +18,31 @@ pub fn expected_dive_profile_model() -> DiveProfile {
         oxygen_at_pressure: 1.26,
         helium_at_pressure: 0.600,
         nitrogen_at_pressure: 4.14,
-    };
+    }
 }
 
 #[allow(unused)]
 #[cfg(debug_assertions)]
 pub fn test_fixture_dive_step_default() -> DiveStep {
-    return DiveStep {
+    DiveStep {
         depth: 50,
         time: 10,
-    };
+    }
 }
 
 #[allow(unused)]
 #[cfg(debug_assertions)]
 pub fn test_fixture_dive_step_alternative() -> DiveStep {
-    return DiveStep {
+    DiveStep {
         depth: 25,
         time: 20,
-    };
+    }
 }
 
 #[allow(unused)]
 #[cfg(debug_assertions)]
 pub fn test_fixture_cylinder() -> Cylinder {
-    return Cylinder {
+    Cylinder {
         cylinder_volume: 12,
         cylinder_pressure: 200,
         gas_mixture: GasMixture {
@@ -56,13 +56,13 @@ pub fn test_fixture_cylinder() -> Cylinder {
             gas_remaining: 1680,
             surface_air_consumption_rate: 12,
         },
-    };
+    }
 }
 
 #[allow(unused)]
 #[cfg(debug_assertions)]
 pub fn test_fixture_dive_stage_dive_profile_model() -> DiveProfile {
-    return DiveProfile {
+    DiveProfile {
         maximum_surface_pressures: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
         compartment_load: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
         tissue_pressures_nitrogen: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
@@ -74,13 +74,13 @@ pub fn test_fixture_dive_stage_dive_profile_model() -> DiveProfile {
         oxygen_at_pressure: 1.26,
         helium_at_pressure: 0.600,
         nitrogen_at_pressure: 4.14,
-    };
+    }
 }
 
 #[allow(unused)]
 #[cfg(debug_assertions)]
 pub fn test_fixture_tissue_pressures_dive_profile_model() -> DiveProfile {
-    return DiveProfile {
+    DiveProfile {
         maximum_surface_pressures: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
         compartment_load: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
         tissue_pressures_nitrogen: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
@@ -92,13 +92,13 @@ pub fn test_fixture_tissue_pressures_dive_profile_model() -> DiveProfile {
         oxygen_at_pressure: 1.26,
         helium_at_pressure: 0.600,
         nitrogen_at_pressure: 4.14,
-    };
+    }
 }
 
 #[allow(unused)]
 #[cfg(debug_assertions)]
 pub fn test_fixture_tissue_pressures_total_dive_profile_model() -> DiveProfile {
-    return DiveProfile {
+    DiveProfile {
         maximum_surface_pressures: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
         compartment_load: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
         tissue_pressures_nitrogen: [3.408, 2.399, 1.762, 1.294, 0.937, 0.685, 0.496, 0.356, 0.255, 0.192, 0.151, 0.118, 0.093, 0.073, 0.057, 0.045],
@@ -110,13 +110,13 @@ pub fn test_fixture_tissue_pressures_total_dive_profile_model() -> DiveProfile {
         oxygen_at_pressure: 1.26,
         helium_at_pressure: 0.600,
         nitrogen_at_pressure: 4.14,
-    };
+    }
 }
 
 #[allow(unused)]
 #[cfg(debug_assertions)]
 pub fn test_fixture_a_b_values_dive_profile_model() -> DiveProfile {
-    return DiveProfile {
+    DiveProfile {
         maximum_surface_pressures: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
         compartment_load: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
         tissue_pressures_nitrogen: [3.408, 2.399, 1.762, 1.294, 0.937, 0.685, 0.496, 0.356, 0.255, 0.192, 0.151, 0.118, 0.093, 0.073, 0.057, 0.045],
@@ -128,13 +128,13 @@ pub fn test_fixture_a_b_values_dive_profile_model() -> DiveProfile {
         oxygen_at_pressure: 0.0,
         helium_at_pressure: 0.0,
         nitrogen_at_pressure: 0.0,
-    };
+    }
 }
 
 #[allow(unused)]
 #[cfg(debug_assertions)]
 pub fn test_fixture_tolerated_ambient_pressures_dive_profile_model() -> DiveProfile {
-    return DiveProfile {
+    DiveProfile {
         maximum_surface_pressures: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
         compartment_load: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
         tissue_pressures_nitrogen: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
@@ -146,13 +146,13 @@ pub fn test_fixture_tolerated_ambient_pressures_dive_profile_model() -> DiveProf
         oxygen_at_pressure: 0.0,
         helium_at_pressure: 0.0,
         nitrogen_at_pressure: 0.0,
-    };
+    }
 }
 
 #[allow(unused)]
 #[cfg(debug_assertions)]
 pub fn test_fixture_max_surface_pressure_dive_profile_model() -> DiveProfile {
-    return DiveProfile {
+    DiveProfile {
         maximum_surface_pressures: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
         compartment_load: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
         tissue_pressures_nitrogen: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
@@ -164,13 +164,13 @@ pub fn test_fixture_max_surface_pressure_dive_profile_model() -> DiveProfile {
         oxygen_at_pressure: 0.0,
         helium_at_pressure: 0.0,
         nitrogen_at_pressure: 0.0,
-    };
+    }
 }
 
 #[allow(unused)]
 #[cfg(debug_assertions)]
 pub fn test_fixture_compartment_load_dive_profile_model() -> DiveProfile {
-    return DiveProfile {
+    DiveProfile {
         maximum_surface_pressures: [3.356, 2.640, 2.342, 2.122, 1.978, 1.828, 1.719, 1.637, 1.577, 1.521, 1.482, 1.450, 1.415, 1.400, 1.380, 1.356],
         compartment_load: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
         tissue_pressures_nitrogen: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
@@ -182,5 +182,5 @@ pub fn test_fixture_compartment_load_dive_profile_model() -> DiveProfile {
         oxygen_at_pressure: 0.0,
         helium_at_pressure: 0.0,
         nitrogen_at_pressure: 0.0,
-    };
+    }
 }

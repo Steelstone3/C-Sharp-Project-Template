@@ -7,7 +7,7 @@ pub fn calculate_ambient_pressure(mut dive_profile_model: DiveProfile, dive_step
     dive_profile_model.oxygen_at_pressure = gas_mixture.oxygen as f32 / 100.0 * ambient_pressure;
     dive_profile_model.helium_at_pressure = gas_mixture.helium as f32 / 100.0 * ambient_pressure;
 
-    return dive_profile_model;
+    dive_profile_model
 }
 
 #[cfg(test)]

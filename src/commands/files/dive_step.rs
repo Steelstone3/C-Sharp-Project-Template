@@ -14,7 +14,7 @@ pub fn upsert_dive_step_file(dive_steps: &Vec<DiveStep>) -> std::io::Result<()> 
 pub fn read_dive_step_file() -> Vec<DiveStep> {
     let mut file = open_the_file(DIVE_STEP_FILE_NAME);
     let contents = get_file_contents(&mut file);
-    return parse_to_application_data(&contents);
+    parse_to_application_data(&contents)
 }
 
 fn parse_to_application_data(contents: &String) -> Vec<DiveStep> {
@@ -24,7 +24,7 @@ fn parse_to_application_data(contents: &String) -> Vec<DiveStep> {
         return empty_dive_steps;
     }
 
-    return serde_json::from_str(&contents).expect(CAN_NOT_PARSE_FILE_TO_APP_DATA_ERROR);
+    serde_json::from_str(contents).expect(CAN_NOT_PARSE_FILE_TO_APP_DATA_ERROR)
 }
 
 #[cfg(test)]

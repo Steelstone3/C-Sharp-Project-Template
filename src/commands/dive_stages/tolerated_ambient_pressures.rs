@@ -1,7 +1,7 @@
 use crate::DiveProfile;
 
 pub fn calculate_tolerated_ambient_pressure(compartment: usize, dive_profile_model: DiveProfile) -> f32 {
-    return (dive_profile_model.tissue_pressures_total[compartment] - dive_profile_model.a_values[compartment]) * dive_profile_model.b_values[compartment];
+    (dive_profile_model.tissue_pressures_total[compartment] - dive_profile_model.a_values[compartment]) * dive_profile_model.b_values[compartment]
 }
 
 #[cfg(test)]

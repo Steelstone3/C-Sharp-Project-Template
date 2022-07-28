@@ -12,7 +12,7 @@ pub fn load_from_default_file() -> (Vec<DiveProfile>, Vec<DiveStep>) {
         dive_profiles = read_dive_profile_file();
     }
 
-    return (dive_profiles, dive_steps);
+    (dive_profiles, dive_steps)
 }
 
 

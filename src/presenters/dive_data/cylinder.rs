@@ -14,7 +14,7 @@ pub fn create_cylinder() -> Cylinder {
     let gas_mixture = enter_gas_mixture();
     let gas_management = initialise_gas_management(initial_pressurised_cylinder_volume, surface_air_consumption_rate);
 
-    return Cylinder { cylinder_volume, cylinder_pressure, gas_mixture, gas_management };
+    Cylinder { cylinder_volume, cylinder_pressure, gas_mixture, gas_management }
 }
 
 pub fn display_gas_management(gas_management: GasManagement) {
@@ -26,14 +26,14 @@ fn enter_gas_mixture() -> GasMixture {
     let helium = read_numeric_i32("Enter helium (%):", 0, calculate_helium_percentage_maximum_limit(oxygen));
     let nitrogen = calculate_nitrogen_percentage(oxygen, helium);
 
-    return GasMixture { oxygen, helium, nitrogen };
+    GasMixture { oxygen, helium, nitrogen }
 }
 
 fn initialise_gas_management(initial_pressurised_cylinder_volume: i32, surface_air_consumption_rate: i32) -> GasManagement {
-    return GasManagement {
+    GasManagement {
         initial_pressurised_cylinder_volume,
         gas_used: 0,
         gas_remaining: initial_pressurised_cylinder_volume,
         surface_air_consumption_rate,
-    };
+    }
 }
