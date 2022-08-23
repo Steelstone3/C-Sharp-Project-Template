@@ -2,7 +2,7 @@
 name = "bubbles_dive_planner_rust"
 version = "0.1.0"
 authors = ["Skippy <steelstone3@gmail.com>"]
-edition = "2018"
+edition = "2021"
 homepage = "https://github.com/Steelstone3/Bubbles-Dive-Planner-Console"
 repository = "https://github.com/Steelstone3/Bubbles-Dive-Planner-Console"
 license = "GPLv3"
