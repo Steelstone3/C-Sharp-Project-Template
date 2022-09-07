@@ -8,6 +8,8 @@ pub fn calculate_compartment_load(compartment: usize, dive_profile_model: DivePr
 
 #[cfg(test)]
 mod commands_compartment_loads_should {
+    use crate::models::dive_profile;
+
     use super::*;
 
     #[test]
@@ -20,7 +22,7 @@ mod commands_compartment_loads_should {
             //Act
             //Assert
             assert_eq!(
-                format!("{:.3}", expected_dive_profile.compartment_load[compartment]),
+                format!("{:.3}", expected_dive_profile.compartment_loads[compartment]),
                 format!(
                     "{:.3}",
                     super::calculate_compartment_load(compartment, actual_dive_profile)
@@ -30,37 +32,19 @@ mod commands_compartment_loads_should {
     }
 
     fn compartment_load_dive_profile_test_fixture() -> DiveProfile {
-        DiveProfile {
-            maximum_surface_pressures: [
-                3.356, 2.640, 2.342, 2.122, 1.978, 1.828, 1.719, 1.637, 1.577, 1.521, 1.482, 1.450,
-                1.415, 1.400, 1.380, 1.356,
-            ],
-            compartment_load: [
-                0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-            ],
-            tissue_pressures_nitrogen: [
-                0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-            ],
-            tissue_pressures_helium: [
-                0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-            ],
-            tissue_pressures_total: [
-                4.002, 2.939, 2.224, 1.671, 1.233, 0.913, 0.668, 0.483, 0.348, 0.263, 0.207, 0.162,
-                0.128, 0.101, 0.079, 0.062,
-            ],
-            tolerated_ambient_pressures: [
-                0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-            ],
-            a_values: [
-                0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-            ],
-            b_values: [
-                0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-            ],
-            oxygen_at_pressure: 0.0,
-            helium_at_pressure: 0.0,
-            nitrogen_at_pressure: 0.0,
-        }
+        let mut dive_profile = DiveProfile::default();
+
+        dive_profile.with_maximum_surface_pressures([
+            3.356, 2.640, 2.342, 2.122, 1.978, 1.828, 1.719, 1.637, 1.577, 1.521, 1.482, 1.450,
+            1.415, 1.400, 1.380, 1.356,
+        ]);
+
+        dive_profile.with_tissue_pressures_total([
+            4.002, 2.939, 2.224, 1.671, 1.233, 0.913, 0.668, 0.483, 0.348, 0.263, 0.207, 0.162,
+            0.128, 0.101, 0.079, 0.062,
+        ]);
+        
+        dive_profile
     }
 
     fn dive_profile_test_fixture() -> DiveProfile {
@@ -69,7 +53,7 @@ mod commands_compartment_loads_should {
                 3.356, 2.640, 2.342, 2.122, 1.978, 1.828, 1.719, 1.637, 1.577, 1.521, 1.482, 1.450,
                 1.415, 1.400, 1.380, 1.356,
             ],
-            compartment_load: [
+            compartment_loads: [
                 119.249, 111.326, 94.962, 78.746, 62.336, 49.945, 38.860, 29.505, 22.067, 17.291,
                 13.968, 11.172, 9.046, 7.214, 5.725, 4.572,
             ],

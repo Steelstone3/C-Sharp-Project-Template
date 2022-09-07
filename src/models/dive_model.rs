@@ -44,7 +44,7 @@ impl DiveModel {
                 maximum_surface_pressures: [
                     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
                 ],
-                compartment_load: [
+                compartment_loads: [
                     0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
                 ],
                 tissue_pressures_nitrogen: [

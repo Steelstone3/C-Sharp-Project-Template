@@ -48,7 +48,7 @@ fn update_dive_profile_model(
         calculate_tolerated_ambient_pressure(compartment, dive_model.dive_profile);
     dive_model.dive_profile.maximum_surface_pressures[compartment] =
         calculate_max_surface_pressure(compartment, dive_model.dive_profile);
-    dive_model.dive_profile.compartment_load[compartment] =
+    dive_model.dive_profile.compartment_loads[compartment] =
         calculate_compartment_load(compartment, dive_model.dive_profile);
 
     dive_model.dive_profile
@@ -128,8 +128,8 @@ mod controllers_dive_stage_should {
                 format!("{:.2}", result.maximum_surface_pressures[compartment])
             );
             assert_eq!(
-                format!("{:.0}", expected_dive_profile.compartment_load[compartment]),
-                format!("{:.0}", result.compartment_load[compartment])
+                format!("{:.0}", expected_dive_profile.compartment_loads[compartment]),
+                format!("{:.0}", result.compartment_loads[compartment])
             );
         }
     }
@@ -155,7 +155,7 @@ mod controllers_dive_stage_should {
                 3.356, 2.640, 2.342, 2.122, 1.978, 1.828, 1.719, 1.637, 1.577, 1.521, 1.482, 1.450,
                 1.415, 1.400, 1.380, 1.356,
             ],
-            compartment_load: [
+            compartment_loads: [
                 119.249, 111.326, 94.962, 78.746, 62.336, 49.945, 38.860, 29.505, 22.067, 17.291,
                 13.968, 11.172, 9.046, 7.214, 5.725, 4.572,
             ],
