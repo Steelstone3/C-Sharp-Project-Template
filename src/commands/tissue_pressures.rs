@@ -153,19 +153,19 @@ mod commands_tissue_pressure_should {
     fn tissue_pressures_total_dive_profile_test_fixture() -> DiveProfile {
         let mut dive_profile = DiveProfile::default();
 
-        dive_profile.with_tissue_pressures_nitrogen([
+        dive_profile.tissue_pressures_nitrogen=([
             3.408, 2.399, 1.762, 1.294, 0.937, 0.685, 0.496, 0.356, 0.255, 0.192, 0.151, 0.118,
             0.093, 0.073, 0.057, 0.045,
         ]);
 
-        dive_profile.with_tissue_pressures_helium([
+        dive_profile.tissue_pressures_helium=([
             0.594, 0.540, 0.462, 0.377, 0.296, 0.228, 0.172, 0.127, 0.093, 0.071, 0.056, 0.044,
             0.035, 0.028, 0.022, 0.017,
         ]);
 
-        dive_profile.with_oxygen_at_pressure(1.26);
-        dive_profile.with_helium_at_pressure(0.600);
-        dive_profile.with_nitrogen_at_pressure(4.14);
+        dive_profile.oxygen_at_pressure=(1.26);
+        dive_profile.helium_at_pressure=(0.600);
+        dive_profile.nitrogen_at_pressure=(4.14);
 
         dive_profile
     }

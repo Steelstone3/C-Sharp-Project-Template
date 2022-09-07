@@ -2,20 +2,24 @@ use super::dive_step::DiveStep;
 
 #[derive(Copy, Clone)]
 pub struct GasManagement {
-    pub initial_pressurised_cylinder_volume: u32,
     pub gas_used: u32,
     pub gas_remaining: u32,
     pub surface_air_consumption_rate: u32,
 }
 
 impl GasManagement {
-    pub fn calculate_initial_pressurised_cylinder_volume(
-        cylinder_volume: u32,
-        cylinder_pressure: u32,
-    ) -> u32 {
-        cylinder_volume * cylinder_pressure
+    pub fn new(
+        pressurised_cylinder_volume: u32,
+        surface_air_consumption_rate: u32,
+    ) -> Self {
+        GasManagement {
+            gas_used: 0,
+            gas_remaining: pressurised_cylinder_volume,
+            surface_air_consumption_rate,
+        }
     }
 
+    #[allow(dead_code)]
     pub fn update_gas_management(self, dive_step: DiveStep) -> Self {
         let gas_used =
             GasManagement::calculate_gas_used(dive_step, self.surface_air_consumption_rate);
@@ -27,15 +31,16 @@ impl GasManagement {
         GasManagement {
             gas_used,
             gas_remaining,
-            initial_pressurised_cylinder_volume: self.initial_pressurised_cylinder_volume,
             surface_air_consumption_rate: self.surface_air_consumption_rate,
         }
     }
 
+    #[allow(dead_code)]
     fn calculate_remaining_pressurised_cylinder_volume(remaining_gas: u32, gas_used: u32) -> u32 {
         remaining_gas - gas_used
     }
 
+    #[allow(dead_code)]
     fn calculate_gas_used(dive_step: DiveStep, surface_air_consumption_rate: u32) -> u32 {
         ((dive_step.depth / 10) + 1) * dive_step.time * surface_air_consumption_rate
     }
@@ -44,7 +49,6 @@ impl GasManagement {
 impl Default for GasManagement {
     fn default() -> Self {
         Self {
-            initial_pressurised_cylinder_volume: Default::default(),
             gas_used: Default::default(),
             gas_remaining: Default::default(),
             surface_air_consumption_rate: 12,
@@ -55,23 +59,6 @@ impl Default for GasManagement {
 #[cfg(test)]
 mod gas_management_should {
     use super::*;
-
-    #[test]
-    fn calculate_initial_pressurised_cylinder_volume() {
-        //Arrange
-        let cylinder_volume = 12;
-        let cylinder_pressure = 200;
-        let expected_pressurised_cylinder_volume = 2400;
-
-        //Act
-        let result = GasManagement::calculate_initial_pressurised_cylinder_volume(
-            cylinder_volume,
-            cylinder_pressure,
-        );
-
-        //Assert
-        assert_eq!(expected_pressurised_cylinder_volume, result);
-    }
 
     #[test]
     fn update_gas_management() {
@@ -99,7 +86,6 @@ mod gas_management_should {
             surface_air_consumption_rate: 12,
             gas_used: 0,
             gas_remaining: 2400,
-            initial_pressurised_cylinder_volume: 2400,
         }
     }
 }

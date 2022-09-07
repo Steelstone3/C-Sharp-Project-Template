@@ -6,39 +6,28 @@ pub struct GasMixture {
 }
 
 impl GasMixture {
-    pub fn assign_oxygen(&mut self, oxygen: u32) {
+    pub fn new(oxygen: u32, helium: u32) -> Self {
+        GasMixture::assign_gas_mixture(oxygen, helium)
+    }
+
+    fn assign_gas_mixture(mut oxygen: u32, mut helium: u32) -> GasMixture {
         if oxygen > 100 {
-            self.oxygen = 100 - self.helium;
-        } else {
-            self.oxygen = oxygen;
+            oxygen = 100 - helium;
         }
 
-        self.calculate_nitrogen_percentage();
-    }
-
-    pub fn assign_helium(&mut self, helium: u32) {
         if helium > 100 {
-            self.helium = 100 - self.oxygen;
-        } else {
-            self.helium = helium;
+            helium = 100 - oxygen;
         }
 
-        self.calculate_nitrogen_percentage();
-    }
-
-    fn calculate_nitrogen_percentage(&mut self) -> u32 {
-        self.nitrogen = 100 - self.oxygen - self.helium;
-        self.nitrogen
-    }
-}
-
-impl Default for GasMixture {
-    fn default() -> Self {
-        Self {
-            oxygen: 21,
-            helium: 0,
-            nitrogen: 79,
+        GasMixture {
+            oxygen,
+            helium,
+            nitrogen: GasMixture::calculate_nitrogen_percentage(oxygen, helium),
         }
+    }
+
+    fn calculate_nitrogen_percentage(oxygen: u32, helium: u32) -> u32 {
+        100 - oxygen - helium
     }
 }
 
@@ -48,9 +37,7 @@ mod gas_mixture_should {
 
     #[test]
     fn allow_assignment_of_oxygen() {
-        let mut gas_mixture = GasMixture::default();
-
-        gas_mixture.assign_oxygen(70);
+        let gas_mixture = GasMixture::new(70,0);
 
         assert_eq!(70, gas_mixture.oxygen);
         assert_eq!(0, gas_mixture.helium);
@@ -59,11 +46,7 @@ mod gas_mixture_should {
 
     #[test]
     fn allow_overflow_assignment_of_oxygen() {
-        let mut gas_mixture = GasMixture::default();
-        gas_mixture.nitrogen = 30;
-        gas_mixture.helium = 5;
-
-        gas_mixture.assign_oxygen(120);
+        let gas_mixture = GasMixture::new(120, 5);
 
         assert_eq!(95, gas_mixture.oxygen);
         assert_eq!(5, gas_mixture.helium);
@@ -72,9 +55,7 @@ mod gas_mixture_should {
 
     #[test]
     fn allow_assignment_of_helium() {
-        let mut gas_mixture = GasMixture::default();
-
-        gas_mixture.assign_helium(70);
+        let gas_mixture = GasMixture::new(21, 70);
 
         assert_eq!(70, gas_mixture.helium);
         assert_eq!(21, gas_mixture.oxygen);
@@ -83,11 +64,7 @@ mod gas_mixture_should {
 
     #[test]
     fn allow_overflow_assignment_of_helium() {
-        let mut gas_mixture = GasMixture::default();
-        gas_mixture.nitrogen = 30;
-        gas_mixture.oxygen = 5;
-
-        gas_mixture.assign_helium(120);
+        let gas_mixture = GasMixture::new(5,120);
 
         assert_eq!(95, gas_mixture.helium);
         assert_eq!(5, gas_mixture.oxygen);
@@ -96,11 +73,8 @@ mod gas_mixture_should {
 
     #[test]
     fn calculate_nitrogen_percentage() {
-        let mut gas_mixture = GasMixture::default();
-        gas_mixture.oxygen = 40;
-        gas_mixture.helium = 40;
+        let gas_mixture = GasMixture::new(40,40);
 
-        assert_eq!(20, gas_mixture.calculate_nitrogen_percentage());
         assert_eq!(40, gas_mixture.oxygen);
         assert_eq!(40, gas_mixture.helium);
         assert_eq!(20, gas_mixture.nitrogen);

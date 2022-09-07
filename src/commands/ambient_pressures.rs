@@ -1,5 +1,6 @@
 use crate::models::{dive_profile::DiveProfile, dive_step::DiveStep, gas_mixture::GasMixture};
 
+#[allow(dead_code)]
 pub fn calculate_ambient_pressure(
     mut dive_profile_model: DiveProfile,
     dive_step: DiveStep,
