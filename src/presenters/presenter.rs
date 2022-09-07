@@ -14,8 +14,13 @@ pub fn select_dive_model() -> String {
     .unwrap()
 }
 
-pub fn create_cylinder() {
+pub fn create_cylinders() {
+
+}
+
+fn create_cylinder() {
     let cylinder_volume = parse_numeric_value(Text::new("Enter cylinder volume (L):").with_help_message("Enter a value 3 - 30").with_default("12").prompt().unwrap());
+    let cylinder_pressure = parse_numeric_value(Text::new("Enter cylinder volume (L):").with_help_message("Enter a value 3 - 30").with_default("12").prompt().unwrap());
     
 
     // let cylinder_volume = read_numeric_i32("\nEnter cylinder volume (L):", 3, 30);
