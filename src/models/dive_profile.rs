@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 use serde::{Deserialize, Serialize};
 
 #[derive(Copy, Clone, Serialize, Deserialize)]
@@ -59,6 +61,26 @@ impl DiveProfile {
     pub fn with_nitrogen_at_pressure(&mut self, nitrogen_at_pressure: f32) {
         self.nitrogen_at_pressure = nitrogen_at_pressure;
     }
+
+    fn display_results(self) -> String {
+        println!();
+        let mut dive_results = "".to_string();
+
+        for (_, compartment) in (0..self.compartment_loads.len()).enumerate() {
+            let dive_result = format!(
+                "\nC: {} | TPt: {} | TAP: {} | MSP: {} | CLp: {}",
+                compartment + 1,
+                self.tissue_pressures_total[compartment],
+                self.tolerated_ambient_pressures[compartment],
+                self.maximum_surface_pressures[compartment],
+                self.compartment_loads[compartment]
+            );
+
+            dive_results.push_str(&dive_result);
+        }
+
+        dive_results
+    }
 }
 
 impl Default for DiveProfile {
@@ -76,6 +98,12 @@ impl Default for DiveProfile {
             helium_at_pressure: Default::default(),
             nitrogen_at_pressure: Default::default(),
         }
+    }
+}
+
+impl Display for DiveProfile {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.display_results())
     }
 }
 

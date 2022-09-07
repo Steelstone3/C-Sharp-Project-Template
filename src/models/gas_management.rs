@@ -2,17 +2,17 @@ use super::dive_step::DiveStep;
 
 #[derive(Copy, Clone)]
 pub struct GasManagement {
-    pub initial_pressurised_cylinder_volume: i32,
-    pub gas_used: i32,
-    pub gas_remaining: i32,
-    pub surface_air_consumption_rate: i32,
+    pub initial_pressurised_cylinder_volume: u32,
+    pub gas_used: u32,
+    pub gas_remaining: u32,
+    pub surface_air_consumption_rate: u32,
 }
 
 impl GasManagement {
     pub fn calculate_initial_pressurised_cylinder_volume(
-        cylinder_volume: i32,
-        cylinder_pressure: i32,
-    ) -> i32 {
+        cylinder_volume: u32,
+        cylinder_pressure: u32,
+    ) -> u32 {
         cylinder_volume * cylinder_pressure
     }
 
@@ -32,12 +32,23 @@ impl GasManagement {
         }
     }
 
-    fn calculate_remaining_pressurised_cylinder_volume(remaining_gas: i32, gas_used: i32) -> i32 {
+    fn calculate_remaining_pressurised_cylinder_volume(remaining_gas: u32, gas_used: u32) -> u32 {
         remaining_gas - gas_used
     }
 
-    fn calculate_gas_used(dive_step: DiveStep, surface_air_consumption_rate: i32) -> i32 {
+    fn calculate_gas_used(dive_step: DiveStep, surface_air_consumption_rate: u32) -> u32 {
         ((dive_step.depth / 10) + 1) * dive_step.time * surface_air_consumption_rate
+    }
+}
+
+impl Default for GasManagement {
+    fn default() -> Self {
+        Self {
+            initial_pressurised_cylinder_volume: Default::default(),
+            gas_used: Default::default(),
+            gas_remaining: Default::default(),
+            surface_air_consumption_rate: 12,
+        }
     }
 }
 

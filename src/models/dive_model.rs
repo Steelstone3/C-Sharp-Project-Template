@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 use super::dive_profile::DiveProfile;
 
 #[derive(Copy, Clone)]
@@ -70,5 +72,11 @@ impl DiveModel {
                 nitrogen_at_pressure: 0.0,
             },
         }
+    }
+}
+
+impl Display for DiveModel {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "Zhl16")
     }
 }

@@ -1,12 +1,12 @@
 #[derive(Copy, Clone)]
 pub struct GasMixture {
-    pub oxygen: i32,
-    pub helium: i32,
-    pub nitrogen: i32,
+    pub oxygen: u32,
+    pub helium: u32,
+    pub nitrogen: u32,
 }
 
 impl GasMixture {
-    pub fn assign_oxygen(&mut self, oxygen: i32) {
+    pub fn assign_oxygen(&mut self, oxygen: u32) {
         if oxygen > 100 {
             self.oxygen = 100 - self.helium;
         } else {
@@ -16,7 +16,7 @@ impl GasMixture {
         self.calculate_nitrogen_percentage();
     }
 
-    pub fn assign_helium(&mut self, helium: i32) {
+    pub fn assign_helium(&mut self, helium: u32) {
         if helium > 100 {
             self.helium = 100 - self.oxygen;
         } else {
@@ -26,7 +26,7 @@ impl GasMixture {
         self.calculate_nitrogen_percentage();
     }
 
-    fn calculate_nitrogen_percentage(&mut self) -> i32 {
+    fn calculate_nitrogen_percentage(&mut self) -> u32 {
         self.nitrogen = 100 - self.oxygen - self.helium;
         self.nitrogen
     }

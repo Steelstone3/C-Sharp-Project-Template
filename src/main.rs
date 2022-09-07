@@ -1,4 +1,4 @@
-use presenters::presenter::{create_cylinders, select_dive_model, welcome_message};
+use presenters::dive_setup::{welcome_message, select_dive_model, create_cylinders};
 
 mod commands;
 mod controllers;
