@@ -16,7 +16,7 @@ impl GasMixture {
         self.calculate_nitrogen_percentage();
     }
 
-    pub fn assign_helium(&mut self, helium:i32) {
+    pub fn assign_helium(&mut self, helium: i32) {
         if helium > 100 {
             self.helium = 100 - self.oxygen;
         } else {

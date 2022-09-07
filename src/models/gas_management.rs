@@ -8,15 +8,22 @@ pub struct GasManagement {
     pub surface_air_consumption_rate: i32,
 }
 
-impl GasManagement{
-    pub fn calculate_initial_pressurised_cylinder_volume(cylinder_volume: i32, cylinder_pressure: i32) -> i32 {
+impl GasManagement {
+    pub fn calculate_initial_pressurised_cylinder_volume(
+        cylinder_volume: i32,
+        cylinder_pressure: i32,
+    ) -> i32 {
         cylinder_volume * cylinder_pressure
     }
 
     pub fn update_gas_management(self, dive_step: DiveStep) -> Self {
-        let gas_used = GasManagement::calculate_gas_used(dive_step, self.surface_air_consumption_rate);
-        let gas_remaining = GasManagement::calculate_remaining_pressurised_cylinder_volume(self.gas_remaining, gas_used);
-        
+        let gas_used =
+            GasManagement::calculate_gas_used(dive_step, self.surface_air_consumption_rate);
+        let gas_remaining = GasManagement::calculate_remaining_pressurised_cylinder_volume(
+            self.gas_remaining,
+            gas_used,
+        );
+
         GasManagement {
             gas_used,
             gas_remaining,
@@ -24,20 +31,19 @@ impl GasManagement{
             surface_air_consumption_rate: self.surface_air_consumption_rate,
         }
     }
-    
+
     fn calculate_remaining_pressurised_cylinder_volume(remaining_gas: i32, gas_used: i32) -> i32 {
         remaining_gas - gas_used
     }
-    
+
     fn calculate_gas_used(dive_step: DiveStep, surface_air_consumption_rate: i32) -> i32 {
         ((dive_step.depth / 10) + 1) * dive_step.time * surface_air_consumption_rate
     }
 }
-    
-    #[cfg(test)]
+
+#[cfg(test)]
 mod gas_management_should {
-    use crate::models::gas_management::GasManagement;
-    use crate::tests::test_fixtures_dive_plan::test_fixture_dive_step_default;
+    use super::*;
 
     #[test]
     fn calculate_initial_pressurised_cylinder_volume() {
@@ -47,7 +53,10 @@ mod gas_management_should {
         let expected_pressurised_cylinder_volume = 2400;
 
         //Act
-        let result = GasManagement::calculate_initial_pressurised_cylinder_volume(cylinder_volume, cylinder_pressure);
+        let result = GasManagement::calculate_initial_pressurised_cylinder_volume(
+            cylinder_volume,
+            cylinder_pressure,
+        );
 
         //Assert
         assert_eq!(expected_pressurised_cylinder_volume, result);
@@ -56,13 +65,8 @@ mod gas_management_should {
     #[test]
     fn update_gas_management() {
         //Arrange
-        let dive_step = test_fixture_dive_step_default();
-        let gas_management = GasManagement {
-            surface_air_consumption_rate: 12,
-            gas_used: 0,
-            gas_remaining: 2400,
-            initial_pressurised_cylinder_volume: 2400,
-        };
+        let dive_step = dive_step_test_fixture();
+        let gas_management = gas_management_test_fixture();
 
         //Act
         let result = GasManagement::update_gas_management(gas_management, dive_step);
@@ -70,5 +74,21 @@ mod gas_management_should {
         //Assert
         assert_eq!(720, result.gas_used);
         assert_eq!(1680, result.gas_remaining);
+    }
+
+    fn dive_step_test_fixture() -> DiveStep {
+        DiveStep {
+            depth: 50,
+            time: 10,
+        }
+    }
+
+    fn gas_management_test_fixture() -> GasManagement {
+        GasManagement {
+            surface_air_consumption_rate: 12,
+            gas_used: 0,
+            gas_remaining: 2400,
+            initial_pressurised_cylinder_volume: 2400,
+        }
     }
 }

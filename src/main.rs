@@ -1,4 +1,4 @@
-use presenters::presenter::{welcome_message, select_dive_model, create_cylinder};
+use presenters::presenter::{create_cylinders, select_dive_model, welcome_message};
 
 mod commands;
 mod controllers;
@@ -8,6 +8,5 @@ mod presenters;
 fn main() {
     welcome_message();
     select_dive_model();
-    create_cylinder();
-
+    create_cylinders();
 }
