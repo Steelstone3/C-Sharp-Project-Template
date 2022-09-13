@@ -59,7 +59,7 @@ fn create_cylinder() -> Cylinder {
 
 pub fn create_dive_step() -> DiveStep {
     DiveStep{
-        depth: parse_numeric_value(text_prompt("Depth", "Bob", "1")),
-        time: parse_numeric_value(text_prompt("The message", "Bob", "1")),
+        depth: parse_numeric_value(text_prompt("Enter depth (M):", "Enter a value 1 - 100", "1")),
+        time: parse_numeric_value(text_prompt("Enter time (min):", "Enter a value 1 - 60", "1")),
     }
 }

@@ -11,22 +11,23 @@ use crate::{
         tolerated_ambient_pressures::calculate_tolerated_ambient_pressure,
     },
     models::{
-        dive_model::DiveModel, dive_profile::DiveProfile, dive_step::DiveStep,
-        gas_mixture::GasMixture,
+        cylinder::Cylinder, dive_model::DiveModel, dive_profile::DiveProfile, dive_step::DiveStep,
     },
 };
 
 pub fn run_dive_profile(
     mut dive_model: DiveModel,
     dive_step: DiveStep,
-    gas_mixture: GasMixture,
+    mut cylinder: Cylinder,
 ) -> DiveProfile {
     dive_model.dive_profile =
-        calculate_ambient_pressure(dive_model.dive_profile, dive_step, gas_mixture);
+        calculate_ambient_pressure(dive_model.dive_profile, dive_step, cylinder.gas_mixture);
 
     for compartment in 0..dive_model.compartment_count {
         dive_model.dive_profile = update_dive_profile_model(compartment, dive_model, dive_step);
     }
+
+    cylinder.gas_management = cylinder.gas_management.update_gas_management(dive_step);
 
     dive_model.dive_profile
 }
@@ -57,17 +58,18 @@ fn update_dive_profile_model(
 #[cfg(test)]
 mod controllers_dive_stage_should {
     use super::*;
+    use crate::models::{gas_management::GasManagement, gas_mixture::GasMixture};
 
     #[test]
     fn run_dive_profile() {
         //Arrange
         let zhl16 = DiveModel::create_zhl16_dive_model();
         let dive_step = dive_step_test_fixture();
-        let gas_mixture = gas_mixture_test_fixture();
+        let cylinder = cylinder_test_fixture();
         let expected_dive_profile = dive_profile_test_fixture();
 
         //Act
-        let result = super::run_dive_profile(zhl16, dive_step, gas_mixture);
+        let result = super::run_dive_profile(zhl16, dive_step, cylinder);
 
         //Assert
         assert_eq!(
@@ -128,10 +130,35 @@ mod controllers_dive_stage_should {
                 format!("{:.2}", result.maximum_surface_pressures[compartment])
             );
             assert_eq!(
-                format!("{:.0}", expected_dive_profile.compartment_loads[compartment]),
+                format!(
+                    "{:.0}",
+                    expected_dive_profile.compartment_loads[compartment]
+                ),
                 format!("{:.0}", result.compartment_loads[compartment])
             );
         }
+    }
+
+    #[test]
+    #[ignore = "Not working in implementation as of yet"]
+    fn update_cylinder_gas_usage() {
+        //Arrange
+        let zhl16 = DiveModel::create_zhl16_dive_model();
+        let dive_step = dive_step_test_fixture();
+        let cylinder = cylinder_test_fixture();
+
+        //Act
+        super::run_dive_profile(zhl16, dive_step, cylinder);
+
+        //Assert
+        assert_eq!(12, cylinder.cylinder_volume);
+        assert_eq!(200, cylinder.cylinder_pressure);
+        assert_eq!(2400, cylinder.initial_pressurised_cylinder_volume);
+        assert_eq!(21, cylinder.gas_mixture.oxygen);
+        assert_eq!(10, cylinder.gas_mixture.helium);
+        assert_eq!(69, cylinder.gas_mixture.nitrogen);
+        assert_eq!(720, cylinder.gas_management.gas_used);
+        assert_eq!(1680, cylinder.gas_management.gas_remaining);
     }
 
     fn dive_step_test_fixture() -> DiveStep {
@@ -141,12 +168,13 @@ mod controllers_dive_stage_should {
         }
     }
 
-    fn gas_mixture_test_fixture() -> GasMixture {
-        GasMixture {
-            oxygen: 21,
-            helium: 10,
-            nitrogen: 69,
-        }
+    fn cylinder_test_fixture() -> Cylinder {
+        Cylinder::new(
+            12,
+            200,
+            GasMixture::new(21, 10),
+            GasManagement::new(2400, 12),
+        )
     }
 
     fn dive_profile_test_fixture() -> DiveProfile {

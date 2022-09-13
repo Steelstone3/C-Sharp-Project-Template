@@ -18,7 +18,8 @@ fn main() {
     //loop {
     let dive_step = create_dive_step();
     let cylinder = select_cylinder(cylinders);
-    dive_model.dive_profile = run_dive_profile(dive_model, dive_step, cylinder.gas_mixture);
+    dive_model.dive_profile = run_dive_profile(dive_model, dive_step, cylinder);
     println!("{}", dive_model.dive_profile);
+    println!("{}", cylinder);
     // }
 }

@@ -2,6 +2,7 @@ use crate::models::gas_management::GasManagement;
 use crate::models::gas_mixture::GasMixture;
 use std::fmt::Display;
 
+#[derive(Clone, Copy)]
 pub struct Cylinder {
     pub cylinder_volume: u32,
     pub cylinder_pressure: u32,

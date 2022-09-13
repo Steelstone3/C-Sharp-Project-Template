@@ -8,10 +8,7 @@ pub struct GasManagement {
 }
 
 impl GasManagement {
-    pub fn new(
-        pressurised_cylinder_volume: u32,
-        surface_air_consumption_rate: u32,
-    ) -> Self {
+    pub fn new(pressurised_cylinder_volume: u32, surface_air_consumption_rate: u32) -> Self {
         GasManagement {
             gas_used: 0,
             gas_remaining: pressurised_cylinder_volume,
@@ -19,14 +16,11 @@ impl GasManagement {
         }
     }
 
-    #[allow(dead_code)]
     pub fn update_gas_management(self, dive_step: DiveStep) -> Self {
         let gas_used =
             GasManagement::calculate_gas_used(dive_step, self.surface_air_consumption_rate);
-        let gas_remaining = GasManagement::calculate_remaining_pressurised_cylinder_volume(
-            self.gas_remaining,
-            gas_used,
-        );
+        let gas_remaining =
+            GasManagement::calculate_remaining_pressurised_cylinder_volume(self, gas_used);
 
         GasManagement {
             gas_used,
@@ -35,12 +29,10 @@ impl GasManagement {
         }
     }
 
-    #[allow(dead_code)]
-    fn calculate_remaining_pressurised_cylinder_volume(remaining_gas: u32, gas_used: u32) -> u32 {
-        remaining_gas - gas_used
+    fn calculate_remaining_pressurised_cylinder_volume(self, gas_used: u32) -> u32 {
+        self.gas_remaining - gas_used
     }
 
-    #[allow(dead_code)]
     fn calculate_gas_used(dive_step: DiveStep, surface_air_consumption_rate: u32) -> u32 {
         ((dive_step.depth / 10) + 1) * dive_step.time * surface_air_consumption_rate
     }

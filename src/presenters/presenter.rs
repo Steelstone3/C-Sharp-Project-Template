@@ -4,7 +4,7 @@ use crate::models::{dive_model::DiveModel, cylinder::Cylinder};
 
 pub fn select_dive_model() -> DiveModel {
     Select::new(
-        "Select Dive Model",
+        "Select dive model:",
         vec![DiveModel::create_zhl16_dive_model(), DiveModel::create_zhl16_dive_model()],
     )
     .prompt()
@@ -13,7 +13,7 @@ pub fn select_dive_model() -> DiveModel {
 
 pub fn select_cylinder(cylinders: Vec<Cylinder>) -> Cylinder {
     Select::new(
-        "Select Cylinder",
+        "Select cylinder:",
         cylinders,
     )
     .prompt()
