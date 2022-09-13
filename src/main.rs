@@ -12,13 +12,13 @@ mod presenters;
 
 fn main() {
     welcome_message();
-    let dive_model = select_dive_model();
+    let mut dive_model = select_dive_model();
     let cylinders = create_cylinders();
 
     //loop {
     let dive_step = create_dive_step();
     let cylinder = select_cylinder(cylinders);
-    run_dive_profile(dive_model, dive_step, cylinder.gas_mixture);
+    dive_model.dive_profile = run_dive_profile(dive_model, dive_step, cylinder.gas_mixture);
     println!("{}", dive_model.dive_profile);
     // }
 }
