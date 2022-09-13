@@ -1,11 +1,20 @@
 use inquire::{Text, Confirm, Select};
 
-use crate::models::dive_model::DiveModel;
+use crate::models::{dive_model::DiveModel, cylinder::Cylinder};
 
 pub fn select_dive_model() -> DiveModel {
     Select::new(
         "Select Dive Model",
         vec![DiveModel::create_zhl16_dive_model(), DiveModel::create_zhl16_dive_model()],
+    )
+    .prompt()
+    .unwrap()
+}
+
+pub fn select_cylinder(cylinders: Vec<Cylinder>) -> Cylinder {
+    Select::new(
+        "Select Cylinder",
+        cylinders,
     )
     .prompt()
     .unwrap()

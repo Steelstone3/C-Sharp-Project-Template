@@ -1,5 +1,5 @@
 use super::presenter::{confirmation, parse_numeric_value, text_prompt};
-use crate::models::{cylinder::Cylinder, gas_management::GasManagement, gas_mixture::GasMixture};
+use crate::models::{cylinder::Cylinder, gas_management::GasManagement, gas_mixture::GasMixture, dive_step::DiveStep};
 
 pub fn welcome_message() {
     println!("Welcome to Bubbles Dive Planner Console Rust");
@@ -55,4 +55,11 @@ fn create_cylinder() -> Cylinder {
         gas_mixture,
         gas_management,
     )
+}
+
+pub fn create_dive_step() -> DiveStep {
+    DiveStep{
+        depth: parse_numeric_value(text_prompt("Depth", "Bob", "1")),
+        time: parse_numeric_value(text_prompt("The message", "Bob", "1")),
+    }
 }
