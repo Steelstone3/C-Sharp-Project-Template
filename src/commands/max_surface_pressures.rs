@@ -1,5 +1,6 @@
 use crate::models::dive_profile::DiveProfile;
 
+#[allow(dead_code)]
 pub fn calculate_max_surface_pressure(compartment: usize, dive_profile_model: DiveProfile) -> f32 {
     (1.0 / dive_profile_model.b_values[compartment]) + dive_profile_model.a_values[compartment]
 }
@@ -33,15 +34,15 @@ mod commands_max_surface_pressures_should {
     fn max_surface_pressure_dive_profile_test_fixture() -> DiveProfile {
         let mut dive_profile = DiveProfile::default();
 
-        dive_profile.a_values=([
+        dive_profile.a_values=[
             1.328, 1.070, 0.930, 0.822, 0.728, 0.625, 0.555, 0.503, 0.466, 0.427, 0.399, 0.376,
             0.349, 0.341, 0.326, 0.309,
-        ]);
+        ];
 
-        dive_profile.b_values=([
+        dive_profile.b_values=[
             0.493, 0.637, 0.708, 0.769, 0.800, 0.831, 0.859, 0.882, 0.900, 0.914, 0.923, 0.931,
             0.938, 0.944, 0.949, 0.955,
-        ]);
+        ];
 
         dive_profile
     }

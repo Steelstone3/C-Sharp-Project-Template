@@ -6,9 +6,7 @@ pub fn welcome_message() {
 }
 
 pub fn create_cylinders() -> Vec<Cylinder> {
-    let mut cylinders: Vec<Cylinder> = vec![];
-
-    cylinders.push(create_cylinder());
+    let mut cylinders: Vec<Cylinder> = vec![create_cylinder()];
 
     while confirmation("Create cylinder:") {
         cylinders.push(create_cylinder());
@@ -57,10 +55,4 @@ fn create_cylinder() -> Cylinder {
         gas_mixture,
         gas_management,
     )
-}
-
-pub fn display_cylinders(cylinders: &Vec<Cylinder>) {
-    for cylinder in cylinders {
-        println!("{}", cylinder.to_string());
-    }
 }

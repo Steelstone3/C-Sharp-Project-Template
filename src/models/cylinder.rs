@@ -1,9 +1,6 @@
-use std::fmt::Display;
-
 use crate::models::gas_management::GasManagement;
 use crate::models::gas_mixture::GasMixture;
-
-use super::gas_management;
+use std::fmt::Display;
 
 pub struct Cylinder {
     pub cylinder_volume: u32,

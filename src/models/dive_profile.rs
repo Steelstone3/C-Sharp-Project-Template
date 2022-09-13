@@ -2,7 +2,7 @@ use std::fmt::Display;
 
 use serde::{Deserialize, Serialize};
 
-#[derive(Copy, Clone, Serialize, Deserialize)]
+#[derive(Default, Copy, Clone, Serialize, Deserialize)]
 pub struct DiveProfile {
     pub maximum_surface_pressures: [f32; 16],
     pub compartment_loads: [f32; 16],
@@ -18,6 +18,23 @@ pub struct DiveProfile {
 }
 
 impl DiveProfile {
+    #[allow(dead_code)]
+    fn default() -> Self {
+        Self {
+            maximum_surface_pressures: Default::default(),
+            compartment_loads: Default::default(),
+            tissue_pressures_nitrogen: Default::default(),
+            tissue_pressures_helium: Default::default(),
+            tissue_pressures_total: Default::default(),
+            tolerated_ambient_pressures: Default::default(),
+            a_values: Default::default(),
+            b_values: Default::default(),
+            oxygen_at_pressure: Default::default(),
+            helium_at_pressure: Default::default(),
+            nitrogen_at_pressure: Default::default(),
+        }
+    }
+
     fn display_results(self) -> String {
         println!();
         let mut dive_results = "".to_string();
@@ -36,24 +53,6 @@ impl DiveProfile {
         }
 
         dive_results
-    }
-}
-
-impl Default for DiveProfile {
-    fn default() -> Self {
-        Self {
-            maximum_surface_pressures: Default::default(),
-            compartment_loads: Default::default(),
-            tissue_pressures_nitrogen: Default::default(),
-            tissue_pressures_helium: Default::default(),
-            tissue_pressures_total: Default::default(),
-            tolerated_ambient_pressures: Default::default(),
-            a_values: Default::default(),
-            b_values: Default::default(),
-            oxygen_at_pressure: Default::default(),
-            helium_at_pressure: Default::default(),
-            nitrogen_at_pressure: Default::default(),
-        }
     }
 }
 
@@ -123,7 +122,7 @@ mod gas_management_should {
     fn has_compartment_loads() {
         let mut dive_profile = DiveProfile::default();
 
-        dive_profile.compartment_loads=(compartment_value_test_fixture());
+        dive_profile.compartment_loads=compartment_value_test_fixture();
 
         assert_eq!(
             compartment_value_test_fixture(),
@@ -135,7 +134,7 @@ mod gas_management_should {
     fn has_tissue_pressures_nitrogen() {
         let mut dive_profile = DiveProfile::default();
 
-        dive_profile.tissue_pressures_nitrogen=(compartment_value_test_fixture());
+        dive_profile.tissue_pressures_nitrogen=compartment_value_test_fixture();
 
         assert_eq!(
             compartment_value_test_fixture(),
@@ -147,7 +146,7 @@ mod gas_management_should {
     fn has_tissue_pressures_helium() {
         let mut dive_profile = DiveProfile::default();
 
-        dive_profile.tissue_pressures_helium=(compartment_value_test_fixture());
+        dive_profile.tissue_pressures_helium=compartment_value_test_fixture();
 
         assert_eq!(
             compartment_value_test_fixture(),
@@ -159,7 +158,7 @@ mod gas_management_should {
     fn has_tissue_pressures_total() {
         let mut dive_profile = DiveProfile::default();
 
-        dive_profile.tissue_pressures_total=(compartment_value_test_fixture());
+        dive_profile.tissue_pressures_total=compartment_value_test_fixture();
 
         assert_eq!(
             compartment_value_test_fixture(),
@@ -171,7 +170,7 @@ mod gas_management_should {
     fn has_tolerated_ambient_pressures() {
         let mut dive_profile = DiveProfile::default();
 
-        dive_profile.tolerated_ambient_pressures=(compartment_value_test_fixture());
+        dive_profile.tolerated_ambient_pressures=compartment_value_test_fixture();
 
         assert_eq!(
             compartment_value_test_fixture(),
@@ -183,7 +182,7 @@ mod gas_management_should {
     fn has_a_values() {
         let mut dive_profile = DiveProfile::default();
 
-        dive_profile.a_values=(compartment_value_test_fixture());
+        dive_profile.a_values=compartment_value_test_fixture();
 
         assert_eq!(compartment_value_test_fixture(), dive_profile.a_values)
     }
@@ -192,7 +191,7 @@ mod gas_management_should {
     fn has_b_values() {
         let mut dive_profile = DiveProfile::default();
 
-        dive_profile.b_values=(compartment_value_test_fixture());
+        dive_profile.b_values=compartment_value_test_fixture();
 
         assert_eq!(compartment_value_test_fixture(), dive_profile.b_values)
     }
@@ -202,7 +201,7 @@ mod gas_management_should {
         let mut dive_profile = DiveProfile::default();
         let value: f32 = 4.0;
 
-        dive_profile.oxygen_at_pressure=(value);
+        dive_profile.oxygen_at_pressure=value;
 
         assert_eq!(value, dive_profile.oxygen_at_pressure)
     }
@@ -212,7 +211,7 @@ mod gas_management_should {
         let mut dive_profile = DiveProfile::default();
         let value: f32 = 4.0;
 
-        dive_profile.helium_at_pressure=(value);
+        dive_profile.helium_at_pressure=value;
 
         assert_eq!(value, dive_profile.helium_at_pressure)
     }

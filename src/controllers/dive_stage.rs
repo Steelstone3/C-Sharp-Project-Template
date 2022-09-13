@@ -16,6 +16,7 @@ use crate::{
     },
 };
 
+#[allow(dead_code)]
 pub fn run_dive_profile(
     mut dive_model: DiveModel,
     dive_step: DiveStep,

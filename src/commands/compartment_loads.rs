@@ -1,5 +1,6 @@
 use crate::models::dive_profile::DiveProfile;
 
+#[allow(dead_code)]
 pub fn calculate_compartment_load(compartment: usize, dive_profile_model: DiveProfile) -> f32 {
     dive_profile_model.tissue_pressures_total[compartment]
         / dive_profile_model.maximum_surface_pressures[compartment]
@@ -32,15 +33,15 @@ mod commands_compartment_loads_should {
     fn compartment_load_dive_profile_test_fixture() -> DiveProfile {
         let mut dive_profile = DiveProfile::default();
 
-        dive_profile.maximum_surface_pressures=([
+        dive_profile.maximum_surface_pressures=[
             3.356, 2.640, 2.342, 2.122, 1.978, 1.828, 1.719, 1.637, 1.577, 1.521, 1.482, 1.450,
             1.415, 1.400, 1.380, 1.356,
-        ]);
+        ];
 
-        dive_profile.tissue_pressures_total=([
+        dive_profile.tissue_pressures_total=[
             4.002, 2.939, 2.224, 1.671, 1.233, 0.913, 0.668, 0.483, 0.348, 0.263, 0.207, 0.162,
             0.128, 0.101, 0.079, 0.062,
-        ]);
+        ];
         
         dive_profile
     }
