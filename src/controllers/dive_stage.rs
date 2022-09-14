@@ -144,15 +144,13 @@ mod controllers_dive_stage_should {
     }
 
     #[test]
-    #[ignore = "Not working in implementation as of yet"]
     fn update_cylinder_gas_usage() {
         //Arrange
-        let zhl16 = DiveModel::create_zhl16_dive_model();
         let dive_step = dive_step_test_fixture();
-        let cylinder = cylinder_test_fixture();
+        let mut cylinder = cylinder_test_fixture();
 
         //Act
-        super::run_dive_profile(zhl16, dive_step, cylinder);
+        cylinder = super::update_cylinder_gas_usage(cylinder, dive_step);
 
         //Assert
         assert_eq!(12, cylinder.cylinder_volume);
