@@ -1,48 +1,48 @@
 use crate::models::dive_profile::DiveProfile;
 
-#[allow(dead_code)]
-pub fn calculate_compartment_load(compartment: usize, dive_profile_model: DiveProfile) -> f32 {
-    dive_profile_model.tissue_pressures_total[compartment]
-        / dive_profile_model.maximum_surface_pressures[compartment]
-        * 100.0
+pub fn calculate_max_surface_pressure(compartment: usize, dive_profile_model: DiveProfile) -> f32 {
+    (1.0 / dive_profile_model.b_values[compartment]) + dive_profile_model.a_values[compartment]
 }
 
 #[cfg(test)]
-mod commands_compartment_loads_should {
+mod commands_max_surface_pressures_should {
     use super::*;
 
     #[test]
-    fn calculate_compartment_load() {
+    fn calculate_max_surface_pressure() {
         //Arrange
-        let actual_dive_profile = compartment_load_dive_profile_test_fixture();
+        let actual_dive_profile = max_surface_pressure_dive_profile_test_fixture();
         let expected_dive_profile = dive_profile_test_fixture();
 
         for compartment in 0..16 {
             //Act
             //Assert
             assert_eq!(
-                format!("{:.3}", expected_dive_profile.compartment_loads[compartment]),
                 format!(
                     "{:.3}",
-                    super::calculate_compartment_load(compartment, actual_dive_profile)
+                    expected_dive_profile.maximum_surface_pressures[compartment]
+                ),
+                format!(
+                    "{:.3}",
+                    super::calculate_max_surface_pressure(compartment, actual_dive_profile)
                 )
             );
         }
     }
 
-    fn compartment_load_dive_profile_test_fixture() -> DiveProfile {
+    fn max_surface_pressure_dive_profile_test_fixture() -> DiveProfile {
         let mut dive_profile = DiveProfile::default();
 
-        dive_profile.maximum_surface_pressures=[
-            3.356, 2.640, 2.342, 2.122, 1.978, 1.828, 1.719, 1.637, 1.577, 1.521, 1.482, 1.450,
-            1.415, 1.400, 1.380, 1.356,
+        dive_profile.a_values=[
+            1.328, 1.070, 0.930, 0.822, 0.728, 0.625, 0.555, 0.503, 0.466, 0.427, 0.399, 0.376,
+            0.349, 0.341, 0.326, 0.309,
         ];
 
-        dive_profile.tissue_pressures_total=[
-            4.002, 2.939, 2.224, 1.671, 1.233, 0.913, 0.668, 0.483, 0.348, 0.263, 0.207, 0.162,
-            0.128, 0.101, 0.079, 0.062,
+        dive_profile.b_values=[
+            0.493, 0.637, 0.708, 0.769, 0.800, 0.831, 0.859, 0.882, 0.900, 0.914, 0.923, 0.931,
+            0.938, 0.944, 0.949, 0.955,
         ];
-        
+
         dive_profile
     }
 

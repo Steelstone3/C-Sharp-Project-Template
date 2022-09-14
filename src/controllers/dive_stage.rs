@@ -1,5 +1,5 @@
 use crate::{
-    commands::{
+    commands::dive_stages::{
         a_b_values::{calculate_a_value, calculate_b_value},
         ambient_pressures::calculate_ambient_pressure,
         compartment_loads::calculate_compartment_load,
@@ -55,14 +55,14 @@ fn update_dive_profile_model(
 
 pub fn update_cylinder_gas_usage(mut cylinder: Cylinder, dive_step: DiveStep) -> Cylinder {
     cylinder.gas_management = cylinder.gas_management.update_gas_management(dive_step);
-    
+
     cylinder
 }
 
 #[cfg(test)]
 mod controllers_dive_stage_should {
     use super::*;
-    use crate::models::{gas_mixture::GasMixture};
+    use crate::models::gas_mixture::GasMixture;
 
     #[test]
     fn run_dive_profile() {
@@ -171,12 +171,7 @@ mod controllers_dive_stage_should {
     }
 
     fn cylinder_test_fixture() -> Cylinder {
-        Cylinder::new(
-            12,
-            200,
-            GasMixture::new(21, 10),
-            12,
-        )
+        Cylinder::new(12, 200, GasMixture::new(21, 10), 12)
     }
 
     fn dive_profile_test_fixture() -> DiveProfile {

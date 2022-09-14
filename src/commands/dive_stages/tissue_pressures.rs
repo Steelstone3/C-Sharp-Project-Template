@@ -1,6 +1,5 @@
 use crate::models::{dive_model::DiveModel, dive_profile::DiveProfile, dive_step::DiveStep};
 
-#[allow(dead_code)]
 pub fn calculate_tissue_pressure_nitrogen(
     compartment: usize,
     dive_model: DiveModel,
@@ -16,7 +15,6 @@ pub fn calculate_tissue_pressure_nitrogen(
                 )))
 }
 
-#[allow(dead_code)]
 pub fn calculate_tissue_pressure_helium(
     compartment: usize,
     dive_model: DiveModel,
@@ -32,7 +30,6 @@ pub fn calculate_tissue_pressure_helium(
                 )))
 }
 
-#[allow(dead_code)]
 pub fn calculate_tissue_pressure_total(compartment: usize, dive_profile: DiveProfile) -> f32 {
     dive_profile.tissue_pressures_helium[compartment]
         + dive_profile.tissue_pressures_nitrogen[compartment]

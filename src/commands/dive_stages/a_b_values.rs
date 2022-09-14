@@ -1,6 +1,5 @@
 use crate::models::dive_model::DiveModel;
 
-#[allow(dead_code)]
 pub fn calculate_a_value(compartment: usize, dive_model: DiveModel) -> f32 {
     (dive_model.a_values_nitrogen[compartment]
         * dive_model.dive_profile.tissue_pressures_nitrogen[compartment]
@@ -9,7 +8,6 @@ pub fn calculate_a_value(compartment: usize, dive_model: DiveModel) -> f32 {
         / dive_model.dive_profile.tissue_pressures_total[compartment]
 }
 
-#[allow(dead_code)]
 pub fn calculate_b_value(compartment: usize, dive_model: DiveModel) -> f32 {
     (dive_model.b_values_nitrogen[compartment]
         * dive_model.dive_profile.tissue_pressures_nitrogen[compartment]
