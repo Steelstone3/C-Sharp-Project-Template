@@ -8,13 +8,7 @@ use crate::controllers::file_controller::{
 use crate::models::dive_step::DiveStep;
 use std::io::Write;
 
-//TODO can use generics for writing to file
-//pub fn upsert_file(data: &Vec<T>, path: &str) -> std::io::Result<()>
-
-#[allow(dead_code)]
 pub fn upsert_dive_step_file(dive_steps: &Vec<DiveStep>) -> std::io::Result<()> {
-    //TODO when generified it would look like this
-    //let mut json_dive_step_file = create_file(path);
     let mut json_dive_step_file = create_dive_step_file();
     let json_dive_step =
         serde_json::ser::to_string_pretty(&dive_steps).expect(PARSE_APP_DATA_ERROR);

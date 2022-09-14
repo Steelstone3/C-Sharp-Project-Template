@@ -8,7 +8,6 @@ use crate::controllers::file_controller::{
 use crate::models::dive_profile::DiveProfile;
 use std::io::Write;
 
-#[allow(dead_code)]
 pub fn upsert_dive_profile_file(dive_profiles: &Vec<DiveProfile>) -> std::io::Result<()> {
     let mut json_dive_profile_file = create_dive_profile_file();
     let json_dive_profile =
@@ -18,7 +17,6 @@ pub fn upsert_dive_profile_file(dive_profiles: &Vec<DiveProfile>) -> std::io::Re
     Ok(())
 }
 
-#[allow(dead_code)]
 pub fn read_dive_profile_file() -> Vec<DiveProfile> {
     let mut file = open_the_file(DIVE_PROFILE_FILE_NAME);
     let contents = get_file_contents(&mut file);

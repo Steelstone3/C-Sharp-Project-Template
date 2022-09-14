@@ -6,7 +6,6 @@ use crate::controllers::file_controller::{create_cylinder_file, get_file_content
 use crate::models::cylinder::Cylinder;
 use std::io::Write;
 
-#[allow(dead_code)]
 pub fn upsert_cylinder_file(dive_profiles: &Vec<Vec<Cylinder>>) -> std::io::Result<()> {
     let mut json_dive_profile_file = create_cylinder_file();
     let json_dive_profile =
@@ -16,7 +15,6 @@ pub fn upsert_cylinder_file(dive_profiles: &Vec<Vec<Cylinder>>) -> std::io::Resu
     Ok(())
 }
 
-#[allow(dead_code)]
 pub fn read_cylinder_file() -> Vec<Vec<Cylinder>> {
     let mut file = open_the_file(CYLINDER_FILE_NAME);
     let contents = get_file_contents(&mut file);

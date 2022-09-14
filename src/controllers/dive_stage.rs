@@ -60,7 +60,7 @@ pub fn update_cylinder_gas_usage(mut cylinder: Cylinder, dive_step: DiveStep) ->
 }
 
 #[cfg(test)]
-mod controllers_dive_stage_should {
+mod dive_stage_should {
     use super::*;
     use crate::models::gas_mixture::GasMixture;
 

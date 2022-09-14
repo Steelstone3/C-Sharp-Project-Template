@@ -43,6 +43,12 @@ impl Cylinder {
     }
 }
 
+impl Default for Cylinder {
+    fn default() -> Self {
+        Self { cylinder_volume: Default::default(), cylinder_pressure: Default::default(), initial_pressurised_cylinder_volume: Default::default(), gas_mixture: Default::default(), gas_management: Default::default() }
+    }
+}
+
 impl Display for Cylinder {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(

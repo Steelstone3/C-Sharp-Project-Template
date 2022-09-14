@@ -33,6 +33,12 @@ impl GasMixture {
     }
 }
 
+impl Default for GasMixture {
+    fn default() -> Self {
+        Self::new(Default::default(), Default::default())
+    }
+}
+
 #[cfg(test)]
 mod gas_mixture_should {
     use super::*;

@@ -8,7 +8,6 @@ const DIVE_PROFILE_FILE_NAME: &str = "dive_profile.json";
 const CAN_NOT_CREATE_FILE_ERROR: &str = "Can't create file";
 const CAN_NOT_READ_FILE_ERROR: &str = "Can't read file";
 
-//TODO create_file(path: &str)
 #[allow(dead_code)]
 pub fn create_dive_step_file() -> File {
     File::create(DIVE_STEP_FILE_NAME).expect(CAN_NOT_CREATE_FILE_ERROR)
@@ -32,7 +31,8 @@ pub fn open_the_file(path: &str) -> File {
         Ok(f) => f,
         Err(_) => {
             create_dive_profile_file();
-            create_dive_step_file()
+            create_dive_step_file();
+            create_cylinder_file()
         }
     }
 }
