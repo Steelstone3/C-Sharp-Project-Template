@@ -36,11 +36,10 @@ fn parse_to_application_data(contents: &String) -> Vec<DiveProfile> {
 
 #[cfg(test)]
 mod dive_profile_should {
-    use crate::commands::files::dive_profile_io::{read_dive_profile_file, upsert_dive_profile_file};
-    use crate::models::dive_profile::DiveProfile;
+    use super::*;
 
     #[test]
-    fn dive_profile_file_io() {
+    fn read_from_the_file_and_parse_to_the_dive_profile_model() {
         let dive_profiles = vec![dive_profile_test_fixture(), dive_profile_test_fixture()];
 
         upsert_dive_profile_file(&dive_profiles)

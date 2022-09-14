@@ -1,6 +1,8 @@
+use serde::{Serialize, Deserialize};
+
 use super::dive_step::DiveStep;
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, Serialize, Deserialize)]
 pub struct GasManagement {
     pub gas_used: u32,
     pub gas_remaining: u32,

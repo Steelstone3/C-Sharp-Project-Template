@@ -40,10 +40,10 @@ fn parse_to_application_data(contents: &String) -> Vec<DiveStep> {
 
 #[cfg(test)]
 mod dive_step_should {
-    use crate::{commands::files::dive_step_io::{read_dive_step_file, upsert_dive_step_file}, models::dive_step::DiveStep};
-
+    use super::*;
+    
     #[test]
-    fn dive_step_file_io() {
+    fn read_from_the_file_and_parse_to_the_dive_step_model() {
         let dive_steps = vec![
             DiveStep {
                 depth: 50,
