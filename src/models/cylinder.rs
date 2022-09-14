@@ -4,6 +4,7 @@ use crate::models::gas_management::GasManagement;
 use crate::models::gas_mixture::GasMixture;
 use std::fmt::Display;
 
+#[derive(PartialEq, Debug)]
 #[derive(Clone, Copy, Serialize, Deserialize)]
 pub struct Cylinder {
     pub cylinder_volume: u32,

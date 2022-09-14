@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 
+#[derive(PartialEq, Debug)]
 #[derive(Copy, Clone, Serialize, Deserialize)]
 pub struct DiveStep {
     pub depth: u32,

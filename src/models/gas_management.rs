@@ -2,6 +2,7 @@ use serde::{Serialize, Deserialize};
 
 use super::dive_step::DiveStep;
 
+#[derive(PartialEq, Debug)]
 #[derive(Copy, Clone, Serialize, Deserialize)]
 pub struct GasManagement {
     pub gas_used: u32,

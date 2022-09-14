@@ -73,20 +73,22 @@ mod dive_stage_should {
         let expected_dive_profile = dive_profile_test_fixture();
 
         //Act
-        let result = super::run_dive_profile(zhl16, dive_step, cylinder);
+        let dive_profile = super::run_dive_profile(zhl16, dive_step, cylinder);
 
         //Assert
+        // assert_eq!(expected_dive_profile, dive_profile);
+
         assert_eq!(
             format!("{:.2}", expected_dive_profile.oxygen_at_pressure),
-            format!("{:.2}", result.oxygen_at_pressure)
+            format!("{:.2}", dive_profile.oxygen_at_pressure)
         );
         assert_eq!(
             format!("{:.2}", expected_dive_profile.helium_at_pressure),
-            format!("{:.2}", result.helium_at_pressure)
+            format!("{:.2}", dive_profile.helium_at_pressure)
         );
         assert_eq!(
             format!("{:.2}", expected_dive_profile.nitrogen_at_pressure),
-            format!("{:.2}", result.nitrogen_at_pressure)
+            format!("{:.2}", dive_profile.nitrogen_at_pressure)
         );
 
         for compartment in 0..16 {
@@ -95,50 +97,50 @@ mod dive_stage_should {
                     "{:.1}",
                     expected_dive_profile.tissue_pressures_nitrogen[compartment]
                 ),
-                format!("{:.1}", result.tissue_pressures_nitrogen[compartment])
+                format!("{:.1}", dive_profile.tissue_pressures_nitrogen[compartment])
             );
             assert_eq!(
                 format!(
                     "{:.3}",
                     expected_dive_profile.tissue_pressures_helium[compartment]
                 ),
-                format!("{:.3}", result.tissue_pressures_helium[compartment])
+                format!("{:.3}", dive_profile.tissue_pressures_helium[compartment])
             );
             assert_eq!(
                 format!(
                     "{:.2}",
                     expected_dive_profile.tissue_pressures_total[compartment]
                 ),
-                format!("{:.2}", result.tissue_pressures_total[compartment])
+                format!("{:.2}", dive_profile.tissue_pressures_total[compartment])
             );
             assert_eq!(
                 format!("{:.1}", expected_dive_profile.a_values[compartment]),
-                format!("{:.1}", result.a_values[compartment])
+                format!("{:.1}", dive_profile.a_values[compartment])
             );
             assert_eq!(
                 format!("{:.2}", expected_dive_profile.b_values[compartment]),
-                format!("{:.2}", result.b_values[compartment])
+                format!("{:.2}", dive_profile.b_values[compartment])
             );
             assert_eq!(
                 format!(
                     "{:.2}",
                     expected_dive_profile.tolerated_ambient_pressures[compartment]
                 ),
-                format!("{:.2}", result.tolerated_ambient_pressures[compartment])
+                format!("{:.2}", dive_profile.tolerated_ambient_pressures[compartment])
             );
             assert_eq!(
                 format!(
                     "{:.2}",
                     expected_dive_profile.maximum_surface_pressures[compartment]
                 ),
-                format!("{:.2}", result.maximum_surface_pressures[compartment])
+                format!("{:.2}", dive_profile.maximum_surface_pressures[compartment])
             );
             assert_eq!(
                 format!(
                     "{:.0}",
                     expected_dive_profile.compartment_loads[compartment]
                 ),
-                format!("{:.0}", result.compartment_loads[compartment])
+                format!("{:.0}", dive_profile.compartment_loads[compartment])
             );
         }
     }
@@ -147,20 +149,17 @@ mod dive_stage_should {
     fn update_cylinder_gas_usage() {
         //Arrange
         let dive_step = dive_step_test_fixture();
-        let mut cylinder = cylinder_test_fixture();
+        let mut expected_cylinder = cylinder_test_fixture();
 
         //Act
-        cylinder = super::update_cylinder_gas_usage(cylinder, dive_step);
+        let cylinder = super::update_cylinder_gas_usage(expected_cylinder, dive_step);
+        
+        //Expected (updated from fixutre)
+        expected_cylinder.gas_management.gas_remaining = 1680;
+        expected_cylinder.gas_management.gas_used = 720;
 
         //Assert
-        assert_eq!(12, cylinder.cylinder_volume);
-        assert_eq!(200, cylinder.cylinder_pressure);
-        assert_eq!(2400, cylinder.initial_pressurised_cylinder_volume);
-        assert_eq!(21, cylinder.gas_mixture.oxygen);
-        assert_eq!(10, cylinder.gas_mixture.helium);
-        assert_eq!(69, cylinder.gas_mixture.nitrogen);
-        assert_eq!(720, cylinder.gas_management.gas_used);
-        assert_eq!(1680, cylinder.gas_management.gas_remaining);
+        assert_eq!(expected_cylinder, cylinder);
     }
 
     fn dive_step_test_fixture() -> DiveStep {

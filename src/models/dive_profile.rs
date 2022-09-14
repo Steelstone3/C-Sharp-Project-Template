@@ -2,6 +2,7 @@ use std::fmt::Display;
 
 use serde::{Deserialize, Serialize};
 
+#[derive(PartialEq, Debug)]
 #[derive(Default, Copy, Clone, Serialize, Deserialize)]
 pub struct DiveProfile {
     pub maximum_surface_pressures: [f32; 16],

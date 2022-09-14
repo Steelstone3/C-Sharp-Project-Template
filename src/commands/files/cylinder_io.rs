@@ -37,68 +37,17 @@ mod dive_profile_should {
     use super::*;
 
     #[test]
-    // #[ignore = "Writing test"]
     fn read_from_the_file_and_parse_to_the_cylinder_model() {
-        let cylinders = vec![
+        let expected_cylinders = vec![
             vec![cylinder_test_fixture(), cylinder_test_fixture()],
             vec![cylinder_test_fixture(), cylinder_test_fixture()],
         ];
 
-        upsert_cylinder_file(&cylinders)
+        upsert_cylinder_file(&expected_cylinders)
             .expect("integration test dive_profile.json file didn't upsert");
         let cylinders = read_cylinder_file();
 
-        assert_eq!(12, cylinders[0][0].cylinder_volume);
-        assert_eq!(200, cylinders[0][0].cylinder_pressure);
-        assert_eq!(2400, cylinders[0][0].initial_pressurised_cylinder_volume);
-        assert_eq!(21, cylinders[0][0].gas_mixture.oxygen);
-        assert_eq!(10, cylinders[0][0].gas_mixture.helium);
-        assert_eq!(69, cylinders[0][0].gas_mixture.nitrogen);
-        assert_eq!(2400, cylinders[0][0].gas_management.gas_remaining);
-        assert_eq!(0, cylinders[0][0].gas_management.gas_used);
-        assert_eq!(
-            12,
-            cylinders[0][0].gas_management.surface_air_consumption_rate
-        );
-
-        assert_eq!(12, cylinders[0][1].cylinder_volume);
-        assert_eq!(200, cylinders[0][1].cylinder_pressure);
-        assert_eq!(2400, cylinders[0][1].initial_pressurised_cylinder_volume);
-        assert_eq!(21, cylinders[0][1].gas_mixture.oxygen);
-        assert_eq!(10, cylinders[0][1].gas_mixture.helium);
-        assert_eq!(69, cylinders[0][1].gas_mixture.nitrogen);
-        assert_eq!(2400, cylinders[0][1].gas_management.gas_remaining);
-        assert_eq!(0, cylinders[0][1].gas_management.gas_used);
-        assert_eq!(
-            12,
-            cylinders[0][1].gas_management.surface_air_consumption_rate
-        );
-
-        assert_eq!(12, cylinders[1][0].cylinder_volume);
-        assert_eq!(200, cylinders[1][0].cylinder_pressure);
-        assert_eq!(2400, cylinders[1][0].initial_pressurised_cylinder_volume);
-        assert_eq!(21, cylinders[1][0].gas_mixture.oxygen);
-        assert_eq!(10, cylinders[1][0].gas_mixture.helium);
-        assert_eq!(69, cylinders[1][0].gas_mixture.nitrogen);
-        assert_eq!(2400, cylinders[1][0].gas_management.gas_remaining);
-        assert_eq!(0, cylinders[1][0].gas_management.gas_used);
-        assert_eq!(
-            12,
-            cylinders[1][0].gas_management.surface_air_consumption_rate
-        );
-
-        assert_eq!(12, cylinders[1][1].cylinder_volume);
-        assert_eq!(200, cylinders[1][1].cylinder_pressure);
-        assert_eq!(2400, cylinders[1][1].initial_pressurised_cylinder_volume);
-        assert_eq!(21, cylinders[1][1].gas_mixture.oxygen);
-        assert_eq!(10, cylinders[1][1].gas_mixture.helium);
-        assert_eq!(69, cylinders[1][1].gas_mixture.nitrogen);
-        assert_eq!(2400, cylinders[1][1].gas_management.gas_remaining);
-        assert_eq!(0, cylinders[1][1].gas_management.gas_used);
-        assert_eq!(
-            12,
-            cylinders[1][1].gas_management.surface_air_consumption_rate
-        );
+        assert_eq!(expected_cylinders, cylinders);
     }
 
     fn cylinder_test_fixture() -> Cylinder {

@@ -38,7 +38,17 @@ mod dive_step_should {
     
     #[test]
     fn read_from_the_file_and_parse_to_the_dive_step_model() {
-        let dive_steps = vec![
+        let expected_dive_steps = dive_step_test_fixture();
+
+        upsert_dive_step_file(&expected_dive_steps)
+            .expect("integration test dive_step.json file didn't upsert");
+        let dive_steps = read_dive_step_file();
+
+        assert_eq!(expected_dive_steps, dive_steps);
+    }
+
+    fn dive_step_test_fixture() -> Vec<DiveStep> {
+        vec![
             DiveStep {
                 depth: 50,
                 time: 10,
@@ -47,15 +57,6 @@ mod dive_step_should {
                 depth: 25,
                 time: 20
             },
-        ];
-
-        upsert_dive_step_file(&dive_steps)
-            .expect("integration test dive_step.json file didn't upsert");
-        let actual_dive_steps = read_dive_step_file();
-
-        assert_eq!(50, actual_dive_steps[0].depth);
-        assert_eq!(10, actual_dive_steps[0].time);
-        assert_eq!(25, actual_dive_steps[1].depth);
-        assert_eq!(20, actual_dive_steps[1].time);
+        ]
     }
 }

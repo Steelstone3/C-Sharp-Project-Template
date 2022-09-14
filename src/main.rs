@@ -1,5 +1,4 @@
 use controllers::dive_stage::run_dive_profile;
-use controllers::state::DivePlanState;
 use presenters::presenter::select_cylinder;
 use presenters::{
     dive_setup::{create_cylinders, create_dive_step, welcome_message},
@@ -14,7 +13,7 @@ mod models;
 mod presenters;
 
 fn main() {
-    let mut _state = DivePlanState::default();
+    // let mut state = DivePlanState::default();
 
     welcome_message();
     

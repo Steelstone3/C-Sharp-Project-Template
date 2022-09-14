@@ -18,9 +18,8 @@ pub fn calculate_b_value(compartment: usize, dive_model: DiveModel) -> f32 {
 
 #[cfg(test)]
 mod commands_a_b_values_should {
-    use crate::models::dive_profile::DiveProfile;
-
     use super::*;
+    use crate::models::dive_profile::DiveProfile;
 
     #[test]
     fn calculate_a_value() {
@@ -28,6 +27,14 @@ mod commands_a_b_values_should {
         let mut zhl16 = DiveModel::create_zhl16_dive_model();
         let expected_dive_profile_model = dive_profile_test_fixture();
         zhl16.dive_profile = a_b_values_dive_profile_test_fixture();
+
+        // let mut output = Vec::new();
+
+        // for compartment in 0..16 { 
+        //     output.push(super::calculate_a_value(compartment, zhl16));
+        // }
+
+        // assert_eq!(dive_profile_test_fixture().a_values.to_vec(), output);
 
         for compartment in 0..16 {
             //Act

@@ -1,36 +1,32 @@
 use crate::models::{cylinder::Cylinder, dive_profile::DiveProfile, dive_step::DiveStep};
 
 pub struct DivePlanState {
-    dive_profiles: Vec<DiveProfile>,
-    dive_steps: Vec<DiveStep>,
-    cylinders: Vec<Vec<Cylinder>>,
+    pub dive_profiles: Vec<DiveProfile>,
+    pub dive_steps: Vec<DiveStep>,
+    pub cylinders: Vec<Vec<Cylinder>>,
 }
 
 impl DivePlanState {
-    pub fn update_dive_plan_states(
-        &mut self,
-        dive_profile: DiveProfile,
-        dive_step: DiveStep,
-        cylinders: Vec<Cylinder>,
-    ) {
-        self.dive_profiles.push(dive_profile);
-        self.dive_steps.push(dive_step);
-        self.cylinders.push(cylinders);
-    }
-
-    pub fn get_last_dive_profile(self) -> DiveProfile{
-        self.dive_profiles.last().expect("Dive profile have no stored states").to_owned()
+    pub fn get_last_dive_profile(self) -> DiveProfile {
+        self.dive_profiles
+            .last()
+            .expect("Dive profile have no stored states")
+            .to_owned()
     }
 
     pub fn get_last_dive_step(self) -> DiveStep {
-        self.dive_steps.last().expect("Dive step have no stored states").to_owned()
+        self.dive_steps
+            .last()
+            .expect("Dive step have no stored states")
+            .to_owned()
     }
 
     fn get_last_cylinders(self) -> Vec<Cylinder> {
-        self.cylinders.last().expect("Cylinders have no stored states").to_owned()
+        self.cylinders
+            .last()
+            .expect("Cylinders have no stored states")
+            .to_owned()
     }
-
-   
 }
 
 impl Default for DivePlanState {
@@ -45,94 +41,18 @@ impl Default for DivePlanState {
 
 #[cfg(test)]
 mod state_should {
-    use crate::models::gas_mixture::GasMixture;
-
     use super::*;
-
-    #[test]
-    fn update_dive_plan_states() {
-        let mut state = DivePlanState::default();
-
-        state.update_dive_plan_states(default_dive_profile_test_fixture(), default_dive_step_test_fixture(), vec![default_cylinder_test_fixture()]);
-        state.update_dive_plan_states(dive_profile_test_fixture(), dive_step_test_fixture(), vec![cylinder_test_fixture()]);
-
-        assert_eq!(2, state.dive_profiles.len());
-        assert_eq!(2, state.dive_steps.len());
-        assert_eq!(2, state.cylinders.len());
-    }
+    use crate::models::gas_mixture::GasMixture;
 
     #[test]
     fn get_last_dive_profile_state() {
         let mut state = DivePlanState::default();
-        state.dive_profiles = vec![default_dive_profile_test_fixture(), dive_profile_test_fixture()];
+        state.dive_profiles = vec![
+            default_dive_profile_test_fixture(),
+            dive_profile_test_fixture(),
+        ];
 
-        let dive_profile = state.get_last_dive_profile();
-
-        assert_eq!(
-            format!("{:.2}", dive_profile_test_fixture().oxygen_at_pressure),
-            format!("{:.2}", dive_profile.oxygen_at_pressure)
-        );
-        assert_eq!(
-            format!("{:.2}", dive_profile_test_fixture().helium_at_pressure),
-            format!("{:.2}", dive_profile.helium_at_pressure)
-        );
-        assert_eq!(
-            format!("{:.2}", dive_profile_test_fixture().nitrogen_at_pressure),
-            format!("{:.2}", dive_profile.nitrogen_at_pressure)
-        );
-
-        for compartment in 0..16 {
-            assert_eq!(
-                format!(
-                    "{:.1}",
-                    dive_profile_test_fixture().tissue_pressures_nitrogen[compartment]
-                ),
-                format!("{:.1}", dive_profile.tissue_pressures_nitrogen[compartment])
-            );
-            assert_eq!(
-                format!(
-                    "{:.3}",
-                    dive_profile_test_fixture().tissue_pressures_helium[compartment]
-                ),
-                format!("{:.3}", dive_profile.tissue_pressures_helium[compartment])
-            );
-            assert_eq!(
-                format!(
-                    "{:.2}",
-                    dive_profile_test_fixture().tissue_pressures_total[compartment]
-                ),
-                format!("{:.2}", dive_profile.tissue_pressures_total[compartment])
-            );
-            assert_eq!(
-                format!("{:.1}", dive_profile_test_fixture().a_values[compartment]),
-                format!("{:.1}", dive_profile.a_values[compartment])
-            );
-            assert_eq!(
-                format!("{:.2}", dive_profile_test_fixture().b_values[compartment]),
-                format!("{:.2}", dive_profile.b_values[compartment])
-            );
-            assert_eq!(
-                format!(
-                    "{:.2}",
-                    dive_profile_test_fixture().tolerated_ambient_pressures[compartment]
-                ),
-                format!("{:.2}", dive_profile.tolerated_ambient_pressures[compartment])
-            );
-            assert_eq!(
-                format!(
-                    "{:.2}",
-                    dive_profile_test_fixture().maximum_surface_pressures[compartment]
-                ),
-                format!("{:.2}", dive_profile.maximum_surface_pressures[compartment])
-            );
-            assert_eq!(
-                format!(
-                    "{:.0}",
-                    dive_profile_test_fixture().compartment_loads[compartment]
-                ),
-                format!("{:.0}", dive_profile.compartment_loads[compartment])
-            );
-        }
+        assert_eq!(dive_profile_test_fixture(), state.get_last_dive_profile());
     }
 
     #[test]
@@ -149,7 +69,10 @@ mod state_should {
     #[test]
     fn get_last_cylinders_state() {
         let mut state = DivePlanState::default();
-        state.cylinders = vec![vec![default_cylinder_test_fixture()], vec![cylinder_test_fixture()]];
+        state.cylinders = vec![
+            vec![default_cylinder_test_fixture()],
+            vec![cylinder_test_fixture()],
+        ];
 
         let cylinders = state.get_last_cylinders();
 
