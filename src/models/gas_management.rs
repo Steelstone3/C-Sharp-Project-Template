@@ -8,10 +8,10 @@ pub struct GasManagement {
 }
 
 impl GasManagement {
-    pub fn new(pressurised_cylinder_volume: u32, surface_air_consumption_rate: u32) -> Self {
+    pub fn new(gas_remaining:u32, surface_air_consumption_rate: u32) -> Self {
         GasManagement {
             gas_used: 0,
-            gas_remaining: pressurised_cylinder_volume,
+            gas_remaining,
             surface_air_consumption_rate,
         }
     }

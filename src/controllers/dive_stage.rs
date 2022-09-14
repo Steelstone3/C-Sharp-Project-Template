@@ -58,7 +58,7 @@ fn update_dive_profile_model(
 #[cfg(test)]
 mod controllers_dive_stage_should {
     use super::*;
-    use crate::models::{gas_management::GasManagement, gas_mixture::GasMixture};
+    use crate::models::{gas_mixture::GasMixture};
 
     #[test]
     fn run_dive_profile() {
@@ -173,7 +173,7 @@ mod controllers_dive_stage_should {
             12,
             200,
             GasMixture::new(21, 10),
-            GasManagement::new(2400, 12),
+            12,
         )
     }
 

@@ -1,5 +1,7 @@
 use super::presenter::{confirmation, parse_numeric_value, text_prompt};
-use crate::models::{cylinder::Cylinder, gas_management::GasManagement, gas_mixture::GasMixture, dive_step::DiveStep};
+use crate::models::{
+    cylinder::Cylinder, dive_step::DiveStep, gas_mixture::GasMixture,
+};
 
 pub fn welcome_message() {
     println!("Welcome to Bubbles Dive Planner Console Rust");
@@ -16,50 +18,48 @@ pub fn create_cylinders() -> Vec<Cylinder> {
 }
 
 fn create_cylinder() -> Cylinder {
-    let cylinder_volume = parse_numeric_value(text_prompt(
-        "Enter cylinder volume (L):",
-        "Enter a value 3 - 30",
-        "12",
-    ));
-    let cylinder_pressure = parse_numeric_value(text_prompt(
-        "Enter cylinder pressure (BAR):",
-        "Enter a value 50 - 300",
-        "200",
-    ));
-
-    let gas_mixture = GasMixture::new(
+    Cylinder::new(
         parse_numeric_value(text_prompt(
-            "Enter oxygen (%):",
-            "Enter a value 5 - 100",
-            "21",
+            "Enter cylinder volume (L):",
+            "Enter a value 3 - 30",
+            "12",
         )),
         parse_numeric_value(text_prompt(
-            "Enter helium (%):",
-            "Enter a value 0 - 100",
-            "0",
+            "Enter cylinder pressure (BAR):",
+            "Enter a value 50 - 300",
+            "200",
         )),
-    );
-
-    let gas_management = GasManagement::new(
-        Cylinder::calculate_initial_pressurised_cylinder_volume(cylinder_volume, cylinder_pressure),
+        GasMixture::new(
+            parse_numeric_value(text_prompt(
+                "Enter oxygen (%):",
+                "Enter a value 5 - 100",
+                "21",
+            )),
+            parse_numeric_value(text_prompt(
+                "Enter helium (%):",
+                "Enter a value 0 - 100",
+                "0",
+            )),
+        ),
         parse_numeric_value(text_prompt(
             "Enter surface air consumption rate (L/min):",
             "Enter a value 3 - 30",
             "12",
         )),
-    );
-
-    Cylinder::new(
-        cylinder_volume,
-        cylinder_pressure,
-        gas_mixture,
-        gas_management,
     )
 }
 
 pub fn create_dive_step() -> DiveStep {
-    DiveStep{
-        depth: parse_numeric_value(text_prompt("Enter depth (M):", "Enter a value 1 - 100", "1")),
-        time: parse_numeric_value(text_prompt("Enter time (min):", "Enter a value 1 - 60", "1")),
+    DiveStep {
+        depth: parse_numeric_value(text_prompt(
+            "Enter depth (M):",
+            "Enter a value 1 - 100",
+            "1",
+        )),
+        time: parse_numeric_value(text_prompt(
+            "Enter time (min):",
+            "Enter a value 1 - 60",
+            "1",
+        )),
     }
 }

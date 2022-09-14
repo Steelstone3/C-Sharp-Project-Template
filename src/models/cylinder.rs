@@ -16,7 +16,7 @@ impl Cylinder {
         cylinder_volume: u32,
         cylinder_pressure: u32,
         gas_mixture: GasMixture,
-        gas_management: GasManagement,
+        surface_air_consumption_rate: u32,
     ) -> Self {
         let initial_pressurised_cylinder_volume =
             Self::calculate_initial_pressurised_cylinder_volume(cylinder_volume, cylinder_pressure);
@@ -26,7 +26,10 @@ impl Cylinder {
             cylinder_pressure,
             initial_pressurised_cylinder_volume,
             gas_mixture,
-            gas_management,
+            gas_management: GasManagement::new(
+                initial_pressurised_cylinder_volume,
+                surface_air_consumption_rate,
+            ),
         }
     }
 
@@ -55,6 +58,26 @@ impl Display for Cylinder {
 #[cfg(test)]
 mod cylinder_should {
     use super::*;
+
+    #[test]
+    fn create_a_new_cylinder() {
+        //Arrange
+        let gas_mixture = GasMixture::new(21, 10);
+
+        //Act
+        let cylinder = Cylinder::new(12, 200, gas_mixture, 12);
+
+        //Assert
+        assert_eq!(12, cylinder.cylinder_volume);
+        assert_eq!(200, cylinder.cylinder_pressure);
+        assert_eq!(2400, cylinder.initial_pressurised_cylinder_volume);
+        assert_eq!(21, cylinder.gas_mixture.oxygen);
+        assert_eq!(10, cylinder.gas_mixture.helium);
+        assert_eq!(69, cylinder.gas_mixture.nitrogen);
+        assert_eq!(12, cylinder.gas_management.surface_air_consumption_rate);
+        assert_eq!(2400, cylinder.gas_management.gas_remaining);
+        assert_eq!(0, cylinder.gas_management.gas_used);
+    }
 
     #[test]
     fn calculate_initial_pressurised_cylinder_volume() {
