@@ -14,15 +14,20 @@ mod presenters;
 
 fn main() {
     welcome_message();
+    //TODO option to load from file here which populates the models
     let mut dive_model = select_dive_model();
     let cylinders = create_cylinders();
+    //TODO write cylinders to json for the start cylinder states
 
-    //loop {
-    let dive_step = create_dive_step();
-    let mut cylinder = select_cylinder(cylinders);
-    dive_model.dive_profile = run_dive_profile(dive_model, dive_step, cylinder);
-    cylinder = update_cylinder_gas_usage(cylinder, dive_step);
-    println!("{}", dive_model.dive_profile);
-    println!("{}", cylinder);
-    // }
+    loop {
+        let dive_step = create_dive_step();
+        //TODO to_owned() means that cylinder won't update properly
+        let mut cylinder = select_cylinder(cylinders.to_owned());
+        dive_model.dive_profile = run_dive_profile(dive_model, dive_step, cylinder);
+        cylinder = update_cylinder_gas_usage(cylinder, dive_step);
+        println!("{}", dive_model.dive_profile);
+        println!("{}", cylinder);
+
+        //TODO write dive_model.dive_profile and cylinder/s to file
+    }
 }
