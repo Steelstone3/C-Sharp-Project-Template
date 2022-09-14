@@ -17,7 +17,6 @@ fn main() {
     //TODO option to load from file here which populates the models
     let mut dive_model = select_dive_model();
     let cylinders = create_cylinders();
-    //TODO write cylinders to json for the start cylinder states
 
     loop {
         let dive_step = create_dive_step();
