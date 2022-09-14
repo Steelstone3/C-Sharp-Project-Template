@@ -5,6 +5,8 @@ use presenters::{
     presenter::select_dive_model,
 };
 
+use crate::controllers::dive_stage::update_cylinder_gas_usage;
+
 mod commands;
 mod controllers;
 mod models;
@@ -17,8 +19,9 @@ fn main() {
 
     //loop {
     let dive_step = create_dive_step();
-    let cylinder = select_cylinder(cylinders);
+    let mut cylinder = select_cylinder(cylinders);
     dive_model.dive_profile = run_dive_profile(dive_model, dive_step, cylinder);
+    cylinder = update_cylinder_gas_usage(cylinder, dive_step);
     println!("{}", dive_model.dive_profile);
     println!("{}", cylinder);
     // }

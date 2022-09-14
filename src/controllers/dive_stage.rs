@@ -18,7 +18,7 @@ use crate::{
 pub fn run_dive_profile(
     mut dive_model: DiveModel,
     dive_step: DiveStep,
-    mut cylinder: Cylinder,
+    cylinder: Cylinder,
 ) -> DiveProfile {
     dive_model.dive_profile =
         calculate_ambient_pressure(dive_model.dive_profile, dive_step, cylinder.gas_mixture);
@@ -26,8 +26,6 @@ pub fn run_dive_profile(
     for compartment in 0..dive_model.compartment_count {
         dive_model.dive_profile = update_dive_profile_model(compartment, dive_model, dive_step);
     }
-
-    cylinder.gas_management = cylinder.gas_management.update_gas_management(dive_step);
 
     dive_model.dive_profile
 }
@@ -53,6 +51,12 @@ fn update_dive_profile_model(
         calculate_compartment_load(compartment, dive_model.dive_profile);
 
     dive_model.dive_profile
+}
+
+pub fn update_cylinder_gas_usage(mut cylinder: Cylinder, dive_step: DiveStep) -> Cylinder {
+    cylinder.gas_management = cylinder.gas_management.update_gas_management(dive_step);
+    
+    cylinder
 }
 
 #[cfg(test)]
