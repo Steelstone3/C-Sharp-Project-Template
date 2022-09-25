@@ -9,8 +9,8 @@ namespace BubblesDivePlannerTests.Models
 {
     public class DivePlanShould
     {
-        private Mock<IDiveModel> dummyDiveModel = new();
-        private Mock<IList<ICylinder>> dummyCylinders = new();
+        private readonly Mock<IDiveModel> dummyDiveModel = new();
+        private readonly Mock<IList<ICylinder>> dummyCylinders = new();
 
         [Fact]
         public void ConstructADivePlan()

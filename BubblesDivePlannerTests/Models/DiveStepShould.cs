@@ -6,10 +6,12 @@ namespace Name
     public class DiveStepShould {
         [Fact]
         public void ConstructADiveStep() {
-            IDiveStep diveStep = new DiveStep();
+            byte depth = 50;
+            byte time = 10;
+            IDiveStep diveStep = new DiveStep(depth, time);
 
-            Assert.Equal(0, diveStep.Depth);
-            Assert.Equal(0, diveStep.Time);
+            Assert.Equal(depth, diveStep.Depth);
+            Assert.Equal(time, diveStep.Time);
         }
     }
 }
