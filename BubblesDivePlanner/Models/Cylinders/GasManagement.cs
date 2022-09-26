@@ -17,7 +17,6 @@ namespace BubblesDivePlanner.Models.Cylinders
         public byte SurfaceAirConsumptionRate { get; }
         public ushort GasUsed { get; private set; }
 
-        //TODO Pass this logic down to a controller layer
         public void UpdateGasUsage(IDiveStep diveStep)
         {
             GasUsed = cylinderController.CalculateGasUsage(SurfaceAirConsumptionRate, diveStep);

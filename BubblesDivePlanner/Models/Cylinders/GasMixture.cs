@@ -6,35 +6,51 @@ namespace BubblesDivePlanner.Models.Cylinders
         {
             Oxygen = oxygen;
             Helium = helium;
-            AssignGasMixture();
+            WithOxygen();
+            WithHelium();
         }
 
         public byte Oxygen { get; private set; }
         public byte Helium { get; private set; }
         public byte Nitrogen { get; private set; }
 
-        private void AssignGasMixture()
+        private void WithOxygen()
         {
-            if (Oxygen == 0)
-            {
-                Oxygen += 5;
-            }
+            CheckEdgeCases();
 
-            if (Oxygen >= 100 && Helium >= 100)
-            {
-                Oxygen = 100;
-                Helium = 0;
-            }
-            else if (Oxygen >= 100)
+            if (Oxygen >= 100)
             {
                 Oxygen = (byte)(100 - Helium);
             }
-            else if (Helium >= 100)
+
+            CalculateNitrogen();
+        }
+
+        private void WithHelium()
+        {
+            CheckEdgeCases();
+
+            if (Helium >= 100)
             {
                 Helium = (byte)(100 - Oxygen);
             }
 
-            Nitrogen = (byte)(100 - Oxygen - Helium);
+            CalculateNitrogen();
+        }
+
+        private void CalculateNitrogen() => Nitrogen = (byte)(100 - Oxygen - Helium);
+
+        private void CheckEdgeCases()
+        {
+            if (Oxygen == 0)
+            {
+                Oxygen = 5;
+            }
+            else if (Oxygen >= 100 && Helium >= 100)
+            {
+                Oxygen = 100;
+                Helium = 0;
+            }
         }
     }
 }
