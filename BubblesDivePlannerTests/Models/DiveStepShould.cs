@@ -3,14 +3,24 @@ using Xunit;
 
 namespace Name
 {
-    public class DiveStepShould {
+    public class DiveStepShould
+    {
+        private readonly byte depth = 50;
+        private readonly byte time = 10;
+
         [Fact]
-        public void ConstructADiveStep() {
-            byte depth = 50;
-            byte time = 10;
+        public void ContainsDepth()
+        {
             IDiveStep diveStep = new DiveStep(depth, time);
 
             Assert.Equal(depth, diveStep.Depth);
+        }
+
+        [Fact]
+        public void ContainsTime()
+        {
+            IDiveStep diveStep = new DiveStep(depth, time);
+
             Assert.Equal(time, diveStep.Time);
         }
     }

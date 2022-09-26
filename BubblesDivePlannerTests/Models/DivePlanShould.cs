@@ -13,12 +13,25 @@ namespace BubblesDivePlannerTests.Models
         private readonly Mock<IList<ICylinder>> dummyCylinders = new();
 
         [Fact]
-        public void ConstructADivePlan()
+        public void ContainADiveModel()
         {
             IDivePlan divePlan = new DivePlan(dummyDiveModel.Object, dummyCylinders.Object);
 
             Assert.NotNull(divePlan.DiveModel);
+        }
+
+        [Fact]
+        public void ContainCylinders()
+        {
+            IDivePlan divePlan = new DivePlan(dummyDiveModel.Object, dummyCylinders.Object);
+
             Assert.NotNull(divePlan.Cylinders);
+        }
+
+        [Fact]
+        public void ContainADiveStep() {
+            IDivePlan divePlan = new DivePlan(dummyDiveModel.Object, dummyCylinders.Object);
+
             Assert.Null(divePlan.DiveStep);
         }
 
