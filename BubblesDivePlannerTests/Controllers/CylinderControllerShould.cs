@@ -46,6 +46,8 @@ namespace BubblesDivePlannerTests.Controllers
         [InlineData(1000, 500, 500)]
         [InlineData(500, 720, 0)]
         [InlineData(0, 720, 0)]
+        [InlineData(2400, 0, 2400)]
+        [InlineData(0, 0, 0)]
         public void CalculateRemainingGas(ushort previousGasRemaining, ushort gasUsed, ushort expectedRemainingGas)
         {
             var gasRemaining = cylinderController.CalculateRemainingGas(previousGasRemaining, gasUsed);

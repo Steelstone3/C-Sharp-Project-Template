@@ -14,7 +14,6 @@ namespace BubblesDivePlannerTests.Models.Cylinders
         private readonly byte surfaceAirConsumptionRate = 12;
         private readonly IDiveStep diveStep = new DiveStep(50, 10);
 
-
         public GasManagementShould()
         {
             mockCylinderController = MockCylinderController();
