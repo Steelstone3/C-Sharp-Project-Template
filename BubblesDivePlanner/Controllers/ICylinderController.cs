@@ -1,5 +1,4 @@
 using BubblesDivePlanner.Models;
-using BubblesDivePlanner.Models.Cylinders;
 
 namespace BubblesDivePlanner.Controllers
 {
