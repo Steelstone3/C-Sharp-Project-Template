@@ -1,3 +1,4 @@
+using System.Net.Http;
 using BubblesDivePlanner.Controllers;
 
 namespace BubblesDivePlanner.Models.Cylinders
@@ -28,16 +29,12 @@ namespace BubblesDivePlanner.Models.Cylinders
                 Helium = 0;
             }
 
-            if (Oxygen >= 100)
-            {
-                Oxygen = (byte)(100 - Helium);
-            }
-            if (Helium >= 100)
-            {
-                Helium = (byte)(100 - Oxygen);
-            }
+            Oxygen = AssignOxygen();
+            Helium = AssignHelium();
         }
 
+        private byte AssignOxygen() => Oxygen >= 100 ? (byte)(100 - Helium) : Oxygen;
+        private byte AssignHelium() => Helium >= 100 ? (byte)(100 - Oxygen) : Helium;
         private void CalculateNitrogen() => Nitrogen = (byte)(100 - Oxygen - Helium);
     }
 }
