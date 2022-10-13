@@ -9,20 +9,6 @@ namespace BubblesDivePlannerTests.Controllers
         private readonly ICylinderController cylinderController = new CylinderController();
 
         [Theory]
-        [InlineData(12, 200, 2400)]
-        [InlineData(24, 200, 4800)]
-        [InlineData(12, 400, 4800)]
-        [InlineData(0, 200, 0)]
-        [InlineData(12, 0, 0)]
-        [InlineData(0, 0, 0)]
-        public void CalculateInitialPressurisedVolume(byte cylinderVolume, ushort cylinderPressure, ushort expectedInitialPressurisedVolume)
-        {
-            var initialPressurisedVolume = cylinderController.CalculateInitialPressurisedVolume(cylinderVolume, cylinderPressure);
-
-            Assert.Equal(expectedInitialPressurisedVolume, initialPressurisedVolume);
-        }
-
-        [Theory]
         [InlineData(12, 50, 10, 720)]
         [InlineData(24, 50, 10, 1440)]
         [InlineData(12, 100, 10, 1320)]

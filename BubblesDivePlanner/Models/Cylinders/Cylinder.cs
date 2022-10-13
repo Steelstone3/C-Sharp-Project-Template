@@ -9,7 +9,7 @@ namespace BubblesDivePlanner.Models.Cylinders
             CylinderVolume = cylinderVolume;
             CylinderPressure = cylinderPressure;
             GasMixture = gasMixture;
-            InitialPressurisedVolume = cylinderController.CalculateInitialPressurisedVolume(cylinderVolume, cylinderPressure);
+            InitialPressurisedVolume = (ushort)(cylinderPressure * cylinderVolume);
             GasManagement = new GasManagement(cylinderController, InitialPressurisedVolume, surfaceAirConsumptionRate);
         }
 

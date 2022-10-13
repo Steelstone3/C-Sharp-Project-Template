@@ -9,7 +9,6 @@ namespace BubblesDivePlannerTests.Models.Cylinders
     {
         private readonly byte cylinderVolume = 12;
         private readonly ushort cylinderPressure = 200;
-        private readonly ushort expectedInitialPressurisedVolume = 2400;
         private readonly byte surfaceAirConsumptionRate = 12;
         private readonly ICylinderController cylinderController = new CylinderController();
         private readonly Mock<IGasMixture> dummyGasMixture = new();
@@ -32,9 +31,17 @@ namespace BubblesDivePlannerTests.Models.Cylinders
             Assert.Equal(cylinderPressure, cylinder.CylinderPressure);
         }
 
-        [Fact]
-        public void ContainsInitialPressurisedVolume()
+        [Theory]
+        [InlineData(12, 200, 2400)]
+        [InlineData(24, 200, 4800)]
+        [InlineData(12, 400, 4800)]
+        [InlineData(0, 200, 0)]
+        [InlineData(12, 0, 0)]
+        [InlineData(0, 0, 0)]
+        public void CalculateInitialPressurisedVolume(byte cylinderVolume, ushort cylinderPressure, ushort expectedInitialPressurisedVolume)
         {
+            cylinder = new Cylinder(cylinderController, cylinderVolume, cylinderPressure, dummyGasMixture.Object, surfaceAirConsumptionRate);
+
             Assert.Equal(expectedInitialPressurisedVolume, cylinder.InitialPressurisedVolume);
         }
 
@@ -48,23 +55,6 @@ namespace BubblesDivePlannerTests.Models.Cylinders
         public void ContainsGasManagement()
         {
             Assert.NotNull(cylinder.GasManagement);
-        }
-
-        [Fact]
-        public void CalculateInitialPressurisedVolume()
-        {
-            var mockCylinderController = MockCylinderController();
-
-            cylinder = new Cylinder(mockCylinderController.Object, cylinderVolume, cylinderPressure, dummyGasMixture.Object, surfaceAirConsumptionRate);
-
-            mockCylinderController.VerifyAll();
-        }
-
-        private Mock<ICylinderController> MockCylinderController()
-        {
-            var mockCylinderController = new Mock<ICylinderController>();
-            mockCylinderController.Setup(cc => cc.CalculateInitialPressurisedVolume(cylinderVolume, cylinderPressure)).Returns(expectedInitialPressurisedVolume);
-            return mockCylinderController;
         }
     }
 }
