@@ -4,7 +4,7 @@ namespace BubblesDivePlanner.Models.Cylinders
     {
         ushort RemainingGas { get; }
         byte SurfaceAirConsumptionRate { get; }
-        ushort GasUsed { get; }
+        ushort UsedGas { get; }
         void UpdateGasUsage(IDiveStep diveStep);
     }
 }

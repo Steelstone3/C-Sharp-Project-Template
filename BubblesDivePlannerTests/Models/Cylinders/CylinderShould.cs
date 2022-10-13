@@ -1,4 +1,3 @@
-using BubblesDivePlanner.Controllers;
 using BubblesDivePlanner.Models.Cylinders;
 using Moq;
 using Xunit;
@@ -10,13 +9,12 @@ namespace BubblesDivePlannerTests.Models.Cylinders
         private readonly byte cylinderVolume = 12;
         private readonly ushort cylinderPressure = 200;
         private readonly byte surfaceAirConsumptionRate = 12;
-        private readonly ICylinderController cylinderController = new CylinderController();
         private readonly Mock<IGasMixture> dummyGasMixture = new();
         private ICylinder cylinder;
 
         public CylinderShould()
         {
-            cylinder = new Cylinder(cylinderController, cylinderVolume, cylinderPressure, dummyGasMixture.Object, surfaceAirConsumptionRate);
+            cylinder = new Cylinder( cylinderVolume, cylinderPressure, dummyGasMixture.Object, surfaceAirConsumptionRate);
         }
 
         [Fact]
@@ -40,7 +38,7 @@ namespace BubblesDivePlannerTests.Models.Cylinders
         [InlineData(0, 0, 0)]
         public void CalculateInitialPressurisedVolume(byte cylinderVolume, ushort cylinderPressure, ushort expectedInitialPressurisedVolume)
         {
-            cylinder = new Cylinder(cylinderController, cylinderVolume, cylinderPressure, dummyGasMixture.Object, surfaceAirConsumptionRate);
+            cylinder = new Cylinder( cylinderVolume, cylinderPressure, dummyGasMixture.Object, surfaceAirConsumptionRate);
 
             Assert.Equal(expectedInitialPressurisedVolume, cylinder.InitialPressurisedVolume);
         }

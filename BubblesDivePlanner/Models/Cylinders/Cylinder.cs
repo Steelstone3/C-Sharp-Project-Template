@@ -1,16 +1,14 @@
-using BubblesDivePlanner.Controllers;
-
 namespace BubblesDivePlanner.Models.Cylinders
 {
     public class Cylinder : ICylinder
     {
-        public Cylinder(ICylinderController cylinderController, byte cylinderVolume, ushort cylinderPressure, IGasMixture gasMixture, byte surfaceAirConsumptionRate)
+        public Cylinder(byte cylinderVolume, ushort cylinderPressure, IGasMixture gasMixture, byte surfaceAirConsumptionRate)
         {
             CylinderVolume = cylinderVolume;
             CylinderPressure = cylinderPressure;
             GasMixture = gasMixture;
             InitialPressurisedVolume = (ushort)(cylinderPressure * cylinderVolume);
-            GasManagement = new GasManagement(cylinderController, InitialPressurisedVolume, surfaceAirConsumptionRate);
+            GasManagement = new GasManagement( InitialPressurisedVolume, surfaceAirConsumptionRate);
         }
 
         public byte CylinderVolume { get; }
