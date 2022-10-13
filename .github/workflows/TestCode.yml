@@ -26,12 +26,18 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.101
+    - name: Format
+      working-directory: ./BubblesDivePlanner
+      run: dotnet format
     - name: Install app dependencies
       working-directory: ./BubblesDivePlanner
       run: dotnet restore
     - name: Build
       working-directory: ./BubblesDivePlanner
       run: dotnet build --configuration Release --no-restore
+    - name: Format
+      working-directory: ./BubblesDivePlannerTests
+      run: dotnet format
     - name: Install test dependencies
       working-directory: ./BubblesDivePlannerTests
       run: dotnet restore
