@@ -78,7 +78,7 @@ namespace BubblesDivePlannerTests.Models.Cylinders
         [InlineData(12, 200, 24, 50, 10, 1440, 960)]
         [InlineData(12, 200, 12, 100, 10, 1320, 1080)]
         [InlineData(12, 200, 12, 50, 20, 1440, 960)]
-        [InlineData(12, 200, 0, 50, 10, 0, 2400)]
+        [InlineData(12, 200, 0, 50, 10, 180, 2220)]
         [InlineData(12, 200, 12, 0, 10, 120, 2280)]
         [InlineData(12, 200, 12, 50, 0, 0, 2400)]
         [InlineData(12, 200, 12, 0, 0, 0, 2400)]

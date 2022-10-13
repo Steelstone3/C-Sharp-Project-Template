@@ -8,7 +8,7 @@ namespace BubblesDivePlanner.Models.Cylinders
             CylinderPressure = AssignCylinderPressure(cylinderPressure);
             InitialPressurisedVolume = (ushort)(CylinderVolume * CylinderPressure);
             RemainingGas = InitialPressurisedVolume;
-            SurfaceAirConsumptionRate = surfaceAirConsumptionRate;
+            SurfaceAirConsumptionRate = AssignSurfaceAirConsumptionRate(surfaceAirConsumptionRate);
             GasMixture = gasMixture;
         }
 
@@ -26,24 +26,25 @@ namespace BubblesDivePlanner.Models.Cylinders
             RemainingGas = UsedGas < RemainingGas ? (ushort)(RemainingGas - UsedGas) : (ushort)0;
         }
 
-        private static ushort AssignCylinderVolume(ushort cylinderVolume)
+        private static ushort AssignCylinderVolume(ushort cylinderVolume) => cylinderVolume switch
         {
-            return cylinderVolume switch
-            {
-                > 30 => 30,
-                < 3 => 3,
-                _ => cylinderVolume
-            };
-        }
+            > 30 => 30,
+            < 3 => 3,
+            _ => cylinderVolume
+        };
 
-        private static ushort AssignCylinderPressure(ushort cylinderPressure)
+        private static ushort AssignCylinderPressure(ushort cylinderPressure) => cylinderPressure switch
         {
-            return cylinderPressure switch
-            {
-                > 300 => 300,
-                < 50 => 50,
-                _ => cylinderPressure,
-            };
-        }
+            > 300 => 300,
+            < 50 => 50,
+            _ => cylinderPressure,
+        };
+
+        private static byte AssignSurfaceAirConsumptionRate(byte surfaceAirConsumptionRate) => surfaceAirConsumptionRate switch
+        {
+            > 30 => 30,
+            < 3 => 3,
+            _ => surfaceAirConsumptionRate
+        };
     }
 }
