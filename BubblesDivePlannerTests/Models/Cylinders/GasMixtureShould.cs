@@ -1,28 +1,31 @@
 using BubblesDivePlanner.Controllers;
 using BubblesDivePlanner.Models.Cylinders;
-using Moq;
 using Xunit;
 
 namespace BubblesDivePlannerTests.Models.Cylinders
 {
     public class GasMixtureShould
     {
-        [Fact]
-        public void ConstructAGasMixture()
+        [Theory]
+        [InlineData(21, 0, 21, 0, 79)]
+        [InlineData(21, 10, 21, 10, 69)]
+        [InlineData(100, 0, 100, 0, 0)]
+        [InlineData(0, 100, 5, 95, 0)]
+        [InlineData(101, 100, 100, 0, 0)]
+        [InlineData(250, 100, 100, 0, 0)]
+        [InlineData(20, 101, 20, 80, 0)]
+        [InlineData(100, 20, 80, 20, 0)]
+        [InlineData(20, 100, 20, 80, 0)]
+        [InlineData(250, 250, 100, 0, 0)]
+        [InlineData(100, 100, 100, 0, 0)]
+        [InlineData(0, 0, 5, 0, 95)]
+        public void ConstructAGasMixture(byte oxygen, byte helium, byte expectedOxygen, byte expectedHelium, byte expectedNitrogen)
         {
-            byte oxygen = 21;
-            byte helium = 10;
-            var sequence = new MockSequence();
-            var dummyGasMixture = new Mock<IGasMixture>();
-            var stubGasMixtureBuilder = new Mock<IGasMixtureBuilder>();
-            stubGasMixtureBuilder.InSequence(sequence).Setup(gmb => gmb.WithOxygen(oxygen));
-            stubGasMixtureBuilder.InSequence(sequence).Setup(gmb => gmb.WithHelium(helium));
-            stubGasMixtureBuilder.InSequence(sequence).Setup(gmb => gmb.Create()).Returns(dummyGasMixture.Object);
-            
-            IGasMixture gasMixture = new GasMixture(stubGasMixtureBuilder.Object, oxygen, helium);
+            IGasMixture gasMixture = new GasMixture(oxygen, helium);
 
-            stubGasMixtureBuilder.InSequence(sequence);
-            stubGasMixtureBuilder.VerifyAll();
+            Assert.Equal(expectedOxygen, gasMixture.Oxygen);
+            Assert.Equal(expectedHelium, gasMixture.Helium);
+            Assert.Equal(expectedNitrogen, gasMixture.Nitrogen);
         }
     }
 }
