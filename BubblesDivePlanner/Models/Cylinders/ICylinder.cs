@@ -2,10 +2,13 @@ namespace BubblesDivePlanner.Models.Cylinders
 {
     public interface ICylinder
     {
-        byte CylinderVolume { get; }
+        ushort CylinderVolume { get; }
         ushort CylinderPressure { get; }
         ushort InitialPressurisedVolume { get; }
+        ushort RemainingGas { get; }
+        ushort UsedGas { get; }
+        byte SurfaceAirConsumptionRate { get; }
         IGasMixture GasMixture { get; }
-        IGasManagement GasManagement { get; }
+        void UpdateCylinderGasConsumption(IDiveStep diveStep);
     }
 }
