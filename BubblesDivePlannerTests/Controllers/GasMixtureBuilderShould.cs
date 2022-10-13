@@ -18,7 +18,7 @@ namespace BubblesDivePlannerTests.Controllers
         [InlineData(250, 250, 100, 0, 0)]
         [InlineData(100, 100, 100, 0, 0)]
         [InlineData(0, 0, 5, 0, 95)]
-        public void ConstructAGasMixture(byte oxygen, byte helium, byte expectedOxygen, byte expectedHelium, byte expectedNitrogen)
+        public void BuildAGasMixture(byte oxygen, byte helium, byte expectedOxygen, byte expectedHelium, byte expectedNitrogen)
         {
             IGasMixtureBuilder gasMixtureBuilder = new GasMixtureBuilder();
 
