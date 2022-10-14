@@ -14,8 +14,6 @@ namespace BubblesDivePlannerTests.Models.DiveModels
         [Fact]
         public void ContainsMaxSurfacePressures()
         {
-            Assert.NotNull(diveProfile.MaxSurfacePressures);
-            Assert.NotEmpty(diveProfile.MaxSurfacePressures);
             Assert.Equal(COMPARTMENT_COUNT, diveProfile.MaxSurfacePressures.Length);
             Assert.Equal(expectedDefaultListValue, diveProfile.MaxSurfacePressures);
         }
@@ -23,8 +21,6 @@ namespace BubblesDivePlannerTests.Models.DiveModels
         [Fact]
         public void ContainsTissuePressuresNitrogen()
         {
-            Assert.NotNull(diveProfile.TissuePressuresNitrogen);
-            Assert.NotEmpty(diveProfile.TissuePressuresNitrogen);
             Assert.Equal(COMPARTMENT_COUNT, diveProfile.TissuePressuresNitrogen.Length);
             Assert.Equal(expectedDefaultListValue, diveProfile.TissuePressuresNitrogen);
         }
@@ -32,8 +28,6 @@ namespace BubblesDivePlannerTests.Models.DiveModels
         [Fact]
         public void ContainsTissuePressuresHelium()
         {
-            Assert.NotNull(diveProfile.TissuePressuresHelium);
-            Assert.NotEmpty(diveProfile.TissuePressuresHelium);
             Assert.Equal(COMPARTMENT_COUNT, diveProfile.TissuePressuresHelium.Length);
             Assert.Equal(expectedDefaultListValue, diveProfile.TissuePressuresHelium);
         }
@@ -41,8 +35,6 @@ namespace BubblesDivePlannerTests.Models.DiveModels
         [Fact]
         public void ContainsTissuePressuresTotal()
         {
-            Assert.NotNull(diveProfile.TissuePressuresTotal);
-            Assert.NotEmpty(diveProfile.TissuePressuresTotal);
             Assert.Equal(COMPARTMENT_COUNT, diveProfile.TissuePressuresTotal.Length);
             Assert.Equal(expectedDefaultListValue, diveProfile.TissuePressuresTotal);
         }
@@ -50,8 +42,6 @@ namespace BubblesDivePlannerTests.Models.DiveModels
         [Fact]
         public void ContainsToleratedAmbientPressures()
         {
-            Assert.NotNull(diveProfile.ToleratedAmbientPressures);
-            Assert.NotEmpty(diveProfile.ToleratedAmbientPressures);
             Assert.Equal(COMPARTMENT_COUNT, diveProfile.ToleratedAmbientPressures.Length);
             Assert.Equal(expectedDefaultListValue, diveProfile.ToleratedAmbientPressures);
         }
@@ -59,8 +49,6 @@ namespace BubblesDivePlannerTests.Models.DiveModels
         [Fact]
         public void ContainsAValues()
         {
-            Assert.NotNull(diveProfile.AValues);
-            Assert.NotEmpty(diveProfile.AValues);
             Assert.Equal(COMPARTMENT_COUNT, diveProfile.AValues.Length);
             Assert.Equal(expectedDefaultListValue, diveProfile.AValues);
         }
@@ -68,8 +56,6 @@ namespace BubblesDivePlannerTests.Models.DiveModels
         [Fact]
         public void ContainsBValues()
         {
-            Assert.NotNull(diveProfile.BValues);
-            Assert.NotEmpty(diveProfile.BValues);
             Assert.Equal(COMPARTMENT_COUNT, diveProfile.BValues.Length);
             Assert.Equal(expectedDefaultListValue, diveProfile.BValues);
         }
@@ -77,8 +63,6 @@ namespace BubblesDivePlannerTests.Models.DiveModels
         [Fact]
         public void ContainsCompartmentLoads()
         {
-            Assert.NotNull(diveProfile.CompartmentLoads);
-            Assert.NotEmpty(diveProfile.CompartmentLoads);
             Assert.Equal(COMPARTMENT_COUNT, diveProfile.CompartmentLoads.Length);
             Assert.Equal(expectedDefaultListValue, diveProfile.CompartmentLoads);
         }
