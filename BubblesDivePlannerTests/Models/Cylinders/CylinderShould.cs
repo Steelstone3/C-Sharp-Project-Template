@@ -80,9 +80,9 @@ namespace BubblesDivePlannerTests.Models.Cylinders
         [InlineData(12, 200, 12, 50, 20, 1440, 960)]
         [InlineData(12, 200, 0, 50, 10, 180, 2220)]
         [InlineData(12, 200, 12, 0, 10, 120, 2280)]
-        [InlineData(12, 200, 12, 50, 0, 0, 2400)]
-        [InlineData(12, 200, 12, 0, 0, 0, 2400)]
-        [InlineData(12, 200, 0, 0, 0, 0, 2400)]
+        [InlineData(12, 200, 12, 50, 0, 72, 2328)]
+        [InlineData(12, 200, 12, 0, 0, 12, 2388)]
+        [InlineData(12, 200, 0, 0, 0, 3, 2397)]
         public void CalculateGasUsage(byte cylinderVolume, ushort cylinderPressure, byte surfaceAirConsumptionRate, byte depth, byte time, ushort expectedUsedGas, ushort expectedRemainingGas)
         {
             cylinder = new Cylinder(cylinderVolume, cylinderPressure, dummyGasMixture.Object, surfaceAirConsumptionRate);

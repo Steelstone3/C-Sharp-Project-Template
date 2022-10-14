@@ -5,23 +5,33 @@ namespace Name
 {
     public class DiveStepShould
     {
-        private readonly byte depth = 50;
-        private readonly byte time = 10;
-
-        [Fact]
-        public void ContainsDepth()
+        [Theory]
+        [InlineData(50, 50)]
+        [InlineData(60, 60)]
+        [InlineData(100, 100)]
+        [InlineData(101, 100)]
+        [InlineData(200, 100)]
+        public void ContainsDepth(byte depth, byte expectedDepth)
         {
+            byte time = 10;
+
             IDiveStep diveStep = new DiveStep(depth, time);
 
-            Assert.Equal(depth, diveStep.Depth);
+            Assert.Equal(expectedDepth, diveStep.Depth);
         }
 
-        [Fact]
-        public void ContainsTime()
+        [Theory]
+        [InlineData(50,  50)]
+        [InlineData(60, 60)]
+        [InlineData(61, 60)]
+        [InlineData(70, 60)]
+        public void ContainsTime(byte time, byte expectedTime)
         {
+            byte depth = 50;
+
             IDiveStep diveStep = new DiveStep(depth, time);
 
-            Assert.Equal(time, diveStep.Time);
+            Assert.Equal(expectedTime, diveStep.Time);
         }
     }
 }
