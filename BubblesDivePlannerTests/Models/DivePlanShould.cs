@@ -4,6 +4,7 @@ using BubblesDivePlanner.Models.Cylinders;
 using BubblesDivePlanner.Models.DiveModels;
 using Moq;
 using Xunit;
+using Xunit.Sdk;
 
 namespace BubblesDivePlannerTests.Models
 {
@@ -53,8 +54,7 @@ namespace BubblesDivePlannerTests.Models
             Assert.NotNull(divePlan.DiveModel);
             Assert.NotNull(divePlan.Cylinders);
             Assert.NotNull(divePlan.DiveStep);
-            Assert.Equal(depth, divePlan.DiveStep.Depth);
-            Assert.Equal(time, divePlan.DiveStep.Time);
+            Assert.Equal(diveStep, divePlan.DiveStep);
         }
 
         [Fact]
@@ -67,16 +67,18 @@ namespace BubblesDivePlannerTests.Models
             Assert.Equal(expectedDivePlanJson, divePlanJson);
         }
 
-        [Fact(Skip="Doesn't work yet")]
+        [Fact(Skip = "Dive step isn't deserialising correctly investigation required")]
         public void Deserialise()
         {
-            var dummyDiveModel = new Mock<IDiveModel>();
-            var dummyCylinders = new Mock<IList<ICylinder>>();
-            IDivePlan actualDivePlan = new DivePlan(dummyDiveModel.Object, dummyCylinders.Object);
+            divePlan.UpdateDiveStep(new DiveStep(50, 10));
+            IDivePlan actualDivePlan = new DivePlan(null, null);
 
             actualDivePlan.Deserialise(expectedDivePlanJson);
 
-            Assert.Equal(divePlan, actualDivePlan);
-        }
+            TestHelper.AssertDiveModel(divePlan.DiveModel, actualDivePlan.DiveModel);
+            TestHelper.AssertCylinders(divePlan.Cylinders, actualDivePlan.Cylinders);
+            //TODO fix the issue with the dive step not getting de-serialised
+            Assert.Equal(divePlan.DiveStep, actualDivePlan.DiveStep);
+        }       
     }
 }

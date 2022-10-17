@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
+using BubblesDivePlanner.Controllers.Json;
 using BubblesDivePlanner.Models.Cylinders;
 using BubblesDivePlanner.Models.DiveModels;
 using Newtonsoft.Json;
@@ -20,10 +18,7 @@ namespace BubblesDivePlanner.Models
         public IList<ICylinder> Cylinders { get; private set; }
         public IDiveStep DiveStep { get; private set; }
 
-        public void UpdateDiveStep(IDiveStep diveStep)
-        {
-            DiveStep = diveStep;
-        }
+        public void UpdateDiveStep(IDiveStep diveStep) => DiveStep = diveStep;
 
         public string Serialise()
         {
@@ -32,7 +27,18 @@ namespace BubblesDivePlanner.Models
 
         public void Deserialise(string expectedDivePlanJson)
         {
-            var divePlan = JsonConvert.DeserializeObject<DivePlan>(expectedDivePlanJson);
+            var settings = new JsonSerializerSettings
+            {
+                Converters = 
+                {
+                    new AbstractConverter<Zhl16Buhlmann, IDiveModel>(),
+                    new AbstractConverter<Cylinder, ICylinder>(),
+                    new AbstractConverter<GasMixture, IGasMixture>(),
+                    new AbstractConverter<DiveStep, IDiveStep>(),
+                },
+            };
+
+            var divePlan = JsonConvert.DeserializeObject<DivePlan>(expectedDivePlanJson, settings);
 
             DiveModel = divePlan.DiveModel;
             DiveStep = divePlan.DiveStep;
