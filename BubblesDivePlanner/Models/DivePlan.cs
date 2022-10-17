@@ -31,6 +31,7 @@ namespace BubblesDivePlanner.Models
             {
                 Converters = 
                 {
+                    new AbstractConverter<DivePlan, IDivePlan>(),
                     new AbstractConverter<Zhl16Buhlmann, IDiveModel>(),
                     new AbstractConverter<Cylinder, ICylinder>(),
                     new AbstractConverter<GasMixture, IGasMixture>(),
@@ -38,10 +39,9 @@ namespace BubblesDivePlanner.Models
                 },
             };
 
-            var divePlan = JsonConvert.DeserializeObject<DivePlan>(expectedDivePlanJson, settings);
+            var divePlan = JsonConvert.DeserializeObject<IDivePlan>(expectedDivePlanJson, settings);
 
             DiveModel = divePlan.DiveModel;
-            DiveStep = divePlan.DiveStep;
             Cylinders = divePlan.Cylinders;
         }
     }

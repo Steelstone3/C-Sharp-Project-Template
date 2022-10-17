@@ -23,6 +23,8 @@ namespace BubblesDivePlannerTests
 
         public static void AssertCylinders(IList<ICylinder> expected, IList<ICylinder> actual)
         {
+            Assert.NotEmpty(actual);
+            
             for (int index = 0; index < expected.Count - 1; index++)
             {
                 Assert.Equal(expected[index], actual[index]);

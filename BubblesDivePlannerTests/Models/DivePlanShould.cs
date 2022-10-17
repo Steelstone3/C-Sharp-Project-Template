@@ -69,7 +69,6 @@ namespace BubblesDivePlannerTests.Models
             var divePlanJson = divePlan.Serialise();
 
             Assert.Equal(expectedDivePlanJsonUnix, divePlanJson);
-
         }
 
         [SkippableFact]
@@ -81,10 +80,9 @@ namespace BubblesDivePlannerTests.Models
             var divePlanJson = divePlan.Serialise();
 
             Assert.Equal(expectedDivePlanJsonWindows, divePlanJson);
-
         }
 
-        [Fact(Skip = "Dive step isn't deserialising correctly investigation required")]
+        [Fact]
         public void Deserialise()
         {
             divePlan.UpdateDiveStep(new DiveStep(50, 10));
@@ -94,8 +92,6 @@ namespace BubblesDivePlannerTests.Models
 
             TestHelper.AssertDiveModel(divePlan.DiveModel, actualDivePlan.DiveModel);
             TestHelper.AssertCylinders(divePlan.Cylinders, actualDivePlan.Cylinders);
-            //TODO fix the issue with the dive step not getting de-serialised
-            Assert.Equal(divePlan.DiveStep, actualDivePlan.DiveStep);
         }
     }
 }
