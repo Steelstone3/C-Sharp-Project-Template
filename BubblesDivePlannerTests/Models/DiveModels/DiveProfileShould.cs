@@ -1,5 +1,4 @@
 using BubblesDivePlanner.Models.DiveModels;
-using NuGet.Frameworks;
 using Xunit;
 
 namespace BubblesDivePlannerTests.Models.DiveModels
@@ -7,9 +6,16 @@ namespace BubblesDivePlannerTests.Models.DiveModels
     public class DiveProfileShould
     {
         private const byte COMPARTMENT_COUNT = 10;
+        private const double EXPECTED_OXYGEN_PRESSURE_AT_DEPTH = 12.1;
+        private const double EXPECTED_HELIUM_PRESSURE_AT_DEPTH = 11.5;
+        private const double EXPECTED_NITROGEN_PRESSURE_AT_DEPTH = 5.6;
         private readonly double[] expectedDefaultListValue = new double[COMPARTMENT_COUNT] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
-        private readonly double expectedDefaultValue = 0.0;
         private readonly IDiveProfile diveProfile = new DiveProfile(COMPARTMENT_COUNT);
+
+        public DiveProfileShould()
+        {
+            diveProfile.UpdateGasMixtureUnderPressure(EXPECTED_OXYGEN_PRESSURE_AT_DEPTH, EXPECTED_HELIUM_PRESSURE_AT_DEPTH, EXPECTED_NITROGEN_PRESSURE_AT_DEPTH);
+        }
 
         [Fact]
         public void ContainsMaxSurfacePressures()
@@ -21,22 +27,22 @@ namespace BubblesDivePlannerTests.Models.DiveModels
         [Fact]
         public void ContainsTissuePressuresNitrogen()
         {
-            Assert.Equal(COMPARTMENT_COUNT, diveProfile.TissuePressuresNitrogen.Length);
-            Assert.Equal(expectedDefaultListValue, diveProfile.TissuePressuresNitrogen);
+            Assert.Equal(COMPARTMENT_COUNT, diveProfile.NitrogenTissuePressures.Length);
+            Assert.Equal(expectedDefaultListValue, diveProfile.NitrogenTissuePressures);
         }
 
         [Fact]
         public void ContainsTissuePressuresHelium()
         {
-            Assert.Equal(COMPARTMENT_COUNT, diveProfile.TissuePressuresHelium.Length);
-            Assert.Equal(expectedDefaultListValue, diveProfile.TissuePressuresHelium);
+            Assert.Equal(COMPARTMENT_COUNT, diveProfile.HeliumTissuePressures.Length);
+            Assert.Equal(expectedDefaultListValue, diveProfile.HeliumTissuePressures);
         }
 
         [Fact]
         public void ContainsTissuePressuresTotal()
         {
-            Assert.Equal(COMPARTMENT_COUNT, diveProfile.TissuePressuresTotal.Length);
-            Assert.Equal(expectedDefaultListValue, diveProfile.TissuePressuresTotal);
+            Assert.Equal(COMPARTMENT_COUNT, diveProfile.TotalTissuePressures.Length);
+            Assert.Equal(expectedDefaultListValue, diveProfile.TotalTissuePressures);
         }
 
         [Fact]
@@ -68,21 +74,21 @@ namespace BubblesDivePlannerTests.Models.DiveModels
         }
 
         [Fact]
-        public void ContainsPressureOxygen()
+        public void ContainOxygenPressureAtDepth()
         {
-            Assert.Equal(expectedDefaultValue, diveProfile.PressureOxygen);
+            Assert.Equal(EXPECTED_OXYGEN_PRESSURE_AT_DEPTH, diveProfile.OxygenPressureAtDepth);
         }
 
         [Fact]
-        public void ContainsPressureHelium()
+        public void ContainHeliumPressureAtDepth()
         {
-            Assert.Equal(expectedDefaultValue, diveProfile.PressureHelium);
+            Assert.Equal(EXPECTED_HELIUM_PRESSURE_AT_DEPTH, diveProfile.HeliumPressureAtDepth);
         }
 
         [Fact]
-        public void ContainsPressureNitrogen()
+        public void ContainNitrogenPressureAtDepth()
         {
-            Assert.Equal(expectedDefaultValue, diveProfile.PressureNitrogen);
+            Assert.Equal(EXPECTED_NITROGEN_PRESSURE_AT_DEPTH, diveProfile.NitrogenPressureAtDepth);
         }
     }
 }
