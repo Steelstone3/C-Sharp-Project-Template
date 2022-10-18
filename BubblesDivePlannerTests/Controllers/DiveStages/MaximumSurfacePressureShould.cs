@@ -1,7 +1,4 @@
 using BubblesDivePlanner.Controllers.DiveStages;
-using BubblesDivePlanner.DiveStages;
-using BubblesDivePlanner.Models.DiveModels;
-using Moq;
 using Xunit;
 
 namespace BubblesDivePlannerTests.Controllers.DiveStages
