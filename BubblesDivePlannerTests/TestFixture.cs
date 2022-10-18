@@ -1,9 +1,8 @@
 using BubblesDivePlanner.Models;
 using BubblesDivePlanner.Models.Cylinders;
 using BubblesDivePlanner.Models.DiveModels;
-using Moq;
 
-namespace BubblesDivePlannerTests.TestFixtures
+namespace BubblesDivePlannerTests
 {
     public static class TestFixture
     {

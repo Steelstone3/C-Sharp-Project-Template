@@ -1,6 +1,5 @@
 using BubblesDivePlanner.Controllers.DiveStages;
 using BubblesDivePlanner.Models.DiveModels;
-using BubblesDivePlannerTests.TestFixtures;
 using Xunit;
 
 namespace BubblesDivePlannerTests.DiveStages
