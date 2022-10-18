@@ -1,29 +1,27 @@
-// using BubblesDivePlanner.Controllers.DiveStages;
-// using BubblesDivePlannerTests.TestFixtures;
-// using Xunit;
+using BubblesDivePlanner.Controllers.DiveStages;
+using BubblesDivePlannerTests.TestFixtures;
+using Xunit;
 
-// namespace BubblesDivePlannerTests.DiveStages
-// {
-//     public class AmbientPressureShould
-//     {
-//         [Fact]
-//         public void RunAmbientPressurePreStage()
-//         {
-//             //Arrange
-//             var expectedDiveProfile = DivePlannerApplicationTestFixture.GetDiveProfileResultFromFirstRun;
-//             var diveProfile = DivePlannerApplicationTestFixture.GetDiveModel.DiveProfile;
-//             var gasMixtureModel = DivePlannerApplicationTestFixture.GetSelectedCylinder.GasMixture;
-//             var diveStepModel = DivePlannerApplicationTestFixture.GetDiveStep;
-            
-//             IDiveStageCommand diveStage = new AmbientPressureCommand(diveProfile, gasMixtureModel, diveStepModel);
+namespace BubblesDivePlannerTests.DiveStages
+{
+    public class AmbientPressureShould
+    {
+        [Fact]
+        public void RunAmbientPressureStage()
+        {
+            //Arrange
+            var diveProfile = TestFixture.FixtureDiveModel.DiveProfile;
+            var gasMixtureModel = TestFixture.FixtureSelectedCylinder.GasMixture;
+            var diveStepModel = TestFixture.FixtureDiveStep;
+            IDiveStageCommand diveStage = new AmbientPressure(diveProfile, gasMixtureModel, diveStepModel);
 
-//             //Act
-//             diveStage.RunDiveStage();
+            //Act
+            diveStage.RunDiveStage();
 
-//             //Assert
-//             Assert.Equal(expectedDiveProfile.PressureOxygen, diveProfile.OxygenPressureAtDepth);
-//             Assert.Equal(expectedDiveProfile.PressureHelium, diveProfile.HeliumPressureAtDepth);
-//             Assert.Equal(expectedDiveProfile.PressureNitrogen, diveProfile.NitrogenPressureAtDepth);
-//         }
-//     }
-// }
+            //Assert
+            Assert.Equal(TestFixture.ExpectedPressureOxygen, diveProfile.OxygenPressureAtDepth);
+            Assert.Equal(TestFixture.ExpectedPressureHelium, diveProfile.HeliumPressureAtDepth);
+            Assert.Equal(TestFixture.ExpectedPressureNitrogen, diveProfile.NitrogenPressureAtDepth);
+        }
+    }
+}

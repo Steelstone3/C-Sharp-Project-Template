@@ -6,17 +6,10 @@ namespace BubblesDivePlannerTests.Models.DiveModels
     public class DiveProfileShould
     {
         private const byte COMPARTMENT_COUNT = 10;
-        private const double EXPECTED_OXYGEN_PRESSURE_AT_DEPTH = 12.1;
-        private const double EXPECTED_HELIUM_PRESSURE_AT_DEPTH = 11.5;
-        private const double EXPECTED_NITROGEN_PRESSURE_AT_DEPTH = 5.6;
+        private const double EXPECTED_PRESSURE_AT_DEPTH = 12.1;
         private readonly double[] expectedDefaultListValue = new double[COMPARTMENT_COUNT] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
         private readonly double[] expectedDefaultListTissuePressureValue = new double[COMPARTMENT_COUNT] { 0.79, 0.79, 0.79, 0.79, 0.79, 0.79, 0.79, 0.79, 0.79, 0.79 };
         private readonly IDiveProfile diveProfile = new DiveProfile(COMPARTMENT_COUNT);
-
-        public DiveProfileShould()
-        {
-            diveProfile.UpdateGasMixtureUnderPressure(EXPECTED_OXYGEN_PRESSURE_AT_DEPTH, EXPECTED_HELIUM_PRESSURE_AT_DEPTH, EXPECTED_NITROGEN_PRESSURE_AT_DEPTH);
-        }
 
         [Fact]
         public void ContainsMaxSurfacePressures()
@@ -77,19 +70,29 @@ namespace BubblesDivePlannerTests.Models.DiveModels
         [Fact]
         public void ContainOxygenPressureAtDepth()
         {
-            Assert.Equal(EXPECTED_OXYGEN_PRESSURE_AT_DEPTH, diveProfile.OxygenPressureAtDepth);
+            Assert.Equal(0, diveProfile.OxygenPressureAtDepth);
         }
 
         [Fact]
         public void ContainHeliumPressureAtDepth()
         {
-            Assert.Equal(EXPECTED_HELIUM_PRESSURE_AT_DEPTH, diveProfile.HeliumPressureAtDepth);
+            Assert.Equal(0, diveProfile.HeliumPressureAtDepth);
         }
 
         [Fact]
         public void ContainNitrogenPressureAtDepth()
         {
-            Assert.Equal(EXPECTED_NITROGEN_PRESSURE_AT_DEPTH, diveProfile.NitrogenPressureAtDepth);
+            Assert.Equal(0, diveProfile.NitrogenPressureAtDepth);
+        }
+
+        [Fact]
+        public void UpdateGasMixtureUnderPressure()
+        {
+            diveProfile.UpdateGasMixtureUnderPressure(EXPECTED_PRESSURE_AT_DEPTH, EXPECTED_PRESSURE_AT_DEPTH, EXPECTED_PRESSURE_AT_DEPTH);
+
+            Assert.Equal(EXPECTED_PRESSURE_AT_DEPTH, diveProfile.OxygenPressureAtDepth);
+            Assert.Equal(EXPECTED_PRESSURE_AT_DEPTH, diveProfile.HeliumPressureAtDepth);
+            Assert.Equal(EXPECTED_PRESSURE_AT_DEPTH, diveProfile.NitrogenPressureAtDepth);
         }
     }
 }

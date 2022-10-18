@@ -30,9 +30,9 @@ namespace BubblesDivePlanner.Controllers.DiveStages
 
         private void CalculateAdjustedGasPressures(double pressureAmbient)
         {
-            var pressureOxygen = gasMixture.Oxygen / 100 * pressureAmbient;
-            var pressureHelium = gasMixture.Helium / 100 * pressureAmbient;
-            var pressureNitrogen = gasMixture.Nitrogen / 100 * pressureAmbient;
+            var pressureOxygen = (double)gasMixture.Oxygen / 100 * pressureAmbient;
+            var pressureHelium = (double)gasMixture.Helium / 100 * pressureAmbient;
+            var pressureNitrogen = (double)gasMixture.Nitrogen / 100 * pressureAmbient;
             diveProfile.UpdateGasMixtureUnderPressure(pressureOxygen, pressureHelium, pressureNitrogen);
         }
     }
