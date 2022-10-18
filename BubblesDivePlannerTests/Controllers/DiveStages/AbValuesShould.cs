@@ -1,8 +1,7 @@
 using BubblesDivePlanner.Controllers.DiveStages;
-using BubblesDivePlanner.Models.DiveModels;
 using Xunit;
 
-namespace BubblesDivePlannerTests.DiveStages
+namespace BubblesDivePlannerTests.Controllers.DiveStages
 {
     public class AbValuesShould
     {

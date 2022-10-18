@@ -1,8 +1,6 @@
-// using BubblesDivePlanner.DiveStages;
-// using BubblesDivePlannerTests.TestFixtures;
 // using Xunit;
 
-// namespace BubblesDivePlannerTests.DiveStages
+// namespace BubblesDivePlannerTests.Controllers.DiveStages
 // {
 //     public class ToleratedAmbientPressureShould
 //     {
@@ -13,7 +11,7 @@
 //             var diveModel = DivePlannerApplicationTestFixture.GetDiveModel;
 //             diveModel.DiveProfile = DivePlannerApplicationTestFixture.GetDiveProfileResultFromFirstRun;
 //             var toleratedAmbientPressuresResult = DivePlannerApplicationTestFixture.GetDiveProfileResultFromFirstRun.ToleratedAmbientPressures;
-            
+
 //             var diveStage = new ToleratedAmbientPressureCommand(diveModel);
 
 //             //Act

@@ -1,12 +1,12 @@
 using BubblesDivePlanner.DiveStages;
 using Xunit;
 
-namespace BubblesDivePlannerTests.DiveStages
+namespace BubblesDivePlannerTests.Controllers.DiveStages
 {
     public class TissuePressureShould
     {
         [Fact]
-        public void RunTissuePressureStage()
+        public void RunTissuePressureStages()
         {
             //Arrange
             var diveModel = TestFixture.FixtureDiveModel;

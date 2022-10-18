@@ -1,7 +1,7 @@
 using BubblesDivePlanner.Controllers.DiveStages;
 using Xunit;
 
-namespace BubblesDivePlannerTests.DiveStages
+namespace BubblesDivePlannerTests.Controllers.DiveStages
 {
     public class AmbientPressureShould
     {

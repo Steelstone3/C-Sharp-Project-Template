@@ -4,9 +4,9 @@ using BubblesDivePlanner.Models.DiveModels;
 using Moq;
 using Xunit;
 
-namespace BubblesDivePlannerTests.DiveStages
+namespace BubblesDivePlannerTests.Controllers.DiveStages
 {
-    public class MaximumSurfacePressureCommandShould
+    public class MaximumSurfacePressureShould
     {
         [Fact]
         public void RunMaximumSurfacePressureStage()
