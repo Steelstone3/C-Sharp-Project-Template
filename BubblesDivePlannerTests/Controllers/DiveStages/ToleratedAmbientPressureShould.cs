@@ -1,24 +1,25 @@
-// using Xunit;
+using BubblesDivePlanner.DiveStages;
+using Xunit;
 
-// namespace BubblesDivePlannerTests.Controllers.DiveStages
-// {
-//     public class ToleratedAmbientPressureShould
-//     {
-//         [Fact]
-//         public void RunToleratedAmbientPressureStage()
-//         {
-//             //Arrange
-//             var diveModel = DivePlannerApplicationTestFixture.GetDiveModel;
-//             diveModel.DiveProfile = DivePlannerApplicationTestFixture.GetDiveProfileResultFromFirstRun;
-//             var toleratedAmbientPressuresResult = DivePlannerApplicationTestFixture.GetDiveProfileResultFromFirstRun.ToleratedAmbientPressures;
+namespace BubblesDivePlannerTests.Controllers.DiveStages
+{
+    public class ToleratedAmbientPressureShould
+    {
+        [Fact]
+        public void RunToleratedAmbientPressureStage()
+        {
+            //Arrange
+            var diveModel = TestFixture.FixtureDiveModel;
+            diveModel.DiveProfile.AValues = TestFixture.ExpectedAValues;
+            diveModel.DiveProfile.BValues = TestFixture.ExpectedBValues;
+            diveModel.DiveProfile.TotalTissuePressures = TestFixture.ExpectedTotalTissuePressures;
+            var diveStage = new ToleratedAmbientPressure(diveModel);
 
-//             var diveStage = new ToleratedAmbientPressureCommand(diveModel);
+            //Act
+            diveStage.RunDiveStage();
 
-//             //Act
-//             diveStage.RunDiveStage();
-
-//             //Assert
-//             Assert.Equal(toleratedAmbientPressuresResult, diveModel.DiveProfile.ToleratedAmbientPressures);
-//         }
-//     }
-// }
+            //Assert
+            Assert.Equal(TestFixture.ExpectedToleratedAmbientPressures, diveModel.DiveProfile.ToleratedAmbientPressures);
+        }
+    }
+}
