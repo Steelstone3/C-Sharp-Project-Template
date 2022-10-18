@@ -3,11 +3,11 @@ using BubblesDivePlanner.Models.DiveModels;
 
 namespace BubblesDivePlanner.Controllers.DiveStages
 {
-    public class CompartmentLoadCommand : IDiveStageCommand
+    public class CompartmentLoad : IDiveStageCommand
     {
         private readonly IDiveModel diveModel;
 
-        public CompartmentLoadCommand(IDiveModel diveModel)
+        public CompartmentLoad(IDiveModel diveModel)
         {
             this.diveModel = diveModel;
         }

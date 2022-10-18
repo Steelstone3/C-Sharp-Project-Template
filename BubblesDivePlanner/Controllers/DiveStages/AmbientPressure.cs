@@ -4,13 +4,13 @@ using BubblesDivePlanner.Models.DiveModels;
 
 namespace BubblesDivePlanner.Controllers.DiveStages
 {
-    public class AmbientPressureCommand : IDiveStageCommand
+    public class AmbientPressure : IDiveStageCommand
     {
         private readonly IDiveProfile diveProfile;
         private readonly IGasMixture gasMixture;
         private readonly IDiveStep diveStep;
 
-        public AmbientPressureCommand(IDiveProfile diveProfile, IGasMixture gasMixtureModel, IDiveStep diveStepModel)
+        public AmbientPressure(IDiveProfile diveProfile, IGasMixture gasMixtureModel, IDiveStep diveStepModel)
         {
             this.diveProfile = diveProfile;
             gasMixture = gasMixtureModel;

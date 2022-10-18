@@ -1,0 +1,29 @@
+// using BubblesDivePlanner.Controllers.DiveStages;
+// using BubblesDivePlannerTests.TestFixtures;
+// using Xunit;
+
+// namespace BubblesDivePlannerTests.DiveStages
+// {
+//     public class AmbientPressureShould
+//     {
+//         [Fact]
+//         public void RunAmbientPressurePreStage()
+//         {
+//             //Arrange
+//             var expectedDiveProfile = DivePlannerApplicationTestFixture.GetDiveProfileResultFromFirstRun;
+//             var diveProfile = DivePlannerApplicationTestFixture.GetDiveModel.DiveProfile;
+//             var gasMixtureModel = DivePlannerApplicationTestFixture.GetSelectedCylinder.GasMixture;
+//             var diveStepModel = DivePlannerApplicationTestFixture.GetDiveStep;
+            
+//             IDiveStageCommand diveStage = new AmbientPressureCommand(diveProfile, gasMixtureModel, diveStepModel);
+
+//             //Act
+//             diveStage.RunDiveStage();
+
+//             //Assert
+//             Assert.Equal(expectedDiveProfile.PressureOxygen, diveProfile.OxygenPressureAtDepth);
+//             Assert.Equal(expectedDiveProfile.PressureHelium, diveProfile.HeliumPressureAtDepth);
+//             Assert.Equal(expectedDiveProfile.PressureNitrogen, diveProfile.NitrogenPressureAtDepth);
+//         }
+//     }
+// }

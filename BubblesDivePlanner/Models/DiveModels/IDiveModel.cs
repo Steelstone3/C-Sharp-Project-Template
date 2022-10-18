@@ -10,6 +10,6 @@ namespace BubblesDivePlanner.Models.DiveModels
         double[] BValuesNitrogen { get; }
         double[] AValuesHelium { get; }
         double[] BValuesHelium { get; }
-        IDiveProfile DiveProfile { get; }
+        IDiveProfile DiveProfile { get; set; }
     }
 }

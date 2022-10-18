@@ -5,12 +5,12 @@ using BubblesDivePlanner.Models.DiveModels;
 
 namespace BubblesDivePlanner.DiveStages
 {
-    public class TissuePressureCommand : IDiveStageCommand
+    public class TissuePressure : IDiveStageCommand
     {
         private readonly IDiveModel diveModel;
         private readonly IDiveStep diveStep;
 
-        public TissuePressureCommand(IDiveModel diveModel, IDiveStep diveStepModel)
+        public TissuePressure(IDiveModel diveModel, IDiveStep diveStepModel)
         {
             this.diveModel = diveModel;
             diveStep = diveStepModel;

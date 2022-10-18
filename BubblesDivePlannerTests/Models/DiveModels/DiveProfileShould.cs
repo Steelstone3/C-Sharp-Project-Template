@@ -10,6 +10,7 @@ namespace BubblesDivePlannerTests.Models.DiveModels
         private const double EXPECTED_HELIUM_PRESSURE_AT_DEPTH = 11.5;
         private const double EXPECTED_NITROGEN_PRESSURE_AT_DEPTH = 5.6;
         private readonly double[] expectedDefaultListValue = new double[COMPARTMENT_COUNT] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+        private readonly double[] expectedDefaultListTissuePressureValue = new double[COMPARTMENT_COUNT] { 0.79, 0.79, 0.79, 0.79, 0.79, 0.79, 0.79, 0.79, 0.79, 0.79 };
         private readonly IDiveProfile diveProfile = new DiveProfile(COMPARTMENT_COUNT);
 
         public DiveProfileShould()
@@ -28,7 +29,7 @@ namespace BubblesDivePlannerTests.Models.DiveModels
         public void ContainsTissuePressuresNitrogen()
         {
             Assert.Equal(COMPARTMENT_COUNT, diveProfile.NitrogenTissuePressures.Length);
-            Assert.Equal(expectedDefaultListValue, diveProfile.NitrogenTissuePressures);
+            Assert.Equal(expectedDefaultListTissuePressureValue, diveProfile.NitrogenTissuePressures);
         }
 
         [Fact]
@@ -42,7 +43,7 @@ namespace BubblesDivePlannerTests.Models.DiveModels
         public void ContainsTissuePressuresTotal()
         {
             Assert.Equal(COMPARTMENT_COUNT, diveProfile.TotalTissuePressures.Length);
-            Assert.Equal(expectedDefaultListValue, diveProfile.TotalTissuePressures);
+            Assert.Equal(expectedDefaultListTissuePressureValue, diveProfile.TotalTissuePressures);
         }
 
         [Fact]

@@ -4,11 +4,11 @@ using BubblesDivePlanner.Models.DiveModels;
 
 namespace BubblesDivePlanner.DiveStages
 {
-    public class ToleratedAmbientPressureCommand : IDiveStageCommand
+    public class ToleratedAmbientPressure : IDiveStageCommand
     {
         private readonly IDiveModel diveModel;
 
-        public ToleratedAmbientPressureCommand(IDiveModel diveModel)
+        public ToleratedAmbientPressure(IDiveModel diveModel)
         {
             this.diveModel = diveModel;
         }

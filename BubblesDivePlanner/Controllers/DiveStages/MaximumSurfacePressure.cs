@@ -3,11 +3,11 @@ using BubblesDivePlanner.Models.DiveModels;
 
 namespace BubblesDivePlanner.Controllers.DiveStages
 {
-    public class MaximumSurfacePressureCommand : IDiveStageCommand
+    public class MaximumSurfacePressure : IDiveStageCommand
     {
         private readonly IDiveModel diveModel;
 
-        public MaximumSurfacePressureCommand(IDiveModel diveModel)
+        public MaximumSurfacePressure(IDiveModel diveModel)
         {
             this.diveModel = diveModel;
         }
