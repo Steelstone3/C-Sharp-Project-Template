@@ -1,31 +1,28 @@
-// using BubblesDivePlanner.DiveStages;
-// using BubblesDivePlannerTests.TestFixtures;
-// using Xunit;
+using BubblesDivePlanner.DiveStages;
+using Xunit;
 
-// namespace BubblesDivePlannerTests.DiveStages
-// {
-//     public class TissuePressureShould
-//     {
-//         [Fact]
-//         public void RunTissuePressureStage()
-//         {
-//             //Arrange
-//             var diveModel = DivePlannerApplicationTestFixture.GetDiveModel;
-//             diveModel.DiveProfile = DivePlannerApplicationTestFixture.GetDiveProfileResultFromFirstRun;
-//             var diveStep = DivePlannerApplicationTestFixture.GetDiveStep;
-//             var expectedTissuePressureNitrogen = diveModel.DiveProfile.TissuePressuresNitrogen;
-//             var expectedTissuePressureHelium = diveModel.DiveProfile.TissuePressuresHelium;
-//             var expectedTissuePressureTotal = diveModel.DiveProfile.TissuePressuresTotal;
+namespace BubblesDivePlannerTests.DiveStages
+{
+    public class TissuePressureShould
+    {
+        [Fact]
+        public void RunTissuePressureStage()
+        {
+            //Arrange
+            var diveModel = TestFixture.FixtureDiveModel;
+            var diveStep = TestFixture.FixtureDiveStep;
+            diveModel.DiveProfile.OxygenPressureAtDepth = TestFixture.ExpectedPressureOxygen;
+            diveModel.DiveProfile.HeliumPressureAtDepth = TestFixture.ExpectedPressureHelium;
+            diveModel.DiveProfile.NitrogenPressureAtDepth = TestFixture.ExpectedPressureNitrogen;
+            var diveStage = new TissuePressure(diveModel, diveStep);
 
-//             var diveStage = new TissuePressureCommand(diveModel, diveStep);
+            //Act
+            diveStage.RunDiveStage();
 
-//             //Act
-//             diveStage.RunDiveStage();
-
-//             //Assert
-//             Assert.Equal(expectedTissuePressureNitrogen, diveModel.DiveProfile.TissuePressuresNitrogen);
-//             Assert.Equal(expectedTissuePressureHelium, diveModel.DiveProfile.TissuePressuresHelium);
-//             Assert.Equal(expectedTissuePressureTotal, diveModel.DiveProfile.TissuePressuresTotal);
-//         }
-//     }
-// }
+            //Assert
+            Assert.Equal(TestFixture.ExpectedNitrogenTissuePressures, diveModel.DiveProfile.NitrogenTissuePressures);
+            Assert.Equal(TestFixture.ExpectedHeliumTissuePressures, diveModel.DiveProfile.HeliumTissuePressures);
+            Assert.Equal(TestFixture.ExpectedTotalTissuePressures, diveModel.DiveProfile.TotalTissuePressures);
+        }
+    }
+}
