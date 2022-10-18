@@ -30,6 +30,6 @@ namespace BubblesDivePlannerTests.TestFixtures
         public static double[] ExpectedHeliumTissuePressures => new double[COMPARTMENT_COUNT] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         public static double[] ExpectedTotalTissuePressures => new double[COMPARTMENT_COUNT] { 4.0417, 3.0792, 2.4713, 2.0243, 1.6843, 1.4439, 1.2634, 1.13, 1.0334, 0.9731, 0.9337, 0.9029, 0.8788, 0.8596, 0.8446, 0.8329 };
         public static double[] ExpectedToleratedAmbientPressures => new double[COMPARTMENT_COUNT] { 1.4068, 1.3544, 1.1624, 0.9923, 0.8269, 0.7455, 0.6682, 0.6059, 0.5589, 0.5471, 0.5442, 0.5459, 0.5627, 0.5592, 0.5687, 0.5794 };
-        public static double[] ExpectedCompartmentLoad => new double[COMPARTMENT_COUNT] { 124.89, 121.46, 110.01, 99.51, 88.77, 82.71, 76.8, 71.87, 68.05, 66.46, 65.62, 65.15, 65.57, 65.05, 65.29, 65.66 };
+        public static double[] ExpectedCompartmentLoads => new double[COMPARTMENT_COUNT] { 124.89, 121.46, 110.01, 99.51, 88.77, 82.71, 76.8, 71.87, 68.05, 66.46, 65.62, 65.15, 65.57, 65.05, 65.29, 65.66 };
     }
 }

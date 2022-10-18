@@ -1,28 +1,25 @@
-// using BubblesDivePlanner.Controllers.DiveStages;
-// using BubblesDivePlanner.DiveStages;
-// using BubblesDivePlannerTests.TestFixtures;
-// using Xunit;
+using BubblesDivePlanner.Controllers.DiveStages;
+using BubblesDivePlannerTests.TestFixtures;
+using Xunit;
 
-// namespace BubblesDivePlannerTests.DiveStages
-// {
-//     public class CompartmentLoadCommandShould
-//     {
-//         [Fact]
-//         public void RunCompartmentLoadStage()
-//         {
-//             //Arrange
-//             var expectedDiveProfile = DivePlannerApplicationTestFixture.GetDiveProfileResultFromFirstRun;
-//             var diveModel = DivePlannerApplicationTestFixture.GetDiveModel;
-//             diveModel.DiveProfile.TissuePressuresTotal = expectedDiveProfile.TissuePressuresTotal;
-//             diveModel.DiveProfile.MaxSurfacePressures = expectedDiveProfile.MaxSurfacePressures;
+namespace BubblesDivePlannerTests.DiveStages
+{
+    public class CompartmentLoadCommandShould
+    {
+        [Fact]
+        public void RunCompartmentLoadStage()
+        {
+            //Arrange
+            var diveModel = TestFixture.FixtureDiveModel;
+            diveModel.DiveProfile.TotalTissuePressures = TestFixture.ExpectedTotalTissuePressures;
+            diveModel.DiveProfile.MaxSurfacePressures = TestFixture.ExpectedMaxSurfacePressures;
+            var diveStage = new CompartmentLoad(diveModel);
 
-//             var diveStage = new CompartmentLoadCommand(diveModel);
+            //Act
+            diveStage.RunDiveStage();
 
-//             //Act
-//             diveStage.RunDiveStage();
-
-//             //Assert
-//             Assert.Equal(expectedDiveProfile.CompartmentLoad, diveModel.DiveProfile.CompartmentLoad);
-//         }
-//     }
-// }
+            //Assert
+            Assert.Equal(TestFixture.ExpectedCompartmentLoads, diveModel.DiveProfile.CompartmentLoads);
+        }
+    }
+}
