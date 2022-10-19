@@ -26,9 +26,6 @@ namespace BubblesDivePlannerTests.Controllers.DiveStages
                 TestFixture.ExpectedNitrogenPressureAtDepth
             ));
             var diveStep = TestFixture.FixtureDiveStep;
-            // diveModel.DiveProfile.OxygenPressureAtDepth = TestFixture.ExpectedOxygenPressureAtDepth;
-            // diveModel.DiveProfile.HeliumPressureAtDepth = TestFixture.ExpectedHeliumPressureAtDepth;
-            // diveModel.DiveProfile.NitrogenPressureAtDepth = TestFixture.ExpectedNitrogenPressureAtDepth;
             var diveStage = new TissuePressure(diveModel, diveStep);
 
             //Act
