@@ -1,4 +1,5 @@
 using BubblesDivePlanner.Controllers.DiveStages;
+using BubblesDivePlanner.Models.DiveModels;
 using Xunit;
 
 namespace BubblesDivePlannerTests.Controllers.DiveStages
@@ -10,8 +11,20 @@ namespace BubblesDivePlannerTests.Controllers.DiveStages
         {
             //Arrange
             var diveModel = TestFixture.FixtureDiveModel;
-            diveModel.DiveProfile.TotalTissuePressures = TestFixture.ExpectedTotalTissuePressures;
-            diveModel.DiveProfile.MaxSurfacePressures = TestFixture.ExpectedMaxSurfacePressures;
+            diveModel.DiveProfile.UpdateDiveProfile(new DiveProfile
+            (
+                null,
+                null,
+                TestFixture.ExpectedTotalTissuePressures,
+                TestFixture.ExpectedMaxSurfacePressures,
+                null,
+                null, 
+                null,
+                TestFixture.DefaultList,
+                0,
+                0,
+                0
+            ));
             var diveStage = new CompartmentLoad(diveModel);
 
             //Act

@@ -116,6 +116,37 @@ namespace BubblesDivePlannerTests.Models.DiveModels
             Assert.Equal(EXPECTED_PRESSURE_AT_DEPTH, diveProfile.NitrogenPressureAtDepth);
         }
 
+         [Fact]
+        public void UpdateDiveProfile() {
+            double[] defaultList = new double[]{1,2,3,4,5,6,7,8,9,10};
+            diveProfile.UpdateDiveProfile(new DiveProfile
+            (
+                defaultList, 
+                defaultList, 
+                defaultList,
+                defaultList,
+                defaultList,
+                defaultList,
+                defaultList,
+                defaultList,
+                EXPECTED_PRESSURE_AT_DEPTH,
+                EXPECTED_PRESSURE_AT_DEPTH,
+                EXPECTED_PRESSURE_AT_DEPTH
+            ));
+
+            Assert.Equal(defaultList, diveProfile.NitrogenTissuePressures);
+            Assert.Equal(defaultList, diveProfile.HeliumTissuePressures);
+            Assert.Equal(defaultList, diveProfile.TotalTissuePressures);
+            Assert.Equal(defaultList, diveProfile.MaxSurfacePressures);
+            Assert.Equal(defaultList, diveProfile.ToleratedAmbientPressures);
+            Assert.Equal(defaultList, diveProfile.AValues);
+            Assert.Equal(defaultList, diveProfile.BValues);
+            Assert.Equal(defaultList, diveProfile.CompartmentLoads);
+            Assert.Equal(EXPECTED_PRESSURE_AT_DEPTH, diveProfile.OxygenPressureAtDepth);
+            Assert.Equal(EXPECTED_PRESSURE_AT_DEPTH, diveProfile.HeliumPressureAtDepth);
+            Assert.Equal(EXPECTED_PRESSURE_AT_DEPTH, diveProfile.NitrogenPressureAtDepth);
+        }
+
         [Fact]
         public void UpdateGasMixtureUnderPressure()
         {

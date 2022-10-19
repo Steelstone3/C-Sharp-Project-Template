@@ -19,6 +19,9 @@ namespace BubblesDivePlannerTests
         12
         );
 
+        // public static double[] DefaultTissuesList => new double[COMPARTMENT_COUNT] { 0.79, 0.79, 0.79, 0.79, 0.79, 0.79, 0.79, 0.79, 0.79, 0.79, 0.79, 0.79, 0.79, 0.79, 0.79, 0.79 };
+        public static double[] DefaultList => new double[COMPARTMENT_COUNT] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+
         public static double ExpectedOxygenPressureAtDepth => 1.26;
         public static double ExpectedNitrogenPressureAtDepth => 4.74;
         public static double ExpectedHeliumPressureAtDepth => 0;

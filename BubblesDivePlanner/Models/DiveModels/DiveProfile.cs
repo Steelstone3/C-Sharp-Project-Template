@@ -45,17 +45,17 @@ namespace BubblesDivePlanner.Models.DiveModels
             NitrogenPressureAtDepth = nitrogenPressureAtDepth;
         }
 
-        public double[] NitrogenTissuePressures { get; set; }
-        public double[] HeliumTissuePressures { get; set; }
-        public double[] TotalTissuePressures { get; set; }
-        public double[] MaxSurfacePressures { get; set; }
-        public double[] ToleratedAmbientPressures { get; set; }
-        public double[] AValues { get; set; }
-        public double[] BValues { get; set; }
-        public double[] CompartmentLoads { get; set; }
-        public double OxygenPressureAtDepth { get; set; }
-        public double HeliumPressureAtDepth { get; set; }
-        public double NitrogenPressureAtDepth { get; set; }
+        public double[] NitrogenTissuePressures { get; private set; }
+        public double[] HeliumTissuePressures { get; private set; }
+        public double[] TotalTissuePressures { get; private set; }
+        public double[] MaxSurfacePressures { get; private set; }
+        public double[] ToleratedAmbientPressures { get; private set; }
+        public double[] AValues { get; private set; }
+        public double[] BValues { get; private set; }
+        public double[] CompartmentLoads { get; private set; }
+        public double OxygenPressureAtDepth { get; private set; }
+        public double HeliumPressureAtDepth { get; private set; }
+        public double NitrogenPressureAtDepth { get; private set; }
 
         private void DefaultValues(byte compartmentCount)
         {
@@ -64,6 +64,21 @@ namespace BubblesDivePlanner.Models.DiveModels
                 NitrogenTissuePressures[compartment] = 0.79;
                 TotalTissuePressures[compartment] = 0.79;
             }
+        }
+
+        public void UpdateDiveProfile(IDiveProfile diveProfile)
+        {
+            NitrogenTissuePressures = diveProfile.NitrogenTissuePressures;
+            HeliumTissuePressures = diveProfile.HeliumTissuePressures;
+            TotalTissuePressures = diveProfile.TotalTissuePressures;
+            MaxSurfacePressures = diveProfile.MaxSurfacePressures;
+            ToleratedAmbientPressures = diveProfile.ToleratedAmbientPressures;
+            AValues = diveProfile.AValues;
+            BValues = diveProfile.BValues;
+            CompartmentLoads = diveProfile.CompartmentLoads;
+            OxygenPressureAtDepth = diveProfile.OxygenPressureAtDepth;
+            HeliumPressureAtDepth = diveProfile.HeliumPressureAtDepth;
+            NitrogenPressureAtDepth = diveProfile.NitrogenPressureAtDepth;
         }
 
         public void UpdateGasMixtureUnderPressure(double oxygenPressureAtDepth, double heliumPressureAtDepth, double nitrogenPressureAtDepth)
