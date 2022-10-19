@@ -4,7 +4,6 @@ namespace BubblesDivePlanner.Models.DiveModels
 {
     public class DiveProfile : IDiveProfile
     {
-        [JsonConstructor]
         public DiveProfile(byte compartmentCount)
         {
             MaxSurfacePressures = new double[compartmentCount];
@@ -18,19 +17,21 @@ namespace BubblesDivePlanner.Models.DiveModels
             DefaultValues(compartmentCount);
         }
 
-        public DiveProfile(
-            double[] nitrogenTissuePressures,
-            double[] heliumTissuePressures,
-            double[] totalTissuePressures,
-            double[] maxSurfacePressures,
-            double[] toleratedAmbientPressures,
-            double[] aValues,
-            double[] bValues,
-            double[] compartmentLoads,
-            double oxygenPressureAtDepth,
-            double heliumPressureAtDepth,
-            double nitrogenPressureAtDepth
-            )
+        [JsonConstructor]
+        public DiveProfile
+        (
+                   double[] nitrogenTissuePressures,
+                   double[] heliumTissuePressures,
+                   double[] totalTissuePressures,
+                   double[] maxSurfacePressures,
+                   double[] toleratedAmbientPressures,
+                   double[] aValues,
+                   double[] bValues,
+                   double[] compartmentLoads,
+                   double oxygenPressureAtDepth,
+                   double heliumPressureAtDepth,
+                   double nitrogenPressureAtDepth
+        )
         {
             NitrogenTissuePressures = nitrogenTissuePressures;
             HeliumTissuePressures = heliumTissuePressures;
