@@ -1,15 +1,30 @@
 using BubblesDivePlanner.DiveStages;
+using BubblesDivePlanner.Models.DiveModels;
 using Xunit;
 
 namespace BubblesDivePlannerTests.Controllers.DiveStages
 {
     public class TissuePressureShould
     {
-        [Fact(Skip = "Needs arrange")]
+        [Fact]
         public void RunTissuePressureStages()
         {
             //Arrange
             var diveModel = TestFixture.FixtureDiveModel;
+            diveModel.DiveProfile.UpdateDiveProfile(new DiveProfile
+            (
+                TestFixture.DefaultTissuesList,
+                TestFixture.DefaultList,
+                TestFixture.DefaultTissuesList,
+                null,
+                null,
+                null,
+                null,
+                null,
+                TestFixture.ExpectedOxygenPressureAtDepth,
+                TestFixture.ExpectedHeliumPressureAtDepth,
+                TestFixture.ExpectedNitrogenPressureAtDepth
+            ));
             var diveStep = TestFixture.FixtureDiveStep;
             // diveModel.DiveProfile.OxygenPressureAtDepth = TestFixture.ExpectedOxygenPressureAtDepth;
             // diveModel.DiveProfile.HeliumPressureAtDepth = TestFixture.ExpectedHeliumPressureAtDepth;
