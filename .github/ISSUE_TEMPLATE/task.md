@@ -1,7 +1,7 @@
 ---
-name: User Story
-about: Describes an overview of a feature implemented in tasks
-title: 'User Story:'
+name: Task
+about: Provides the implementation detail of a User Story in sub-tasks
+title: 'Task:'
 labels: enhancement
 assignees: ''
 
@@ -27,9 +27,3 @@ assignees: ''
 **I want**
 **This will require**
 **This will depend on**
-
-### Sub-Tasks
-
-put in any sub-tasks with a hash followed by the issue number
-
-- 

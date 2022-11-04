@@ -1,13 +1,11 @@
-Bubbles Dive Planner Console
-============================
+C# Project Template
+===================
 
-The idea behind Bubbles Dive Planner is to aim for scuba divers to be able to perform the safe planning of scuba diving activities. Currently supports the Bulhmann dive model with more planned and gas management for a single cylinder with multiple cylinders planned.
+A template project for creating C# applications
 
-The project uses Rust with no external crates libraries.
+### Running Example
 
-### Running Bubbles Dive Planner
-
-> cd ~/Bubbles-Dive-Planner-Console/BubblesDivePlanner
+> cd ~/C-Sharp-Project-Template/Example
 > 
 > dotnet restore
 >
@@ -15,11 +13,9 @@ The project uses Rust with no external crates libraries.
 > 
 > dotnet run
 
-This application has been tested to run on debain derived Linux, Windows 10 and Mac OS 10 beyond this scope your experiences may vary.
-
 ### Tests
 
-> cd ~/Bubbles-Dive-Planner-Console/BubblesDivePlannerTests
+> cd ~/C-Sharp-Project-Template/ExampleTests
 > 
 > dotnet restore
 >
