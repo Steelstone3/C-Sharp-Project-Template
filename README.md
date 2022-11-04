@@ -7,22 +7,28 @@ The project uses Rust with no external crates libraries.
 
 ### Running Bubbles Dive Planner
 
-> cd ~/Bubbles-Dive-Planner-Console
+> cd ~/Bubbles-Dive-Planner-Console/BubblesDivePlanner
 > 
-> cargo build
+> dotnet restore
+>
+> dotnet build
 > 
-> cargo run
+> dotnet run
 
 This application has been tested to run on debain derived Linux, Windows 10 and Mac OS 10 beyond this scope your experiences may vary.
 
 ### Tests
 
-> cd ~/Bubbles-Dive-Planner-Console
+> cd ~/Bubbles-Dive-Planner-Console/BubblesDivePlannerTests
 > 
-> cargo test
+> dotnet restore
+>
+> dotnet build
+>
+> dotnet test
 
 ### Dependencies
 
-Follow the steps for installing rustc runtime for your given operating system.
+Follow the steps for installing dotnet runtime for your given operating system.
 
-> https://www.rust-lang.org/tools/install
+> https://dotnet.microsoft.com/en-us/download/dotnet/6.0
