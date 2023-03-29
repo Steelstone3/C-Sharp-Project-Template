@@ -27,4 +27,4 @@ A template project for creating C# applications
 
 Follow the steps for installing dotnet runtime for your given operating system.
 
-> https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+> https://dotnet.microsoft.com/en-us/download/dotnet/7.0
