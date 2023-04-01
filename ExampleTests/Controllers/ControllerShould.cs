@@ -10,7 +10,7 @@ namespace BubblesDivePlannerTests.Controllers.DiveStages
         {
             //Arrange
             IController controller = new Controller();
-            
+
             //Act
             var result = controller.RunTheThing();
 
